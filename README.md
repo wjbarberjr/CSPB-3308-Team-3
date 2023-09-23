@@ -15,4 +15,4 @@ Team repository for our CSPB 3308 project.
     lack of some needed resources
     Mitigation Strategy for above risks
 - Development method: scrum, kanban, waterfall: with specifics!
-- Project Tracking Software link (Trello is most common)[Make sure to add access for the instructor(s)]
+- Project Tracking Software link: https://trello.com/b/WzQXKKwY
