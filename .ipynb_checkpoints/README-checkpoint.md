@@ -2,9 +2,10 @@
 
 Team repository for our CSPB 3308 project.
 
-- Project title:
-- Team #: 
-- Team/Product Name
+
+- Project title: Excerciser Tracker App
+- Team #: 3
+- Excersize Tracking App
 - Team members: list the name, git username, and email for each member.
     - Dylan Smith
         - Git Username: dylan33smith
@@ -12,14 +13,32 @@ Team repository for our CSPB 3308 project.
     - William Hinkley
         - Git Username: WiHi1131
         - Email: wihi1131@colorado.edu
+    - Jordon Young
+        - Git Username: jordon-young
+        - Email: joyo8856@colorado.edu
+    - William Barber
+        - Git Username: wjbarberjr
+        - Email: wiba6472@colorado.edu
+    - Eric
+        - Git Username: EWHernandez
+        - Email: erhe3221@colorado.edu
 - Day/Time/TimeZone for the scheduled team weekly meeting (30 minutes via Zoom)
-  - Saturdays 10:00 AM MT
+    - Thursdays 5:30 MST
 - Vision statement: what would you tell potential customers?
+    - Track your fitness and have fun while doing it. 
 - Motivation: why are you working on this project?
+    - To promote a positive relationship with exercise and create a tool that is fun and keep users motivated.
 - Risks to project completion, possibly including:
-    new language or working environment
-    no prior experience working with these team members
-    lack of some needed resources
-    Mitigation Strategy for above risks
+    - Time constraints on building the functionalities we want to encorporate
+    - poorly defined goals and what they entail
+    - lack of back end development experience
 - Development method: scrum, kanban, waterfall: with specifics!
-- Project Tracking Software link: https://trello.com/b/WzQXKKwY
+    - Scrum
+        - Agile development
+        - Weekly sprints
+        - Rotate scrum masters every two weeks
+    - Project Management Software: Todoist
+        - Track task status in kanban-style view
+        - Use task description, assignee, priority, and due dates
+        - Comment on ticket and push notifications to team for blockers
+    - Discord for General Communication and Meetings
