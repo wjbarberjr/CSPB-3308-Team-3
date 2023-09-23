@@ -16,8 +16,8 @@ Team repository for our CSPB 3308 project.
     - Jordon Young
         - Git Username: jordon-young
         - Email: joyo8856@colorado.edu
-    - Billy
-        - Git Username:
+    - William Barber
+        - Git Username: wjbarberjr
         - Email: wiba6472@colorado.edu
     - Eric
         - Git Username:
