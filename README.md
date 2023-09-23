@@ -6,6 +6,9 @@ Team repository for our CSPB 3308 project.
 - Team #: 
 - Team/Product Name
 - Team members: list the name, git username, and email for each member.
+    - Dylan Smith
+        - Git Username: dylan33smith
+        - Email: dysm3436@colorado.edu
 - Day/Time/TimeZone for the scheduled team weekly meeting (30 minutes via Zoom)
 - Vision statement: what would you tell potential customers?
 - Motivation: why are you working on this project?
