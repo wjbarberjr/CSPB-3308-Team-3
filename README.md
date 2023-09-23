@@ -15,7 +15,13 @@ Team repository for our CSPB 3308 project.
         - Email: wihi1131@colorado.edu
     - Jordon Young
         - Git Username: jordon-young
-        - Email: joyo8856@colorado.edu  
+        - Email: joyo8856@colorado.edu
+    - Billy
+        - Git Username:
+        - Email: wiba6472@colorado.edu
+    - Eric
+        - Git Username:
+        - Email: erhe3221@colorado.edu
 - Day/Time/TimeZone for the scheduled team weekly meeting (30 minutes via Zoom)
     - Thursdays 5:30 MST
 - Vision statement: what would you tell potential customers?
