@@ -25,6 +25,5 @@ Team repository for our CSPB 3308 project.
         - agile development
         - weekly sprints
         - change scrum master every two weeks
-    - trello
-        - Use trello for software development tracking
-        - Project Tracking Software link: https://trello.com/b/WzQXKKwY
+    - todolist
+        - Use todolist for software development tracking
