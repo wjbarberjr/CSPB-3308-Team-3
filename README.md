@@ -10,6 +10,9 @@ Team repository for our CSPB 3308 project.
     - Dylan Smith
         - Git Username: dylan33smith
         - Email: dysm3436@colorado.edu
+    - William Hinkley
+        - Git Username: WiHi1131
+        - Email: wihi1131@colorado.edu
 - Day/Time/TimeZone for the scheduled team weekly meeting (30 minutes via Zoom)
     - Thursdays 5:30 MST
 - Vision statement: what would you tell potential customers?
