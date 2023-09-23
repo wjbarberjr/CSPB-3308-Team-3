@@ -28,8 +28,11 @@ Team repository for our CSPB 3308 project.
     - lack of back end development experience
 - Development method: scrum, kanban, waterfall: with specifics!
     - Scrum
-        - agile development
-        - weekly sprints
-        - change scrum master every two weeks
-    - todolist
-        - Use todolist for software development tracking
+        - Agile development
+        - Weekly sprints
+        - Rotate scrum masters every two weeks
+    - Project Management Software: Todoist
+        - Track task status in kanban-style view
+        - Use task description, assignee, priority, and due dates
+        - Comment on ticket and push notifications to team for blockers
+    - Discord for General Communication and Meetings
