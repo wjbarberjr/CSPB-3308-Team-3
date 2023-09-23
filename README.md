@@ -19,7 +19,7 @@ Team repository for our CSPB 3308 project.
     - William Barber
         - Git Username: wjbarberjr
         - Email: wiba6472@colorado.edu
-    - Eric
+    - Eric Hernandez
         - Git Username: EWHernandez
         - Email: erhe3221@colorado.edu
 - Day/Time/TimeZone for the scheduled team weekly meeting (30 minutes via Zoom)
