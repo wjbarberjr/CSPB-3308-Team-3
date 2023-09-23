@@ -13,6 +13,9 @@ Team repository for our CSPB 3308 project.
     - William Hinkley
         - Git Username: WiHi1131
         - Email: wihi1131@colorado.edu
+    - Jordon Young
+        - Git Username: jordon-young
+        - Email: joyo8856@colorado.edu  
 - Day/Time/TimeZone for the scheduled team weekly meeting (30 minutes via Zoom)
     - Thursdays 5:30 MST
 - Vision statement: what would you tell potential customers?
