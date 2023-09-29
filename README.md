@@ -39,3 +39,10 @@ Weekly meetings Thursdays 5:30 MST via Discord.
     - Use task description, assignee, priority, and due dates
     - Comment on ticket and push notifications to team for blockers
 - Discord for General Communication and Meetings
+
+### How to Run
+
+1. Use VS Code
+2. Download the [Live Server](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer) extension
+3. In the toolbar at the bottom of VS Code, click "Go Live"
+4. View that the server opened in browser and the html displays
