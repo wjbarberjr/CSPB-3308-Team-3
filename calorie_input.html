@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+
+<html>
+    <style>
+        table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+        }
+        th {
+            background-color: #5f9ea0;
+        }
+    </style>
+    
+<head>
+    <title>Calorie Tracker</title>
+</head>
+
+<body>
+    <h1><center>Hello and welcome to the calorie tracker!</center></h1>
+    <h3><center>Please enter your name and your calories consumed to add to your daily total</center></h3>
+    <p><center>Our goal is to help you keep track of your daily calories so you have a better understanding of the nurtients that fuel your workouts!</center><br><br><p>
+    
+<center>
+    <form action="/action_page.php">
+        <label for="name">Enter Name:</label>
+        <input type="text" id="name" name="name"><br><br>
+        <label for="calorie">Enter Calories Consumed:</label>
+        <input type="text" id="calorie" name="calorie"><br><br>
+        <input type="submit" value="Track it">
+    </form>
+    </center>
+
+<p>
+    <br>
+</p>
+
+<center><table style="width:50%">
+    <tr>
+        <th>Current Calories Consumed</th>
+        <th>Daily Calories Consumed</th>
+    </tr>
+    <tr>
+        <td><center>Output goes here</center></td>
+        <td><center>output goes here</center></td>
+    </tr>
+    </table></center>
