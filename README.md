@@ -34,7 +34,7 @@ Weekly meetings Thursdays 5:30 MST via Discord.
     - Agile development
     - Weekly sprints
     - Rotate scrum masters every two weeks
-- Project Management Software: Todoist
+- Project Management Software: [Todoist](https://todoist.com/)
     - Track task status in kanban-style view
     - Use task description, assignee, priority, and due dates
     - Comment on ticket and push notifications to team for blockers
