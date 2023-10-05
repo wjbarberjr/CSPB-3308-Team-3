@@ -39,3 +39,9 @@ Weekly meetings Thursdays 5:30 MST via Discord.
     - Use task description, assignee, priority, and due dates
     - Comment on ticket and push notifications to team for blockers
 - Discord for General Communication and Meetings
+
+
+#### Project Visualization
+<figure width=100%>
+  <IMG SRC="Images/Future Plan Visualization.jpeg" WIDTH=50% ALIGN="LEFT">
+</figure>
