@@ -1,17 +1,30 @@
-p {
-    color: darkblue;
-    text-align: center;
-
-}
-
 body {
     background-color: whitesmoke;
     text-align: center;
+}
 
+body > * {
+    margin-inline: auto;
+    margin-block: 40px;
 }
 
 h1 {
     color: black;
     text-align: center;
     margin-top: 100px;
+}
+
+p {
+    text-align: center;
+}
+
+table,
+th,
+td {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+
+th {
+    background-color: #5f9ea0;
 }
