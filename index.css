@@ -1,3 +1,17 @@
 p {
     color: darkblue;
+    text-align: center;
+
+}
+
+body {
+    background-color: whitesmoke;
+    text-align: center;
+
+}
+
+h1 {
+    color: black;
+    text-align: center;
+    margin-top: 100px;
 }
