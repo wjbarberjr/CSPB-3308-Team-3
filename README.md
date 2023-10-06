@@ -45,3 +45,10 @@ Weekly meetings Thursdays 5:30 MST via Discord.
 <figure width=100%>
   <IMG SRC="Images/Future_Plan_Visualization.jpg" WIDTH=50% ALIGN="LEFT">
 </figure>
+
+### How to Run
+
+1. Use VS Code
+2. Download the [Live Server](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer) extension
+3. In the toolbar at the bottom of VS Code, click "Go Live"
+4. View that the server opened in browser and the html displays
