@@ -42,9 +42,8 @@ Weekly meetings Thursdays 5:30 MST via Discord.
 
 
 #### Project Visualization
-<figure width=100%>
-  <IMG SRC="Images/Future_Plan_Visualization.jpg" WIDTH=50% ALIGN="LEFT">
-</figure>
+
+![Image Visualization](Images/Future_Plan_Visualization.jpg)
 
 ### How to Run
 
