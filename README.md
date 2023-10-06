@@ -40,11 +40,6 @@ Weekly meetings Thursdays 5:30 MST via Discord.
     - Comment on ticket and push notifications to team for blockers
 - Discord for General Communication and Meetings
 
-
-#### Project Visualization
-
-![Image Visualization](Images/Future_Plan_Visualization.jpg)
-
 ### How to Run
 
 1. Use VS Code
