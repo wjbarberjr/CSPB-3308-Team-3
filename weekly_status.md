@@ -12,6 +12,9 @@
 
 ### Dylan
 
+Assisted in creation of calory input page
+- edited css file for formatting
+
 ### Eric
 
 ### Jordon
@@ -23,6 +26,11 @@
 ### Billy
 
 ### Dylan
+
+Created user stories for nutrient/calory input page
+Created "things to have" table based on user stories
+- included input, output, input form type, what will this need columns
+- "what will this need" column has loose ideas for what this will entail
 
 ### Eric
 
