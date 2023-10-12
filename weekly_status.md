@@ -20,7 +20,11 @@
 
 ## Sprint 2: 2023-10-06 to 2023-10-12
 
-### Billy
+### Billy - Created Login and HTML pages.
+
+![Image Visualization](images/weekly_status/sprint_02//Login.png)
+
+![Image Visualization](images/weekly_status/sprint_02//Create Account.png)
 
 ### Dylan
 
