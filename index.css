@@ -28,3 +28,8 @@ td {
 th {
     background-color: #5f9ea0;
 }
+
+/* Add a thick bottom border to the last row of each tbody (each user story) */
+tbody tr:last-child td {
+    border-bottom: 4px solid black;
+}
