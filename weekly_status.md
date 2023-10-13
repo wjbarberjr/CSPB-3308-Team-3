@@ -18,7 +18,7 @@ Assisted in creation of calory input page
 ### Eric
 
 Created rough draft html page.
-- page took in simple input and provided simple output
+- page took in simple input and provided output
 
 ### Jordon
 
@@ -56,6 +56,12 @@ Created "things to have" table based on user stories
 
 ### Eric
 
+Create branch in repository for my feature (page).
+Create rough outline for how an exercise input page will look
+- What will this page output? (what are the most important items to show)
+- Create testing to insure proper inputs
+- plan time with Jordan to talk about how our pages will talk between each other, if that is still in our plans.
+- 
 ### Jordon
 
 - Brainstorm structure for storing workout, exercise, and sets information
