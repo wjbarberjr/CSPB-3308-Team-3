@@ -17,6 +17,10 @@ Assisted in creation of calory input page
 
 ### Eric
 
+Created rough draft html page.
+- page took in simple input and provided simple output
+
+  
 ### Jordon
 
 ### Will
