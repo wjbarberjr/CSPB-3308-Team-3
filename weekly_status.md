@@ -40,11 +40,11 @@ Created rough draft html page.
 
 ## Sprint 2: 2023-10-06 to 2023-10-12
 
-### Billy - Created Login and HTML pages.
+### Billy - Created Login and Create Account HTML pages.
 
 ![Image Visualization](images/weekly_status/sprint_02//Login.png)
 
-![Image Visualization](images/weekly_status/sprint_02//Create Account.png)
+![Image Visualization](images/weekly_status/sprint_02//Create_Account.png)
 
 ### Dylan
 
