@@ -42,9 +42,9 @@ Created rough draft html page.
 
 ### Billy - Created Login and HTML pages.
 
-![Image Visualization](images/weekly_status/sprint_02//Login.png)
+![Image Visualization](images/weekly_status/sprint_02/Login.png)
 
-![Image Visualization](images/weekly_status/sprint_02//Create Account.png)
+![Image Visualization](images/weekly_status/sprint_02/Create Account.png)
 
 ### Dylan
 
