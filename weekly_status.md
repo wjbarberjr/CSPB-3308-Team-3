@@ -42,9 +42,13 @@ Created rough draft html page.
 
 ### Billy - Created Login and Create Account HTML pages.
 
-![Image Visualization](images/weekly_status/sprint_02//Login.png)
+![Login Screen](images/weekly_status/sprint_02/Login.png)
 
+<<<<<<< HEAD
 ![Image Visualization](images/weekly_status/sprint_02//Create_Account.png)
+=======
+![Create Account](images/weekly_status/sprint_02/Create%20Account.png)
+>>>>>>> bd1021cb57ebcfa08bee2785669654d70b54f083
 
 ### Dylan
 
