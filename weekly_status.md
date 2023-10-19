@@ -117,6 +117,18 @@ Added a login development branch on git
 
 ### Jordon
 
+#### Exercise Database Structure
+
+![Exercise Database Structure](/images/weekly_status/sprint_03/exercise-database-diagram.png)
+
+Most of the data is in the sets table. Which workout and exercise each set belongs to comes from those corresponding foreign keys.
+
+#### Preliminary Exercise Log Wireframe
+
+![Exercise Log Wireframe](/images/weekly_status/sprint_03/exercise-log-wireframe.png)
+
+This is a very early design. The idea is to list the workouts and be able to show and hide them.
+
 ### Will
 
 #### Food Lookup Feature
