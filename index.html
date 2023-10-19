@@ -10,10 +10,12 @@
     <script type="text/javascript" src="/index.js" defer></script>
   </head>
 
+
+
   <body>
     <h1>Hello and welcome to the calorie tracker!</h1>
     <h3>
-      Please enter your name and your calories consumed to add to your daily
+      Please enter your calories and macros consumed to add to your daily
       total
     </h3>
     <p>
@@ -21,16 +23,44 @@
       better understanding of the nutrients that fuel your workouts!
     </p>
 
-    <form>
-      <label for="calories">Enter Calories Consumed: </label>
-      <input type="number" id="calories" name="calories" />
-      <br />
-      <br />
-
+    <!-- table for cal and macros input -->
+    <form id="inputForm">
+      <table id="input_table">
+        <tr>
+          <td><label for="calories">Enter Calories Consumed: </label></td>
+          <td><input type="number" id="calories" name="calories" /></td>
+        </tr>
+        <tr>
+          <td><label for="fat">Enter grams of Fat Consumed: </label></td>
+          <td><input type="number" id="fat" name="fat" /></td>
+        </tr>
+        <tr>
+          <td><label for="protein">Enter grams of Protein Consumed: </label></td>
+          <td><input type="number" id="protein" name="protein" /></td>
+        </tr>
+        <tr>
+          <td><label for="carbs">Enter grams of Carbohydrates Consumed: </label></td>
+          <td><input type="number" id="carbs" name="carbs" /></td>
+        </tr>
+      </table>
+      
       <!-- type="button" overrides submit behavior-->
       <button type="button" onclick="cal_out()">Submit</button>
       <button type="button" onclick="clear_table()">Reset</button>
+      
     </form>
+
+    <div id="test_output"></div>
+
+    <table id="output_table">
+      <tr>
+        <th>Input</th>
+        <th>Calories</th>
+        <th>Fats</th>
+        <th>Proteins</th>
+        <th>Carbohydrates</th>
+      </tr>
+    </table>
 
     <table id="output">
       <tr>
@@ -38,108 +68,8 @@
         <th>Calories Input</th>
       </tr>
     </table>
+
+
   </body>
+
 </html>
-
-    <!-- Table for future things that will be needed -->
-    <table>
-      <caption>Table for future things/interactions</caption>
-      <thead>
-          <tr>
-              <th>Input</th>
-              <th>Output</th>
-              <th>Input type</th>
-              <th>what will this need?</th>
-          </tr>
-      </thead>
-
-      <tbody>
-        <!-- start point for inputs for different macros -->
-           <tr>
-              <td>input for cals and each macro</td>
-              <td>total macro and macro input table</td>
-              <td>label/input</td>
-              <td>
-                <ul>
-                  <li>seperate form for each macro</li>
-                  <li>? add to user history option within table?</li>
-                </ul>
-              </td>
-          </tr>
-        </tbody>
-
-      <tbody>
-        <!-- Food input user story -->
-           <tr>
-              <td>Food Input</td>
-              <td>Table with cals and macros info (amount/standard unit)</td>
-              <td>
-                <ul>
-                  <li>label/input</li>
-                  <li>dropdown</li>
-                </ul>
-              </td>
-              <td>
-                <ul>
-                  <li>match input to food database</li>
-                  <li>return info from database</li>
-                  <li>have something that drives user input towards <br> our database indexes (specific foods)</li>
-                </ul>
-              </td>
-            </tr>
-            <tr>
-              <td>Food amount Input</td>
-              <td>Table with amount specific amount of each nutrient</td>
-              <td>
-                <ul>
-                  <li>label/input</li>
-                  <li>dropdown (with standard units it 10 grams, one chicken breast etc)</li>
-                </ul>
-              </td>
-              <td>
-                <ul>
-                  <li>take table from food input and multiple standard units by food amount input</li>
-                  <li>multiply nutrient amount info in table <br> either by lookup or by curr table</li>
-                  <li>having an add to history button once amount specific info is calculated</li>
-                </ul>
-              </td>
-            </tr>
-          <tr>
-            <td>link click to food info?</td>
-            <td>directs you to wherever we got our database info from</td>
-            <td>link</td>
-            <td>
-              <ul>
-                <li>link to specific food in database which would <br> have to be accessed</li>
-                <li>link would be in table that food input pulls up</li>
-              </ul>
-            </td>
-          </tr>
-      </tbody>
-
-      <tbody>
-        <!-- Nutrient tracking user story -->
-           <tr>
-              <td>"See my history" button</td>
-              <td>directs you to new page with user specific food input history</td>
-              <td>button</td>
-              <td>
-                <ul>
-                  <li>keeping track of users and their history</li>
-                  <li>pages with food history for each user</li>
-                  <li>database that keeps track of user food input histories</li>
-                  <li>an add to history button when you input food and it pulls up nutrient info</li>
-                </ul>
-              </td>
-          </tr>
-
-          <tr>
-            <td> -  </td>
-            <td> -  </td>
-            <td> -  </td>
-            <td> -  </td>
-          </tr>
-      </tbody>
-  </table>
-
-

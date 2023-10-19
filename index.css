@@ -18,6 +18,19 @@ p {
     text-align: center;
 }
 
+#output_table 
+th{
+    width: 200px;
+}
+
+#input_table,
+th,
+td {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+
+
 table,
 th,
 td {
@@ -29,7 +42,8 @@ th {
     background-color: #5f9ea0;
 }
 
-/* Add a thick bottom border to the last row of each tbody (each user story) */
+/* Add a thick bottom border to the last row of each tbody (each user story) 
 tbody tr:last-child td {
     border-bottom: 4px solid black;
 }
+*/
