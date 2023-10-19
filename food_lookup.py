@@ -33,6 +33,7 @@ from flask import Flask, url_for
 from markupsafe import escape
 from flask import request
 from flask import render_template
+from flask_sqlalchemy import SQLAlchemy
 
 # create app to use in this Flask application
 app = Flask(__name__)
@@ -40,6 +41,23 @@ app = Flask(__name__)
 # Insert the wrapper for handling PROXY when using csel.io virtual machine
 # Calling this routine will have no effect if running on local machine
 prefix.use_PrefixMiddleware(app)   
+
+# Setup Configuration
+basedir = os.path.abspath(os.path.dirname(__file__))
+SQLALCHEMY_DATABASE_URI = 'sqlite:///' + os.path.join(basedir, 'food_database.db') # Path to your SQLite database file
+app.config['SQLALCHEMY_DATABASE_URI'] = SQLALCHEMY_DATABASE_URI
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False  # Optional: This disables a warning about a Flask-SQLAlchemy feature that you probably won't use.
+
+# Initialize SQLAlchemy
+db = SQLAlchemy(app)
+
+# 3. Database Setup
+class Food(db.Model):
+    __tablename__ = 'foods'  # specifying the table name as 'foods'
+    
+    food_id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String, nullable=False)
+    
 
 # test route to show prefix settings
 @app.route('/prefix_url')  
@@ -49,3 +67,16 @@ def prefix_url():
 @app.route('/foodlookup', methods=['GET', 'POST'])
 def foodtracker():
     return render_template('foodlookup.html')
+
+@app.route('/search_food', methods=['GET'])
+def search_food():
+    query = request.args.get('query')
+    print(f"Query received: {query}")  # Debug print
+    if not query:
+        return json.dumps([])
+
+    matching_foods = db.session.query(Food).filter(Food.name.like(f"%{query}%")).all()
+    print(f"Matching foods from database: {matching_foods}")  # Debug print
+
+    food_names = [food.name for food in matching_foods]
+    return json.dumps(food_names)

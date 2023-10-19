@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Food Lookup</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <style>
         /* Basic styling for the body and centering content */
         body {
@@ -31,6 +32,26 @@
             border: 1px solid #ddd;
             border-radius: 4px;
         }
+
+        /* Styling for suggestions list */
+        ul {
+            list-style: none;
+            padding: 0;
+            margin-top: 10px;
+        }
+
+        ul li {
+            padding: 5px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            margin-bottom: 5px;
+            cursor: pointer;
+        }
+        
+        ul li:hover {
+            background-color: #f4f4f4;
+        }
+
     </style>
 </head>
 <body>
@@ -38,9 +59,37 @@
     <div class="food-lookup-container">
         <h2>Input Food for Info</h2>
         <input type="text" id="foodName" placeholder="Search Food by Name...">
+        <ul id="suggestions"></ul>
     </div>
 
-    <!-- Optional: Scripts for interactivity can be added here -->
+    <!-- JS to handle input changes and auto-suggest -->
+    <script>
+        $(document).ready(function() {
+            $("#foodName").on("input", function() {
+                var query = $(this).val();
+                
+                if(query.length >= 3) {  // Only search if at least 3 characters are typed
+                    var baseURL = "https://coding.csel.io/user/wihi1131/proxy/3308";  // Adjust this to your base URL
+                    $.get(baseURL + "/search_food", {query: query}, function(data) {
+                        var suggestions = JSON.parse(data);
 
+                        // Displaying the suggestions to the user
+                        var suggestionList = $("#suggestions");
+                        suggestionList.empty();  // Remove old suggestions
+
+                        suggestions.forEach(function(food) {
+                            suggestionList.append("<li>" + food + "</li>");
+                        });
+                    });
+                }
+            });
+
+            // Handling click on a suggestion to fill it into the input box
+            $("#suggestions").on("click", "li", function() {
+                $("#foodName").val($(this).text());
+                $("#suggestions").empty();  // Clear the suggestions
+            });
+        });
+    </script>
 </body>
 </html>
