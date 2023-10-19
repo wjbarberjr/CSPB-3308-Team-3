@@ -102,7 +102,7 @@ Create rough outline for how an exercise input page will look
 - Constructing the database correctly that can/will be accessed by other team members will require good collaboration on the part of the team.
 - Implementing the auto-populate feature requires synchronization between frontend and backend, ensuring efficient and relevant suggestions without overloading the database with frequent queries.
 
-<!-- 
+
 ## Sprint 3: 2023-10-12 to 2023-10-19
 
 ### Billy - Created a Team3_flask_app.py file for webpage routing
@@ -118,8 +118,29 @@ Added a login development branch on git
 ### Jordon
 
 ### Will
--->
 
+#### Food Lookup Feature
+
+##### Progress: 
+
+- Created sample database food_database.db using SQLite. Contains one table (foods) with nutrition values, and three sample food items (avocados, onions, and salami)
+- Created a create_food_db.py file to create database, print tables and data for debugging, and fill with sample data
+- Modified foodlookup.html to include javascript that will allow for auto-population of user input when they input into the foodlookup page
+- Added a route in food_lookup.py for querying of the database to allow for auto-population on /foodlookup page
+
+##### Next Steps: 
+
+- Alter backend database to include a food log that stores food that users log that they have consumed, and references the foods table for the nutritional information
+- Add functionality for users to input which foods they ate and how much they ate, and update the food log accordingly
+- - Include different units of measurement for users to input when they add food. 
+- Add functionality for users to input their own food items into the database if they want to input a food that is not in the database
+
+##### Challenges: 
+
+- This will be a lot to implement, and I may not be able to get it all done at once.
+- I am not planning on implementing error handling/input validation yet, so I should be careful about testing these features when I create them.
+- More frontend and javascript will be necessary, and again I am not well-versed in this area.
+- I will have to make sure altering my database schema makes sense and does not cause problems with what I already have. 
 <!-- 
 ## Sprint X: 2023-MM-DD to 2023-MM-DD
 
