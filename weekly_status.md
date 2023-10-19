@@ -103,6 +103,24 @@ Create rough outline for how an exercise input page will look
 - Implementing the auto-populate feature requires synchronization between frontend and backend, ensuring efficient and relevant suggestions without overloading the database with frequent queries.
 
 <!-- 
+## Sprint 3: 2023-10-12 to 2023-10-19
+
+### Billy - Created a Team3_flask_app.py file for webpage routing
+
+Added a setup.cmds file to facilitate webpage viewing
+
+Added a login development branch on git
+
+### Dylan
+
+### Eric
+
+### Jordon
+
+### Will
+-->
+
+<!-- 
 ## Sprint X: 2023-MM-DD to 2023-MM-DD
 
 ### Billy
@@ -115,3 +133,18 @@ Create rough outline for how an exercise input page will look
 
 ### Will
 -->
+
+<!-- 
+## Sprint X: 2023-MM-DD to 2023-MM-DD
+
+### Billy
+
+### Dylan
+
+### Eric
+
+### Jordon
+
+### Will
+-->
+
