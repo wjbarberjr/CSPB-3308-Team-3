@@ -113,6 +113,16 @@ Added a login development branch on git
 
 ### Dylan
 
+Added macros inputs to cals input page
+Worked on .js file to incorporate inputs into page table
+
+#### Next Steps
+
+Finish js file to move inputs and totals to page table
+Have to develop database structure for maintaining history of user cal and macro inputs
+- will include a button to add current page table as the input to the history
+
+
 ### Eric
 
 ### Jordon
