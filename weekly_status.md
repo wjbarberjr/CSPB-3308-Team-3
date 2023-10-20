@@ -124,6 +124,14 @@ Have to develop database structure for maintaining history of user cal and macro
 
 
 ### Eric
+###### Progress:
+  Put together 1st draft of exercise input page, get basics implemented for input
+
+###### Next Steps: 
+  -create diagram/drawn interpretation of what I want the page to look like
+  -figure out VScode hiccup that is preventing 
+  -need to step back and create a better descriptions for page. Look to create 5 user stories to help narrow down exactly what features I want to implement.
+  -set up basic layouts to pretty up page
 
 ### Jordon
 
