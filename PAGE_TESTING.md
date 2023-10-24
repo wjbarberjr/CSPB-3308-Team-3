@@ -34,7 +34,7 @@
 
 #### Page Title: Exercise Input
 
-#### Page Description: 
+#### Page Description: https://coding.csel.io/hub/user-redirect/lab/tree/3308/CSPB-3308-Team-3/images/wireframe_images/Exercise%20input%20wireframe%20(1).png
 
 #### Parameters needed for the page: The parameters taken in on this page will be inputs for date, selector buttons for cardio or strength training, string input for exercise performed, integer input for cardio duration or integer input for sets/reps performed, and string input for notes per exercise.
 
