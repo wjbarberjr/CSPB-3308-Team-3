@@ -32,17 +32,17 @@
 
 ### Eric
 
-#### Page Title: 
+#### Page Title: Exercise Input
 
 #### Page Description: 
 
-#### Parameters needed for the page:
+#### Parameters needed for the page: The parameters taken in on this page will be inputs for date, selector buttons for cardio or strength training, string input for exercise performed, integer input for cardio duration or integer input for sets/reps performed, and string input for notes per exercise.
 
-#### Data needed to render the page: 
+#### Data needed to render the page: Data needed to render page will be input by user at time of input. secondary goal is to assosiate data with user info so page populates with old exercise data when returning to the page after visting other pages or a log-out and log back in condition. 
 
-#### Link destinations for the page: 
+#### Link destinations for the page: This page will link to all other pages per a navigation bar at top of page. 
 
-#### List of tests for verifying the rendering of the page: 
+#### List of tests for verifying the rendering of the page: Tests will include type validation for input boxes to ensure proper information is saved into table. 
 
 
 
