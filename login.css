@@ -1,0 +1,84 @@
+/* the css rules for login.html, create_account.html, and forgot_password.html */
+
+/*
+Author: William Barber (wiba6472)
+Purpose: The purpose of the CSS below set up and control the view for the Login/Create Account/Reset Password pages.
+Date: 24 October 2023
+*/
+
+
+/* Login Page */
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #A9A9A9;}
+
+.login-container {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #94D7F0;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);}
+
+.form-group {
+    margin: 10px 0;}
+
+.form-group label {
+    display: block;}
+
+.form-group input {
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0;
+    border: 1px solid #ccc;
+    border-radius: 3px;}
+
+.form-group button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 3px;
+    cursor: pointer;}
+
+.forgot-password {
+    text-align: right;}
+
+.create-account {
+    text-align: center;
+    margin-top: 10px;}
+
+
+
+
+/* Create Account Page */
+
+.registration-container {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #94D7F0;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);}
+
+.form-group {
+    margin: 10px 0;}
+
+.form-group label {
+    display: block;}
+
+.form-group input {
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0;
+    border: 1px solid #ccc;
+    border-radius: 3px;}
+
+.form-group button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 3px;
+    cursor: pointer;}
