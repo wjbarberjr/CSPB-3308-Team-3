@@ -21,26 +21,15 @@
 ## Flask either in the csel.io virtual machine or running on your local machine.
 ## The module will create an app for you to use
 
-import prefix
-from flask import Flask, url_for
+from flask import Flask, render_template, url_for
 
 # create app to use in this Flask application
-app = Flask(__name__)
+app = Flask(__name__, static_folder='/static')
 
-# Insert the wrapper for handling PROXY when using csel.io virtual machine
-# Calling this routine will have no effect if running on local machine
-prefix.use_PrefixMiddleware(app)   
-
-# test route to show prefix settings
-@app.route('/prefix_url')  
-def prefix_url():
-    return 'The URL for this page is {}'.format(url_for('prefix_url'))
 
 ###############################################################################
 ##
 ## Begin Routes for Team 3 Exercise Food Application
-
-from flask import Flask, render_template
 
 @app.route('/')
 def index():
