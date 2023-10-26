@@ -44,7 +44,7 @@ prefix.use_PrefixMiddleware(app)
 
 # Setup Configuration
 basedir = os.path.abspath(os.path.dirname(__file__))
-SQLALCHEMY_DATABASE_URI = 'sqlite:///' + os.path.join(basedir, 'food_database.db') # Path to your SQLite database file
+SQLALCHEMY_DATABASE_URI = 'sqlite:///' + os.path.join(basedir, 'database.db') # Path to your SQLite database file
 app.config['SQLALCHEMY_DATABASE_URI'] = SQLALCHEMY_DATABASE_URI
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False  # Optional: This disables a warning about a Flask-SQLAlchemy feature that you probably won't use.
 
@@ -56,8 +56,22 @@ class Food(db.Model):
     __tablename__ = 'foods'  # specifying the table name as 'foods'
     
     food_id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String, nullable=False)
-    
+    name = db.Column(db.String, nullable=False, unique=True)
+    portion_size = db.Column(db.Float, nullable=True)
+    calories = db.Column(db.Float, nullable=True)
+    total_fat = db.Column(db.Float, nullable=True)
+    saturated_fat = db.Column(db.Float, nullable=True)
+    trans_fat = db.Column(db.Float, nullable=True)
+    cholesterol = db.Column(db.Float, nullable=True)
+    sodium = db.Column(db.Float, nullable=True)
+    total_carbohydrates = db.Column(db.Float, nullable=True)
+    dietary_fiber = db.Column(db.Float, nullable=True)
+    sugars = db.Column(db.Float, nullable=True)
+    protein = db.Column(db.Float, nullable=True)
+    vitamin_d = db.Column(db.Float, nullable=True)
+    calcium = db.Column(db.Float, nullable=True)
+    iron = db.Column(db.Float, nullable=True)
+    potassium = db.Column(db.Float, nullable=True)
 
 # test route to show prefix settings
 @app.route('/prefix_url')  
@@ -80,3 +94,30 @@ def search_food():
 
     food_names = [food.name for food in matching_foods]
     return json.dumps(food_names)
+
+@app.route('/add_food', methods=['POST'])
+def add_food():
+    try:
+        addFood(
+            dbName='database.db',
+            name=request.form['name'],
+            portion_size=float(request.form['portion_size']) if request.form['portion_size'] else None,
+            calories=float(request.form['calories']) if request.form['calories'] else None,
+            total_fat=float(request.form['total_fat']) if request.form['total_fat'] else None,
+            saturated_fat=float(request.form['saturated_fat']) if request.form['saturated_fat'] else None,
+            trans_fat=float(request.form['trans_fat']) if request.form['trans_fat'] else None,
+            cholesterol=float(request.form['cholesterol']) if request.form['cholesterol'] else None,
+            sodium=float(request.form['sodium']) if request.form['sodium'] else None,
+            total_carbohydrates=float(request.form['total_carbohydrates']) if request.form['total_carbohydrates'] else None,
+            dietary_fiber=float(request.form['dietary_fiber']) if request.form['dietary_fiber'] else None,
+            sugars=float(request.form['sugars']) if request.form['sugars'] else None,
+            protein=float(request.form['protein']) if request.form['protein'] else None,
+            vitamin_d=float(request.form['vitamin_d']) if request.form['vitamin_d'] else None,
+            calcium=float(request.form['calcium']) if request.form['calcium'] else None,
+            iron=float(request.form['iron']) if request.form['iron'] else None,
+            potassium=float(request.form['potassium']) if request.form['potassium'] else None
+        )
+        return jsonify({'message': 'Food added successfully!'})
+    except ValueError as e:
+        return jsonify({'message': str(e)}), 400
+

@@ -1,10 +1,12 @@
 """
 Creates a food database with sample data: avocados, onions, and salami
+Defines addFood function with input validation for users to insert their own food items into the database. 
 
 """
 
 
 import sqlite3
+import re
 
 def table_exists(conn, table_name):
     """
@@ -20,7 +22,6 @@ def create(db_filename):
     Create a database with the filename given.
     Create the required tables and fields.
     """
-    conn = sqlite3.connect(db_filename)
     
     conn = sqlite3.connect(db_filename)
     
@@ -36,9 +37,9 @@ def create(db_filename):
     c.execute("""
     CREATE TABLE foods (
         food_id INTEGER PRIMARY KEY,
-        name TEXT NOT NULL,
+        name TEXT NOT NULL UNIQUE,
         
-        portion_size REAL,            -- Usually in grams (g)
+        portion_size REAL,           -- Usually in grams (g)
         calories REAL,               -- Usually in kcal
         total_fat REAL,              -- Typically in grams (g)
         saturated_fat REAL,          -- Typically in grams (g)
@@ -138,9 +139,11 @@ def print_data(db_filename):
 
     # Close the connection
     conn.close()
+
     
+#Initializes the database and prints table structures as well as data within tables when file is run. 
 if __name__ == "__main__":
-    db_name = "food_database.db"
+    db_name = "database.db"
     create(db_name)
     fill(db_name)
     print_tables(db_name)

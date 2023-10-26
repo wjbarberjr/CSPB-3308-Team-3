@@ -51,17 +51,58 @@
         ul li:hover {
             background-color: #f4f4f4;
         }
+        
+        .container {
+            display: flex;
+            justify-content: space-around;  /* This will space your containers apart */
+            width: 80%;  /* Adjust as needed */
+            margin: auto;  /* Centers the container */
+        }
+        
+        .food-lookup-container, 
+        .food-input-container {
+            margin: 20px;  /* Adjust as needed to add spacing */
+            width: 45%;  /* Adjust as needed */
+        }
+        /* New styles for spacing out form fields */
+        .food-input-container form label,
+        .food-input-container form input {
+            margin-bottom: 10px;  /* Adjust as needed */
+            display: block;  /* Makes label and input appear on new lines */
+        }
+        
+        .food-input-container form input[type="submit"] {
+            margin-top: 20px;  /* Adjust as needed */
+        }
+        
+        
 
     </style>
 </head>
 <body>
+  <div class="container">
     <!-- Food Lookup Container -->
     <div class="food-lookup-container">
         <h2>Input Food for Info</h2>
         <input type="text" id="foodName" placeholder="Search Food by Name...">
         <ul id="suggestions"></ul>
     </div>
-
+    
+    <!-- New Food Input Container -->
+    <div class="food-input-container">
+        <h2>Add New Food</h2>
+        <form id="food-form">
+            <label for="newFoodName">Food Name:</label><br>
+            <input type="text" id="newFoodName" name="newFoodName"><br>
+            <label for="portionSize">Portion Size:</label><br>
+            <input type="text" id="portionSize" name="portionSize"><br>
+            <!-- ... repeat for each attribute ... -->
+            <label for="potassium">Potassium:</label><br>
+            <input type="text" id="potassium" name="potassium"><br><br>
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+  </div>
     <!-- JS to handle input changes and auto-suggest -->
     <script>
         $(document).ready(function() {
@@ -88,6 +129,34 @@
             $("#suggestions").on("click", "li", function() {
                 $("#foodName").val($(this).text());
                 $("#suggestions").empty();  // Clear the suggestions
+            });
+            
+            // New script to handle form submission
+            $("#food-form").submit(function(event) {
+                event.preventDefault();  // Prevents the form from submitting the traditional way
+
+                var formData = {
+                    name: $("#newFoodName").val(),
+                    portion_size: $("#portionSize").val(),
+                    calories: $("#calories").val(),
+                    total_fat: $("#totalFat").val(),
+                    saturated_fat: $("#saturatedFat").val(),
+                    trans_fat: $("#transFat").val(),
+                    cholesterol: $("#cholesterol").val(),
+                    sodium: $("#sodium").val(),
+                    total_carbohydrates: $("#totalCarbohydrates").val(),
+                    dietary_fiber: $("#dietaryFiber").val(),
+                    sugars: $("#sugars").val(),
+                    protein: $("#protein").val(),
+                    vitamin_d: $("#vitaminD").val(),
+                    calcium: $("#calcium").val(),
+                    iron: $("#iron").val(),
+                    potassium: $("#potassium").val()
+                };
+
+                $.post("/add_food", formData, function(response) {
+                    alert(response.message);  // Alerts the response message returned from the server
+                });
             });
         });
     </script>
