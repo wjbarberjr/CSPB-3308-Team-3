@@ -12,7 +12,11 @@
 
 #### List of tests for verifying the rendering of the page: Tests will include data input validation, a test for adding to an existing database, creating a database if one does not exist, and a test for editing a database entry.
 
+![Login Screen](images/weekly_status/sprint_02/Login.png)
 
+![Create Account](images/weekly_status/sprint_02/Create_Account.png)
+
+![Forgot_Password](images/weekly_status/sprint_02/Forgot_Password.png)
 
 ### Dylan
 
