@@ -24,7 +24,7 @@
 from flask import Flask, render_template, url_for
 
 # create app to use in this Flask application
-app = Flask(__name__, static_folder='/static')
+app = Flask(__name__, static_folder='static')
 
 
 ###############################################################################
