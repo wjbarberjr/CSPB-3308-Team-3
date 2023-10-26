@@ -27,6 +27,10 @@
     <form id="inputForm">
       <table id="input_table">
         <tr>
+          <td><label for="input">Enter Food: </label></td>
+          <td><input type="text" id="food_input" name="food_input" /></td>
+        </tr>
+        <tr>
           <td><label for="calories">Enter Calories Consumed: </label></td>
           <td><input type="number" id="calories" name="calories" /></td>
         </tr>
@@ -45,7 +49,7 @@
       </table>
       
       <!-- type="button" overrides submit behavior-->
-      <button type="button" onclick="cal_out()">Submit</button>
+      <button type="button" onclick="add_to_table()">Submit</button>
       <button type="button" onclick="clear_table()">Reset</button>
       
     </form>
@@ -60,12 +64,12 @@
         <th>Proteins</th>
         <th>Carbohydrates</th>
       </tr>
-    </table>
-
-    <table id="output">
-      <tr>
-        <th>Total Calories</th>
-        <th>Calories Input</th>
+      <tr id="total_row">
+        <th>Totals:</th>
+        <th>0</th>
+        <th>0</th>
+        <th>0</th>
+        <th>0</th>
       </tr>
     </table>
 
