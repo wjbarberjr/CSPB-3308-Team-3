@@ -178,7 +178,16 @@ This is a very early design. The idea is to list the workouts and be able to sho
 
 ## Sprint 4: 2023-10-20 to 2023-10-26
 
-### Billy
+### Billy - 
+* Created routes and rendered pages using flask on port 3308. 
+
+* Verified data input and rendered three pages Login/Creat_Account/Reset_Password.
+
+* Completed Milestone 4 and updated the wireframe with actual screenshots.
+
+* Worked on adding stylesheets to html to render a page.
+
+* Next week will work on database creation, entries, and edits.
 
 ### Dylan
 
