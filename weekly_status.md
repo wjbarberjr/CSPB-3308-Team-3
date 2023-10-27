@@ -171,10 +171,21 @@ This is a very early design. The idea is to list the workouts and be able to sho
 - I am not planning on implementing error handling/input validation yet, so I should be careful about testing these features when I create them.
 - More frontend and javascript will be necessary, and again I am not well-versed in this area.
 - I will have to make sure altering my database schema makes sense and does not cause problems with what I already have. 
-<!-- 
-## Sprint X: 2023-MM-DD to 2023-MM-DD
 
-### Billy
+
+
+## Sprint X: 2023-10-19 to 2023-10-26
+
+### Billy - 
+* Created routes and rendered pages using flask on port 3308. 
+
+* Verified data input and rendered three pages Login/Creat_Account/Reset_Password.
+
+* Completed Milestone 4 and updated the wireframe with actual screenshots.
+
+* Worked on adding stylesheets to html to render a page.
+
+* Next week will work on database creation, entries, and edits.
 
 ### Dylan
 
@@ -183,7 +194,9 @@ This is a very early design. The idea is to list the workouts and be able to sho
 ### Jordon
 
 ### Will
--->
+
+
+
 
 <!-- 
 ## Sprint X: 2023-MM-DD to 2023-MM-DD
