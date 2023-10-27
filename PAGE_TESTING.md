@@ -32,25 +32,30 @@ Tests will include data input validation, a test for adding to an existing datab
 
 ### Dylan
 
-#### Page Title: Nutrient Tracker (URL: nutrients (?))
+#### Page Title: 
+Nutrient Tracker (URL: nutrients (?))
 
-#### Page Description: This page is going to be where you input the food you’ve eaten and get a breakdown of the calories and macro nutrients within that food. There is the option to either input the different foods within a meal or to input your own meal and add the nutrient info yourself. This second option will allow for different meals since there are an almost infinite amount of them. This can then be added to the database where we track the nutrient values of different foods. The page will also have a table displaying the total nutrient values consumed for the day that will be filled out (with a running total) when you enter food in. That table will also have the option to push the data to your nutrient tracking database which allows you to keep track of your nutrients over time. 
+#### Page Description: 
+This page is going to be where you input the food you’ve eaten and get a breakdown of the calories and macro nutrients within that food. There is the option to either input the different foods within a meal or to input your own meal and add the nutrient info yourself. This second option will allow for different meals since there are an almost infinite amount of them. This can then be added to the database where we track the nutrient values of different foods. The page will also have a table displaying the total nutrient values consumed for the day that will be filled out (with a running total) when you enter food in. That table will also have the option to push the data to your nutrient tracking database which allows you to keep track of your nutrients over time. 
 
 ![Nutreint tracking wireframe](images/wireframe_images/nutrient_tracking_wireframe.png)
 
-#### Parameters needed for the page: The parameters taken in on this page will be string inputs for food, selector buttons to calculate inputs and add calculated results to history database.
+#### Parameters needed for the page: 
+The parameters taken in on this page will be string inputs for food, selector buttons to calculate inputs and add calculated results to history database.
 
 
-#### Data needed to render the page: A large function of this page is to track user nutrient history, so it will need to data for user information so that individuals data can be tracked. It will need to have the date (get without input somehow?) so that the tracking follows time. It will also have to have access to food nutrient info database so that amounts of food eaten can be translated to nutrient information on the page. This allows users who just want to see nutrient info of a specific food to input something once and not have to login. 
+#### Data needed to render the page: 
+A large function of this page is to track user nutrient history, so it will need to data for user information so that individuals data can be tracked. It will need to have the date (get without input somehow?) so that the tracking follows time. It will also have to have access to food nutrient info database so that amounts of food eaten can be translated to nutrient information on the page. This allows users who just want to see nutrient info of a specific food to input something once and not have to login. 
 
-#### Link destinations for the page: This page will link to all other pages via the nav bar at the top and will also link to a page that has a table with the users nutrient and workout history as well as analytics to track nutrient and excersize activity.
+#### Link destinations for the page: 
+This page will link to all other pages via the nav bar at the top and will also link to a page that has a table with the users nutrient and workout history as well as analytics to track nutrient and excersize activity.
 
 #### List of tests for verifying the rendering of the page: 
-# type validation so that only correct information can be input. 
-# database access validation to ensure correct information is being recieved and input. 
-# link validation to ensure that links go to the correct page. 
-# testing to ensure that user data is stored through time. 
-# Tests to ensure that user food input to the database is reasonable so that our database isn't being filled with nonsensical entries that waste space. 
+type validation so that only correct information can be input. 
+database access validation to ensure correct information is being recieved and input. 
+link validation to ensure that links go to the correct page. 
+testing to ensure that user data is stored through time. 
+Tests to ensure that user food input to the database is reasonable so that our database isn't being filled with nonsensical entries that waste space. 
 
 
 
