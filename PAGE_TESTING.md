@@ -52,7 +52,7 @@ Tests will include data input validation, a test for adding to an existing datab
 
 #### Page Description: 
 
-![Exercise Input](https://coding.csel.io/hub/user-redirect/lab/tree/3308/CSPB-3308-Team-3/images/wireframe_images/Exercise%20input%20wireframe%20(1).png)
+![Exercise Input](images/wireframe_images/Exercise_input_wireframe(1).png)
 
 #### Parameters needed for the page: 
 
