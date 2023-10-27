@@ -76,16 +76,35 @@ Tests will include type validation for input boxes to ensure proper information 
 
 #### Page Title: 
 
+Exercise Log Page
+
+![Exercise Log Wireframe](/images/wireframe_images/exercise-output-wireframe.png)
+
 #### Page Description: 
+
+The exercise log page is where the history of workouts is stored. For now it includes only information for strength training workouts. The workouts themselves, the exercises, and the sets will collapse and expand to show and hide information.
 
 #### Parameters needed for the page:
 
+The only parameter needed will be user's identifier—not sure what we will use, but an ID would make sense. All associated data can be queried with the user ID.
+
 #### Data needed to render the page: 
+
+![Exercise Log Database](/images/weekly_status/sprint_04/exercise-log-database.png)
+
+The there is a nested structure similar to how the SQL table is laid out. At the top of the page, the user's name might appear. Under that, the list of workouts with expandable sections for exercises / sets. The way the database is structured, the main list will will be a query for workouts. If the user chooses to expand a workout, the exercise groups corresponding to that workout will be fetched. If the user expands an exercise group, the set information will be fetched.
+
+The main reason I've structure it that way is to learn more about handling requests—basically to make it harder on myself. A simpler way to do this would be to paginate the workouts and pull all associated data to start with.
 
 #### Link destinations for the page: 
 
+This is a terminal page, not a path on a funnel. The app / site navigation will be available at the top. 
+
 #### List of tests for verifying the rendering of the page: 
 
+I will need tests for all of SQL queries to see that the database structure exists as intended and that it retrieves the proper data. I'm not sure if we can use Unittest to validate that the retrieved data is successfully populated into HTML, but that is something that is typically done in frontend development. Additional tests like checking show / hide functionality would also be helpful, but I'm unsure if Unittest can manipulate webpages to mock user testing.
+
+In summary, I need to check that the SQL queries pull the correct data and that it ends up on the page in the correct locations.
 
 
 ### Will
