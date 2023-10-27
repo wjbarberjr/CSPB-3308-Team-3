@@ -171,6 +171,39 @@ This is a very early design. The idea is to list the workouts and be able to sho
 - I am not planning on implementing error handling/input validation yet, so I should be careful about testing these features when I create them.
 - More frontend and javascript will be necessary, and again I am not well-versed in this area.
 - I will have to make sure altering my database schema makes sense and does not cause problems with what I already have. 
+<<<<<<< HEAD
+=======
+
+- I will have to make sure altering my database schema makes sense and does not cause problems with what I already have. 
+
+## Sprint 4: 2023-10-20 to 2023-10-26
+
+### Billy - 
+* Created routes and rendered pages using flask on port 3308. 
+
+* Verified data input and rendered three pages Login/Creat_Account/Reset_Password.
+
+* Completed Milestone 4 and updated the wireframe with actual screenshots.
+
+* Worked on adding stylesheets to html to render a page.
+
+* Next week will work on database creation, entries, and edits.
+
+### Dylan
+
+### Eric
+* created wireframe and narrowed down parameters for page.
+* will be looking how to create a db to save inputs for specific users
+
+### Jordon
+
+![Exercise Log Diagram](/images/weekly_status/sprint_04/exercise-log-database.png)
+
+Created a more formalized SQL database structure for the exercise lo.
+
+### Will
+-->
+
 <!-- 
 ## Sprint X: 2023-MM-DD to 2023-MM-DD
 
@@ -183,7 +216,36 @@ This is a very early design. The idea is to list the workouts and be able to sho
 ### Jordon
 
 ### Will
--->
+
+<!-- 
+## Sprint X: 2023-MM-DD to 2023-MM-DD
+>>>>>>> a4f7aedd1858d36ca42bee9427b50e0ab8d8411a
+
+
+
+## Sprint X: 2023-10-19 to 2023-10-26
+
+### Billy - 
+* Created routes and rendered pages using flask on port 3308. 
+
+* Verified data input and rendered three pages Login/Creat_Account/Reset_Password.
+
+* Completed Milestone 4 and updated the wireframe with actual screenshots.
+
+* Worked on adding stylesheets to html to render a page.
+
+* Next week will work on database creation, entries, and edits.
+
+### Dylan
+
+### Eric
+
+### Jordon
+
+### Will
+
+
+
 
 <!-- 
 ## Sprint X: 2023-MM-DD to 2023-MM-DD
