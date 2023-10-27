@@ -192,6 +192,8 @@ This is a very early design. The idea is to list the workouts and be able to sho
 ### Dylan
 
 ### Eric
+* created wireframe and narrowed down parameters for page.
+* will be looking how to create a db to save inputs for specific users
 
 ### Jordon
 
