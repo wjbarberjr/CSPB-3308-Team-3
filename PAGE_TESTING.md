@@ -123,13 +123,78 @@ In summary, I need to check that the SQL queries pull the correct data and that 
 ### Will
 
 #### Page Title: 
+Food and Nutrition Lookup
 
 #### Page Description: 
+This page is dedicated to assisting users in searching for the nutritional values of various food items. It offers an extensive database where users can look up standard food items. If a user can't find a particular food item, there's a feature to input custom food details, ensuring flexibility and comprehensive tracking.
+At the top, there's a prominent search bar where users can type in food items.
+As users type, a dropdown list appears, auto-populating with relevant food items from the database.
+Each listed item, when clicked, expands to show its detailed nutritional values.
+Below the search results, there's an option labeled "Can't find your food? Add custom food details." Clicking on this opens a form where users can manually enter nutritional information for a custom food item.
+At the bottom, there are hyperlinks directing users to other sections of the application: login page, nutrition input/tracker, exercise input, and exercise lookup.
+The page should look something like this: ![image](https://github.com/jordon-young/CSPB-3308-Team-3/assets/97425686/39db101a-7f19-4c6e-bf31-6784817ba051)
+
 
 #### Parameters needed for the page:
+Food item name or keyword for searching.
+Custom food details: Name, serving size, macronutrients (proteins, fats, carbs), and any other relevant nutritional information.
 
 #### Data needed to render the page: 
+Database of food items with their complete nutritional information.
+User's custom food entries.
 
 #### Link destinations for the page: 
+Login Page: For users to sign in or register to the platform.
+Nutrition Input/Tracker: Where users can input and monitor the nutritional values of foods they've consumed.
+Exercise Input Page: Allows users to add details of their physical activities.
+Exercise Lookup Page: Users can search for different exercises and their caloric burns.
 
 #### List of tests for verifying the rendering of the page: 
+
+1. Search Functionality:
+
+-Test Basic Search: Ensure users can type into the search bar and that results appear based on input.
+-Test Dropdown List: Check if the dropdown list auto-populates with relevant food items from the database as the user types.
+-Test Search Results: Verify that clicking on a listed item expands it to show detailed nutritional values.
+
+2. Custom Food Input:
+
+-Test Access to Custom Input Form: Ensure the "Can't find your food? Add custom food details" option is accessible and opens the correct form.
+-Test Input Fields: Check if users can input details into the form fields without issues.
+-Test Data Validation: Ensure that validation checks are in place to prevent incorrect data types (e.g., text in calorie fields) or missing mandatory fields.
+-Test Custom Food Submission: Confirm that after submitting a custom food, the data is saved correctly to the user's profile or the database.
+
+3. Display of Nutritional Information:
+
+-Test Information Display: Check that the expanded food item displays all nutritional values correctly.
+-Test Custom Food Display: Verify that custom foods added by the user show up in search results and display the correct information when clicked.
+
+4. Linking to Other Pages:
+
+-Test Login Page Link: Ensure that the link to the login page redirects users to the correct login page.
+-Test Nutrition Input/Tracker Link: Confirm that the link directs users to the correct page where they can input and monitor their nutrition.
+-Test Exercise Input Page Link: Ensure that users are redirected to the correct exercise input page.
+-Test Exercise Lookup Page Link: Confirm that users are taken to the correct exercise lookup page when they click the link.
+
+5. Responsiveness and Compatibility (may not be necessary except for whichever compatible format we choose to implement)
+
+-Test Mobile Responsiveness: Check the page on various mobile devices to ensure elements adjust and display correctly.
+-Test Tablet Responsiveness: Confirm the page adjusts well to tablet screen sizes.
+-Test Browser Compatibility: Ensure the page renders correctly across different browsers like Chrome, Firefox, Safari, and Edge.
+
+6. Accessibility Tests:
+
+-Test Color Contrast: Ensure text is readable, and there's sufficient contrast between text and background colors.
+-Test Keyboard Navigation: Verify that users can navigate the page using only the keyboard.
+-Test Screen Reader Compatibility: Check the page's compatibility with screen readers and that all elements are appropriately labeled.
+
+7. Performance Tests:
+
+-Test Load Time: Ensure the page loads within a reasonable time frame.
+-Test Image Loading: Check that images (if any) load correctly and do not delay the overall page loading.
+-Test Server Response: Ensure the server responds quickly when fetching data from the database.
+
+8. Error Handling:
+
+-Test Invalid Search: Input gibberish or unrelated text in the search bar and confirm that the page handles it gracefully, possibly with a "No results found" message.
+-Test Form Errors: Intentionally leave out mandatory fields in the custom food form to see if appropriate error messages appear.
