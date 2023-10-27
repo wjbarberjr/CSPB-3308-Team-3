@@ -186,6 +186,10 @@ This is a very early design. The idea is to list the workouts and be able to sho
 
 ### Jordon
 
+![Exercise Log Diagram](/images/weekly_status/sprint_04/exercise-log-database.png)
+
+Created a more formalized SQL database structure for the exercise lo.
+
 ### Will
 -->
 
