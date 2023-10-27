@@ -202,6 +202,25 @@ This is a very early design. The idea is to list the workouts and be able to sho
 Created a more formalized SQL database structure for the exercise lo.
 
 ### Will
+
+##### Progress:
+
+- Added inputs on the foodlookup page to allow users to add food items to the database if they can't find their desired food for lookup.
+- Made necessary tweaks in the backend to accommodate the creation and addition of new food data.
+- Made adjustments to the frontend HTML template to include these new inputs.
+- Currently, the page has empty buttons and placeholders for user input.
+
+##### Next Steps:
+
+- Complete the functionality for users to add food items to the database via the foodlookup page.
+- Implement more comprehensive input validation for users adding food items to ensure data integrity and user experience.
+- Delve deeper into Javascript implementation for this feature, ensuring seamless frontend and backend integration.
+
+##### Challenges:
+
+- The main challenge lies in implementing the required Javascript functionality, as it's an area I'm still familiarizing myself with.
+- Ensuring that the modifications to the database and frontend don't introduce any unforeseen issues or bugs.
+- Striking a balance between user-friendliness and data integrity as users gain the ability to add their own food items.
 -->
 
 <!-- 
