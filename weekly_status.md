@@ -227,8 +227,8 @@ Created a more formalized SQL database structure for the exercise lo.
 - Striking a balance between user-friendliness and data integrity as users gain the ability to add their own food items.
 -->
 
-<!-- 
-## Sprint X: 2023-10-26 to 2023-11-02
+
+## Sprint 5: 2023-10-26 to 2023-11-02
 
 ### Billy
 
@@ -261,6 +261,20 @@ Created a more formalized SQL database structure for the exercise lo.
 ### Jordon
 
 ### Will
+##### Progress:
+
+- Re-organized code into separate css and javascript files for less clutter. 
+- Adjusted html to allow for inputs of all nutrition items into database.
+
+##### Next Steps:
+
+- After web hosting tutorial lab, host my page and connect SQL database to flask app (will be much easier than what I've been attempting to do thus far with my own database file)
+- Once page is hosted successfully, fully implement input validation and connect backend to frontend so users can interact with the database
+
+##### Challenges:
+
+- Ensuring backend and frontend integrate seamlessly
+- Coming up with all required tests for input validation. 
 
 <!-- 
 ## Sprint X: 2023-MM-DD to 2023-MM-DD
