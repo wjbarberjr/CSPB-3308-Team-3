@@ -171,8 +171,6 @@ This is a very early design. The idea is to list the workouts and be able to sho
 - I am not planning on implementing error handling/input validation yet, so I should be careful about testing these features when I create them.
 - More frontend and javascript will be necessary, and again I am not well-versed in this area.
 - I will have to make sure altering my database schema makes sense and does not cause problems with what I already have. 
-<<<<<<< HEAD
-=======
 
 - I will have to make sure altering my database schema makes sense and does not cause problems with what I already have. 
 
@@ -190,6 +188,12 @@ This is a very early design. The idea is to list the workouts and be able to sho
 * Next week will work on database creation, entries, and edits.
 
 ### Dylan
+
+* Completed Milestone 4 and created wireframe of page
+
+* Worked on implementing output table with a running increment of inputs for each macro
+
+* next week will finish html so output table works and will work on SQL diagram and logic
 
 ### Eric
 * created wireframe and narrowed down parameters for page.
@@ -240,6 +244,18 @@ Created a more formalized SQL database structure for the exercise lo.
 
 ### Dylan
 
+* finished working on data table and basic functionality for nutrient input page
+
+* Figured out logic for database 
+  * includes user history
+  * includes food database for stored foods
+    * can include a food dropdown from this and amount entry that fills in nutrient info for you?
+
+* Next steps:
+  * create flask file and routing info for page
+  * begin working on creating SQL database
+    * first write unit testing for database
+
 ### Eric
 
 ### Jordon
@@ -248,7 +264,6 @@ Created a more formalized SQL database structure for the exercise lo.
 
 <!-- 
 ## Sprint X: 2023-MM-DD to 2023-MM-DD
->>>>>>> a4f7aedd1858d36ca42bee9427b50e0ab8d8411a
 
 
 
