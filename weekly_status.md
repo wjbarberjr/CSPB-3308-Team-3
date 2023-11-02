@@ -224,9 +224,19 @@ Created a more formalized SQL database structure for the exercise lo.
 -->
 
 <!-- 
-## Sprint X: 2023-MM-DD to 2023-MM-DD
+## Sprint X: 2023-10-26 to 2023-11-02
 
 ### Billy
+
+* Fixed routes to render pages using flask on port 3308 with CSS. 
+
+* Updated team ERD and solicited input regarding user information.
+
+* Worked on Milestone 5 to create, edit, delete SQL entries.
+
+* Created a basic SQL database file.
+
+* Started unit testing for SQL database operations.
 
 ### Dylan
 
