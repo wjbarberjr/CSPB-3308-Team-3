@@ -34,6 +34,9 @@ from markupsafe import escape
 from flask import request
 from flask import render_template
 from flask_sqlalchemy import SQLAlchemy
+from flask import jsonify
+from data_insertion import addFood
+from models import db, Food
 
 # create app to use in this Flask application
 app = Flask(__name__)
@@ -48,30 +51,7 @@ SQLALCHEMY_DATABASE_URI = 'sqlite:///' + os.path.join(basedir, 'database.db') # 
 app.config['SQLALCHEMY_DATABASE_URI'] = SQLALCHEMY_DATABASE_URI
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False  # Optional: This disables a warning about a Flask-SQLAlchemy feature that you probably won't use.
 
-# Initialize SQLAlchemy
-db = SQLAlchemy(app)
-
-# 3. Database Setup
-class Food(db.Model):
-    __tablename__ = 'foods'  # specifying the table name as 'foods'
-    
-    food_id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String, nullable=False, unique=True)
-    portion_size = db.Column(db.Float, nullable=True)
-    calories = db.Column(db.Float, nullable=True)
-    total_fat = db.Column(db.Float, nullable=True)
-    saturated_fat = db.Column(db.Float, nullable=True)
-    trans_fat = db.Column(db.Float, nullable=True)
-    cholesterol = db.Column(db.Float, nullable=True)
-    sodium = db.Column(db.Float, nullable=True)
-    total_carbohydrates = db.Column(db.Float, nullable=True)
-    dietary_fiber = db.Column(db.Float, nullable=True)
-    sugars = db.Column(db.Float, nullable=True)
-    protein = db.Column(db.Float, nullable=True)
-    vitamin_d = db.Column(db.Float, nullable=True)
-    calcium = db.Column(db.Float, nullable=True)
-    iron = db.Column(db.Float, nullable=True)
-    potassium = db.Column(db.Float, nullable=True)
+db.init_app(app)
 
 # test route to show prefix settings
 @app.route('/prefix_url')  
@@ -99,7 +79,7 @@ def search_food():
 def add_food():
     try:
         addFood(
-            dbName='database.db',
+            session=db.session,
             name=request.form['name'],
             portion_size=float(request.form['portion_size']) if request.form['portion_size'] else None,
             calories=float(request.form['calories']) if request.form['calories'] else None,
@@ -117,7 +97,13 @@ def add_food():
             iron=float(request.form['iron']) if request.form['iron'] else None,
             potassium=float(request.form['potassium']) if request.form['potassium'] else None
         )
+        
+        
+        
         return jsonify({'message': 'Food added successfully!'})
     except ValueError as e:
         return jsonify({'message': str(e)}), 400
+    
+with app.app_context():
+    db.create_all()
 

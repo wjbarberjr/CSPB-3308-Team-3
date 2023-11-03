@@ -4,80 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Food Lookup</title>
+    <!-- Linking the external CSS -->
+    <link rel="stylesheet" href="static/css/foodlookup.css">
+    <!-- Adding the jQuery CDN -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <style>
-        /* Basic styling for the body and centering content */
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-        }
-
-        /* Container for the food lookup feature */
-        .food-lookup-container {
-            background-color: #fff;
-            padding: 2rem;
-            border-radius: 5px;
-            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-        }
-
-        /* Styles for the input */
-        #foodName {
-            padding: 10px;
-            width: 100%;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-        }
-
-        /* Styling for suggestions list */
-        ul {
-            list-style: none;
-            padding: 0;
-            margin-top: 10px;
-        }
-
-        ul li {
-            padding: 5px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            margin-bottom: 5px;
-            cursor: pointer;
-        }
-        
-        ul li:hover {
-            background-color: #f4f4f4;
-        }
-        
-        .container {
-            display: flex;
-            justify-content: space-around;  /* This will space your containers apart */
-            width: 80%;  /* Adjust as needed */
-            margin: auto;  /* Centers the container */
-        }
-        
-        .food-lookup-container, 
-        .food-input-container {
-            margin: 20px;  /* Adjust as needed to add spacing */
-            width: 45%;  /* Adjust as needed */
-        }
-        /* New styles for spacing out form fields */
-        .food-input-container form label,
-        .food-input-container form input {
-            margin-bottom: 10px;  /* Adjust as needed */
-            display: block;  /* Makes label and input appear on new lines */
-        }
-        
-        .food-input-container form input[type="submit"] {
-            margin-top: 20px;  /* Adjust as needed */
-        }
-        
-        
-
-    </style>
 </head>
 <body>
   <div class="container">
@@ -89,76 +19,70 @@
     </div>
     
     <!-- New Food Input Container -->
+    <!-- New Food Input Container -->
     <div class="food-input-container">
         <h2>Add New Food</h2>
         <form id="food-form">
-            <label for="newFoodName">Food Name:</label><br>
-            <input type="text" id="newFoodName" name="newFoodName"><br>
-            <label for="portionSize">Portion Size:</label><br>
-            <input type="text" id="portionSize" name="portionSize"><br>
-            <!-- ... repeat for each attribute ... -->
-            <label for="potassium">Potassium:</label><br>
-            <input type="text" id="potassium" name="potassium"><br><br>
+            <label for="newFoodName">Name:</label>
+            <input type="text" id="newFoodName" name="newFoodName">
+
+            <label for="portionSize">Portion Size:</label>
+            <input type="text" id="portionSize" name="portionSize">
+
+            <label for="calories">Calories:</label>
+            <input type="text" id="calories" name="calories">
+
+            <label for="totalFat">Total Fat:</label>
+            <input type="text" id="totalFat" name="totalFat">
+
+            <label for="saturatedFat">Saturated Fat:</label>
+            <input type="text" id="saturatedFat" name="saturatedFat">
+
+            <label for="transFat">Trans Fat:</label>
+            <input type="text" id="transFat" name="transFat">
+
+            <label for="cholesterol">Cholesterol:</label>
+            <input type="text" id="cholesterol" name="cholesterol">
+
+            <label for="sodium">Sodium:</label>
+            <input type="text" id="sodium" name="sodium">
+
+            <label for="totalCarbohydrates">Total Carbohydrates:</label>
+            <input type="text" id="totalCarbohydrates" name="totalCarbohydrates">
+
+            <label for="dietaryFiber">Dietary Fiber:</label>
+            <input type="text" id="dietaryFiber" name="dietaryFiber">
+
+            <label for="sugars">Sugars:</label>
+            <input type="text" id="sugars" name="sugars">
+
+            <label for="protein">Protein:</label>
+            <input type="text" id="protein" name="protein">
+
+            <label for="vitaminD">Vitamin D:</label>
+            <input type="text" id="vitaminD" name="vitaminD">
+
+            <label for="calcium">Calcium:</label>
+            <input type="text" id="calcium" name="calcium">
+
+            <label for="iron">Iron:</label>
+            <input type="text" id="iron" name="iron">
+
+            <label for="potassium">Potassium:</label>
+            <input type="text" id="potassium" name="potassium">
+
             <input type="submit" value="Submit">
         </form>
     </div>
   </div>
-    <!-- JS to handle input changes and auto-suggest -->
-    <script>
-        $(document).ready(function() {
-            $("#foodName").on("input", function() {
-                var query = $(this).val();
-                
-                if(query.length >= 3) {  // Only search if at least 3 characters are typed
-                    var baseURL = "https://coding.csel.io/user/wihi1131/proxy/3308";  // Adjust this to your base URL
-                    $.get(baseURL + "/search_food", {query: query}, function(data) {
-                        var suggestions = JSON.parse(data);
-
-                        // Displaying the suggestions to the user
-                        var suggestionList = $("#suggestions");
-                        suggestionList.empty();  // Remove old suggestions
-
-                        suggestions.forEach(function(food) {
-                            suggestionList.append("<li>" + food + "</li>");
-                        });
-                    });
-                }
-            });
-
-            // Handling click on a suggestion to fill it into the input box
-            $("#suggestions").on("click", "li", function() {
-                $("#foodName").val($(this).text());
-                $("#suggestions").empty();  // Clear the suggestions
-            });
-            
-            // New script to handle form submission
-            $("#food-form").submit(function(event) {
-                event.preventDefault();  // Prevents the form from submitting the traditional way
-
-                var formData = {
-                    name: $("#newFoodName").val(),
-                    portion_size: $("#portionSize").val(),
-                    calories: $("#calories").val(),
-                    total_fat: $("#totalFat").val(),
-                    saturated_fat: $("#saturatedFat").val(),
-                    trans_fat: $("#transFat").val(),
-                    cholesterol: $("#cholesterol").val(),
-                    sodium: $("#sodium").val(),
-                    total_carbohydrates: $("#totalCarbohydrates").val(),
-                    dietary_fiber: $("#dietaryFiber").val(),
-                    sugars: $("#sugars").val(),
-                    protein: $("#protein").val(),
-                    vitamin_d: $("#vitaminD").val(),
-                    calcium: $("#calcium").val(),
-                    iron: $("#iron").val(),
-                    potassium: $("#potassium").val()
-                };
-
-                $.post("/add_food", formData, function(response) {
-                    alert(response.message);  // Alerts the response message returned from the server
-                });
-            });
-        });
-    </script>
+    <!-- Linking the external JS script. Always do this before the closing body tag for performance -->
+    <script src="static/javascript/foodlookup.js"></script>
 </body>
 </html>
+
+
+
+
+
+
+
