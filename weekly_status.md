@@ -257,7 +257,15 @@ Created a more formalized SQL database structure for the exercise lo.
     * first write unit testing for database
 
 ### Eric
+-Past week
+* working on structure/organization and content of page.
+* created separate divs and have all ID's created for css & js implementations
 
+-Next week
+* create routing informating for my page
+* implent individual CSS page for organization 
+* Work on scriptitng to fill tables with all data information that gets taken in
+  
 ### Jordon
 
 ### Will
