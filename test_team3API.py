@@ -12,6 +12,7 @@ import team3API
 import unittest
 import os
 
+##############################Users Database Tests#############################
 
 class TestTeam3APIFunctions(unittest.TestCase):
     
@@ -72,6 +73,7 @@ class TestTeam3APIFunctions(unittest.TestCase):
         self.assertEqual(edited_user[1:], expected_user_data_after_edit)   #Check if the user data matches the expected values after editing
         
         
+        
     def test_delete_user(self):                                            #Test the delete_user function
         self.test_db_filename = 'test_user_database.db'
         team3API.add_user('Mark', 'Smith', '1985-08-15', 'Male', 'mark_smith', 'mark.smith@example.com', self.test_db_filename)
@@ -88,7 +90,7 @@ class TestTeam3APIFunctions(unittest.TestCase):
         conn.close()
         self.assertIsNone(deleted_user)                                    #Assert that the user does not exist in the database
 
-        
+############################End Users Database Tests###########################    
 
 if __name__ == '__main__':
     unittest.main()

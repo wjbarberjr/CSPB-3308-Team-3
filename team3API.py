@@ -43,13 +43,21 @@ def create_database(filename):
 def add_user(first_name, last_name, dob, gender, login_name, email, filename):  #Function to add a user entry
     conn = sqlite3.connect(filename)                                     #Connect to database
     cursor = conn.cursor()                                               #Connect to cursor and execute entry
-    cursor.execute('''
-        INSERT INTO users (first_name, last_name, dob, gender, login_name, email)
-        VALUES (?, ?, ?, ?, ?, ?)
-    ''', (first_name, last_name, dob, gender, login_name, email))
-    conn.commit()                                                        #Commit and closeo connection
-    conn.close()
+    
+    cursor.execute("SELECT COUNT(*) FROM users WHERE login_name=?", (login_name,)) #Check if a user with the same login name already exists
+    existing_user_count = cursor.fetchone()[0]
 
+    if existing_user_count > 0:
+        print(f"User with login name '{login_name}' already exists. User not added.")
+    else:                                                                #Insert the new user if no user with the same login name exists
+        cursor.execute('''
+            INSERT INTO users (first_name, last_name, dob, gender, login_name, email)
+            VALUES (?, ?, ?, ?, ?, ?)
+        ''', (first_name, last_name, dob, gender, login_name, email))
+        conn.commit()
+        print("User added successfully.")
+    conn.close()
+    
     
 
 def edit_user(user_id, first_name, last_name, dob, gender, login_name, email, filename):  #Function to edit a user entry by id
