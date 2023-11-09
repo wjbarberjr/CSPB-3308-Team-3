@@ -284,10 +284,29 @@ Created a more formalized SQL database structure for the exercise lo.
 - Ensuring backend and frontend integrate seamlessly
 - Coming up with all required tests for input validation. 
 
+
+## Sprint 6: 2023-11-02 to 2023-11-09
+
+### Billy - 
+* Created team 3 API file with functions to create, add, edit, delete entries from users database.
+
+* Created test_team3API file with unit tests to make sure functions work as desired.
+
+* Passed four tests and currently thinking of additional tests to add.
+
+* Worked on input validation such as no duplicate login_names for add but need to add to edit.
+
+* Next week will work on passing userID to other pages for them to access database. Will also work on rending live page with absolute minimal functionality. Will also create a javascript file to handle data inputs.
+
+### Dylan
+
+### Eric
+
+### Jordon
+
+### Will
+
 <!-- 
-## Sprint X: 2023-MM-DD to 2023-MM-DD
-
-
 
 ## Sprint X: 2023-10-19 to 2023-10-26
 
@@ -309,7 +328,7 @@ Created a more formalized SQL database structure for the exercise lo.
 ### Jordon
 
 ### Will
-
+-->
 
 
 
