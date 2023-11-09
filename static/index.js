@@ -22,15 +22,25 @@ function add_to_table() {
     const carbs = Number(document.getElementById("carbs").value);
     total_carbs += carbs;
 
+    const food = document.getElementById("food_input").value;
+
+    add_row(food, calories, fats, proteins, carbs);
+
      
 
 
+    set_totals();
+}
+
+
+
+function add_row(food, calories, fats, proteins, carbs) {
+    const full_table = document.getElementById('output_table');
 
     /* create a new row of curr inputs that will be added to the output_table */
     const curr_row = document.createElement('tr');
 
     /** create column for food input */
-    const food = document.getElementById("food_input").value;
     const food_input = document.createElement('td')
     food_input.innerText = food
     curr_row.appendChild(food_input)
@@ -56,19 +66,26 @@ function add_to_table() {
     carbs_consumed.innerText = carbs;
     curr_row.appendChild(carbs_consumed);
 
-    
-
     full_table.appendChild(curr_row);
 }
 
-/* update running total row of output_table 
-const total_row = document.getElementById("total_row");
-total_row.cells[1].innerText = total_cals;
-total_row.cells[2].innerText = total_fats;
-total_row.cells[3].innerText = total_protein;
-total_row.cells[4].innerText = total_carbs;*/
+
+
+function set_totals() {
+    var total_row = document.getElementById("total_row");
+
+    total_row.cells[1].innerHTML = total_cals;
+    total_row.cells[2].innerHTML = total_fat;
+    total_row.cells[3].innerHTML = total_protein;
+    total_row.cells[4].innerHTML = total_carbs;
+}
 
 function clear_table() {
     document.querySelectorAll('#output_table > tr:not(:first-child)').forEach(child => child.remove());
     total = 0;
+    total_cals = 0;
+    total_fat = 0;
+    total_protein = 0;
+    total_carbs = 0;
+    set_totals();
 }

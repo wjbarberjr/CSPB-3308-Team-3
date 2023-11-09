@@ -4,15 +4,16 @@
     <title>Calorie Tracker</title>
 
     <!-- Link Style Sheet -->
-    <link rel="stylesheet" href="/index.css" />
+    <link rel="stylesheet" href="../static/index.css" />
 
     <!-- Defer script execution to after window loads -->
-    <script type="text/javascript" src="/index.js" defer></script>
+    <script type="text/javascript" src="../static/index.js" defer></script>
   </head>
 
 
 
   <body>
+    
     <h1>Hello and welcome to the calorie tracker!</h1>
     <h3>
       Please enter your calories and macros consumed to add to your daily
@@ -47,14 +48,11 @@
           <td><input type="number" id="carbs" name="carbs" /></td>
         </tr>
       </table>
-      
-      <!-- type="button" overrides submit behavior-->
-      <button type="button" onclick="add_to_table()">Submit</button>
-      <button type="button" onclick="clear_table()">Reset</button>
-      
     </form>
 
-    <div id="test_output"></div>
+    <!-- type="button" overrides submit behavior-->
+    <button type="button" onclick="add_to_table()">Submit</button>
+    <button type="button" onclick="clear_table()">Reset</button>
 
     <table id="output_table">
       <tr>
@@ -66,13 +64,12 @@
       </tr>
       <tr id="total_row">
         <th>Totals:</th>
-        <th>0</th>
-        <th>0</th>
-        <th>0</th>
-        <th>0</th>
+        <td>0</td>
+        <td>0</td>
+        <td>0</td>
+        <td>0</td>
       </tr>
     </table>
-
 
   </body>
 
