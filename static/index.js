@@ -26,10 +26,9 @@ function add_to_table() {
 
     add_row(food, calories, fats, proteins, carbs);
 
-     
-
-
     set_totals();
+
+    document.getElementById("calories").innerText = "";
 }
 
 
@@ -78,6 +77,7 @@ function set_totals() {
     total_row.cells[2].innerHTML = total_fat;
     total_row.cells[3].innerHTML = total_protein;
     total_row.cells[4].innerHTML = total_carbs;
+
 }
 
 function clear_table() {
