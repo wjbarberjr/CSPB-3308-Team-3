@@ -305,7 +305,21 @@ Created a more formalized SQL database structure for the exercise lo.
 ### Jordon
 
 ### Will
+##### Progress:
 
+- Attempted test of using Render to host web service/database, ran into issues with personal test, requested outside assistance and currently waiting on answer from supervisor (Dr. Knox) and team decision
+
+##### Next Steps:
+
+- Create finalized backend database schema (merge and collaborate with team)
+- Create SQL_Testing.md file for submission
+- Collaborate with team to solve hosting issues and have backend database created (if not filled with relevant data)
+
+##### Challenges:
+
+- Team collaboration and scheduling
+- Resolving logistical issues and timing
+- Possible use of cloud service besides Render
 <!-- 
 
 ## Sprint X: 2023-10-19 to 2023-10-26
