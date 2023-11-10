@@ -265,8 +265,6 @@ Created a more formalized SQL database structure for the exercise lo.
 * create routing informating for my page
 * implent individual CSS page for organization 
 * Work on scriptitng to fill tables with all data information that gets taken in
-  
-### Jordon
 
 ### Will
 ##### Progress:
@@ -321,6 +319,9 @@ Created a more formalized SQL database structure for the exercise lo.
 
 
 ### Jordon
+
+- add `exercise log` html
+- will populate `templates` with data
 
 ### Will
 ##### Progress:
