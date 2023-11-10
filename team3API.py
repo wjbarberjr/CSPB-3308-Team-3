@@ -16,7 +16,6 @@ def create_database(filename):
         filename += '.db'
 
     if os.path.exists(filename):
-        #print("Database already exists")
         return
 
     try:
@@ -30,17 +29,17 @@ def create_database(filename):
                     dob TEXT,
                     gender TEXT,
                     login_name TEXT,
-                    email TEXT
+                    email TEXT,
+                    password TEXT
                 )
             ''')
-        #print("Database created successfully!")
 
     except sqlite3.Error as e:
         print(f"Error creating database: {e}")
         
 
 
-def add_user(first_name, last_name, dob, gender, login_name, email, filename):  #Function to add a user entry
+def add_user(first_name, last_name, dob, gender, login_name, email, password, filename):  #Function to add a user entry
     conn = sqlite3.connect(filename)                                     #Connect to database
     cursor = conn.cursor()                                               #Connect to cursor and execute entry
     
@@ -51,23 +50,22 @@ def add_user(first_name, last_name, dob, gender, login_name, email, filename):  
         print(f"User with login name '{login_name}' already exists. User not added.")
     else:                                                                #Insert the new user if no user with the same login name exists
         cursor.execute('''
-            INSERT INTO users (first_name, last_name, dob, gender, login_name, email)
-            VALUES (?, ?, ?, ?, ?, ?)
-        ''', (first_name, last_name, dob, gender, login_name, email))
+            INSERT INTO users (first_name, last_name, dob, gender, login_name, email, password)
+            VALUES (?, ?, ?, ?, ?, ?, ?)
+        ''', (first_name, last_name, dob, gender, login_name, email, password))
         conn.commit()
-        print("User added successfully.")
     conn.close()
     
     
 
-def edit_user(user_id, first_name, last_name, dob, gender, login_name, email, filename):  #Function to edit a user entry by id
+def edit_user(user_id, first_name, last_name, dob, gender, login_name, email, password, filename):  #Function to edit a user entry by id
     conn = sqlite3.connect(filename)                                     #Connect to database
     cursor = conn.cursor()                                               #Connect to cursor and execute update
     cursor.execute('''
         UPDATE users
-        SET first_name=?, last_name=?, dob=?, gender=?, login_name=?, email=?
+        SET first_name=?, last_name=?, dob=?, gender=?, login_name=?, email=?, password=?
         WHERE id=?
-    ''', (first_name, last_name, dob, gender, login_name, email, user_id))
+    ''', (first_name, last_name, dob, gender, login_name, email, password, user_id))
     conn.commit()                                                        #Commit and close connection
     conn.close()
 
