@@ -300,6 +300,15 @@ Created a more formalized SQL database structure for the exercise lo.
 
 ### Dylan
 
+* Created flask file and routing options for food tracking page
+
+* Finished functionality for html and javascript files
+
+* Created db diagram to align with groups. Need to upload for milestone 5
+
+* Next week I will build out the sqlite database file as well as the testing to ensure it is working correctly
+    * also need to use this to finish my portion for milestone 5
+
 ### Eric
 
 ### Jordon
