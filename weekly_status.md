@@ -310,6 +310,15 @@ Created a more formalized SQL database structure for the exercise lo.
     * also need to use this to finish my portion for milestone 5
 
 ### Eric
+##### Past Week:
+* Created flask routing for exercise input page
+
+##### Next Week:
+*complete DB milestone with finalized db along with testing parameters
+
+#####Challenges
+* struggled through complex new scripting on drop down menus
+
 
 ### Jordon
 
