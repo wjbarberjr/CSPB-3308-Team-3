@@ -33,21 +33,37 @@ __Table Name:__ workouts
 __Table Description:__ This table stores data related to specific workouts for the user to keep track of.
 
 __Fields:__   
-user_id INT [ref: > users.id], \
-start_datetime DATETIME, \
-end_datetime DATETIME, \
-duration TIME, \
-workout_type INT [ref: > workout_categories.id], \
-notes VARCHAR
+- user_id INT [ref: > users.id] - (this field holds user information pulled from login page. ID is important to saving all user info across all pages)
+- start_datetime DATETIME - (This field holds the time of the beginning of a workout)
+- end_datetime DATETIME - (This field hold the end time of a workout)
+- duration TIME - (This field will be the difference(end_datetime - start_datetime) in times to determine the length of workout)
+- workout_type INT [ref: > workout_categories.id] - (This field holds the information that refer to the 2 types of exercise we will define, either cardio or strength)
+- notes VARCHAR - (this field will be to hold any notes made about a particular exercise, any information about workout the user wants to add can go here)
 
 List of tests for verifying each table:
 
-__Method of Access:__ 
-__Name:__ 
-__Description:__
-__Parameters:__
-__Return values:__
-__List of tests for verifying each access method:__
+__Method of Access:__ This DB will be appended to by a workout input page on a single form. In the form a user will select/add data to fields that will be submitted and added back to table. This table and DB data will be avaliable on the same page. The table data will not be editable, only support a "delete row" which will remove selected row data from the table & DB and then a user will have to again fill the form and re-submit to fix any mistakes. Within the form will have its own type selectors to ensure that the data fed into the db is a supported type.
+
+__Name:__ workout_db_created, workout_remove
+
+__Description:__ This page will take user input with already specified types and create entries into the DB. This page will also, upon user request remove db entries.(possibly edit single specified fields, without entire entry removal). 
+
+__Pre-conditions:__ User fills in workout entry form.
+
+__Test Steps:__ 
+  1. Navigate to page
+  2. Fill out form
+  3. Submit Form
+    - Repeat as needed for multiple workouts
+
+__Expected Result:__ DB will be updated with provided information. Mulitple form submissions will be appended in the order recieved. 
+
+__Actual Result:__ Table on page will be updated with infomation provided.
+
+__List of tests for verifying each access method:__ 
+- test_create to ensure database is created and doesnt overwrite an existing database, also adds .db to end of file if user does not. 
+- test_append to ensure data is added to db without any overwriting.
+- test_remove to ensure specific data is removed from db.
 
 ## exercise table
 
