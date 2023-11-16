@@ -163,3 +163,84 @@ __Description:__
 __Parameters:__
 __Return values:__
 __List of tests for verifying each access method:__
+
+
+
+## Food table
+
+__Table Name:__ food
+
+__Table Description:__ This table will store name and nutrient info for different foods. 
+
+__Fields:__   
+- food_name VARCHAR - (name that can be identified with user input to access db)
+- unit_calories INT  - (cals / gram for this food)
+- unit_proteins INT - (proteins / gram for this food) 
+- unit_fats INT - (fats / gram for this food)
+- unit_carbs INT - (carbs / gram for this food)
+
+List of tests for verifying each table:
+
+__Method of Access:__ Each time a user inputs a new food to the tracker, this database will be accessed so input can be stored for user or, if this food isn't in db yet, it can be added to the database for future access. search option can also be used with this so nutrient info doesn't have to be entered in each time.
+
+__Name:__ create_db, insert_input, access_foods
+
+__Description:__ Nutreint input page will either add a food to this table or it will access this table for user food search.
+
+__Pre-conditions:__ Initiate with certain number of foods. 
+
+__Test Steps:__ 
+  1. test initialized foods are correct by seaching foods
+  2. test food input adds new item to table correctly
+  
+
+__Expected Result:__ db will be filled out as users input more food
+
+__Actual Result:__ More foods will show up in search bar as more users input food
+
+__List of tests for verifying each access method:__ 
+- test_create to ensure initialized foods are correct
+- test_input to verify that user inputs are added correctly 
+
+
+
+## User Food History table
+
+__Table Name:__ user_food_history
+
+__Table Description:__ This table will hold the reference data for user inputs in order to track user nutrient history
+
+__Fields:__   
+- user_id INT [ref: > users.id] - (this field holds information about user pulled from login page. User info is needed to track history)
+- input_date DATETIME - (This field stores the input time so histor is tracked accuratelly in time)
+- food_amount INT - (This field holds the amount of food to be used in conjuction with food_id unit weights to get meal nutrient info)
+- food_id INT [ref: > nutrient.id] - (This field holds info that refers to each input the user logs. This will be the actual data to track for food history)
+
+List of tests for verifying each table:
+
+__Method of Access:__ Each time a user inputs a new food to the tracker, food db will be accessed and combined with input food amt to get nutrient data for this entry along with input time so the user can have a full history of the meals they've been tracking. This table can then be accessed in another page that shows user history. It can be accessed to show history and to perform data analysis on the users meal history to show trends in their eating habits. 
+
+__Name:__ create_db, insert_input, access_history
+
+__Description:__ signup page will create a new empty db so new user can track eating. Input page will allow users to input single meals which will then be appended to this db along with the date so that an accurate record of meal history can be kept. Tracking page will show the data from this db as well as graphs that analyze the users history.
+
+__Pre-conditions:__ User has filled in at least two meals
+
+__Test Steps:__ 
+  1. Register new user
+  2. Input two meals
+  3. pull and show history db data on history page
+
+__Expected Result:__ Empty db will be created for each new user. When user inputs new meals, that data will be appended to the data base.
+
+__Actual Result:__ Visiting nutrient history page will pull up this db as well as graphs showing trends.
+
+__List of tests for verifying each access method:__ 
+- test_create to ensure new db is created upon new registration
+- test_input to verify that food db is correctly referenced and input food data is pulled
+- test_tracking to show nutrient data by input date
+
+
+
+
+
