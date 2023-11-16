@@ -28,17 +28,90 @@ Test delete_user to assist administrators in deleting old accounts. Will verify 
                 
 ## workouts table
 
+__Table Name:__
+__Table Description:__
+__Fields:__
+
+List of tests for verifying each table:
+
+__Method of Access:__ 
+__Name:__ 
+__Description:__
+__Parameters:__
+__Return values:__
+__List of tests for verifying each access method:__
 
 ## exercise table
 
+__Table Name:__
+__Table Description:__
+__Fields:__
+
+List of tests for verifying each table:
+
+__Method of Access:__ 
+__Name:__ 
+__Description:__
+__Parameters:__
+__Return values:__
+__List of tests for verifying each access method:__
 
 ## sets table
 
+__Table Name:__
+__Table Description:__
+__Fields:__
+
+List of tests for verifying each table:
+
+__Method of Access:__ 
+__Name:__ 
+__Description:__
+__Parameters:__
+__Return values:__
+__List of tests for verifying each access method:__
 
 ## exercise_categories table
 
+__Table Name:__
+__Table Description:__
+__Fields:__
+
+List of tests for verifying each table:
+
+__Method of Access:__ 
+__Name:__ 
+__Description:__
+__Parameters:__
+__Return values:__
+__List of tests for verifying each access method:__
 
 ## exercise_groups table
 
+__Table Name:__
+__Table Description:__
+__Fields:__
+
+List of tests for verifying each table:
+
+__Method of Access:__ 
+__Name:__ 
+__Description:__
+__Parameters:__
+__Return values:__
+__List of tests for verifying each access method:__
 
 ## workout_categories table
+
+__Table Name:__
+__Table Description:__
+__Fields:__
+
+List of tests for verifying each table:
+
+__Method of Access:__ 
+__Name:__ 
+__Description:__
+__Parameters:__
+__Return values:__
+__List of tests for verifying each access method:__
