@@ -29,14 +29,16 @@ Test delete_user to assist administrators in deleting old accounts. Will verify 
 ## workouts table
 
 __Table Name:__ workouts
-__Table Description:__
-__Fields:__
-  user_id INT [ref: > users.id],
-  start_datetime DATETIME,
-  end_datetime DATETIME,
-  duration TIME,
-  workout_type INT [ref: > workout_categories.id],
-  notes VARCHAR
+
+__Table Description:__ This table stores data related to specific workouts for the user to keep track of.
+
+__Fields:__   
+user_id INT [ref: > users.id], \
+start_datetime DATETIME, \
+end_datetime DATETIME, \
+duration TIME, \
+workout_type INT [ref: > workout_categories.id], \
+notes VARCHAR
 
 List of tests for verifying each table:
 
@@ -50,11 +52,13 @@ __List of tests for verifying each access method:__
 ## exercise table
 
 __Table Name:__ exercise
-__Table Description:__
-__Fields:__
-  name VARCHAR,
-  category_id INT [ref: > exercise_categories.id],
-  notes VARCHAR
+
+__Table Description:__ This table stores specific individual exercises. 
+  
+__Fields:__  
+name VARCHAR, \
+category_id INT [ref: > exercise_categories.id], \
+notes VARCHAR 
 
 List of tests for verifying each table:
 
@@ -68,12 +72,14 @@ __List of tests for verifying each access method:__
 ## sets table
 
 __Table Name:__ sets
-__Table Description:__
-__Fields:__
-  exercise_group_id INT [ref: > exercise_groups.id],
-  rep INT,
-  weight FLOAT,
-  order INT
+
+__Table Description:__ This table stores the sets and weights data and relates it back to the table of a specific exercise and an individual workout session.
+
+__Fields:__  
+exercise_group_id INT [ref: > exercise_groups.id], \
+rep INT, \
+weight FLOAT, \
+order INT 
 
 List of tests for verifying each table:
 
@@ -87,10 +93,12 @@ __List of tests for verifying each access method:__
 ## exercise_categories table
 
 __Table Name:__ exercise_categories
-__Table Description:__
-__Fields:__
-  name VARCHAR,
-  description VARCHAR
+
+__Table Description:__ This table simply stores the data about the type of exercise(cardio, strength)
+
+__Fields:__  
+name VARCHAR, \
+description VARCHAR 
 
 List of tests for verifying each table:
 
@@ -104,11 +112,13 @@ __List of tests for verifying each access method:__
 ## exercise_groups table
 
 __Table Name:__ exercise_groups
-__Table Description:__
-__Fields:__
-  workout_id INT [ref: > workouts.id],
-  exercise_id INT [ref: > exercise.id],
-  notes VARCHAR
+
+__Table Description:__ This table hold the reference data for a workout and exercises performed within a workout. 
+
+__Fields:__  
+workout_id INT [ref: > workouts.id], \
+exercise_id INT [ref: > exercise.id], \
+notes VARCHAR 
 
 List of tests for verifying each table:
 
@@ -122,10 +132,12 @@ __List of tests for verifying each access method:__
 ## workout_categories table
 
 __Table Name:__ workout_categories
+
 __Table Description:__
-__Fields:__
-  name VARCHAR,
-  description VARCHAR
+
+__Fields:__  
+  name VARCHAR, \
+  description VARCHAR 
 
 List of tests for verifying each table:
 
