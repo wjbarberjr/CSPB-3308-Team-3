@@ -4,13 +4,15 @@
 
 __Table Name:__ users  
 __Table Description:__ This table stores basic user data to assist with login/verfication and to pass to other pages to keep track of the user__  
-__Fields:__ first_name(This is so we can verify users and greet them on our page to make it more personal),  
-last_name(This is so we can verify users and greet them on our page to make it more personal),  
-dob(This will help us count calories and caloric burn, as well as provide fitness advice based on age),  
-gender(This will allow us to adjust caloric burn and provide advice based on gender),  
-login_name(This is unique user selected screen name for authentication),  
-email(This will be used to monetize or advertise as well as to reset password),  
-password(This allows the user to authenticate their account privately)  
+__Fields:__
+- id int(The primary key identifying the users table)
+- first_name(This is so we can verify users and greet them on our page to make it more personal)
+- last_name(This is so we can verify users and greet them on our page to make it more personal) 
+- dob(This will help us count calories and caloric burn, as well as provide fitness advice based on age)
+- gender(This will allow us to adjust caloric burn and provide advice based on gender)  
+- login_name(This is unique user selected screen name for authentication)
+- email(This will be used to monetize or advertise as well as to reset password)
+- password(This allows the user to authenticate their account privately)  
 
 List of tests for verifying each table:
 You must also provide the following (in SQL_TESTING.md)for each data access method (at least one access method for each table or query required to get the data to display):
@@ -55,6 +57,7 @@ Drop the workout_categories table.
 This table stores data related to specific workouts.
 
 __Fields:__   
+- id INT - (the primary key identifier for the "workouts" table)
 - user_id INT [ref: > users.id] - (this field holds user information pulled from login page. ID is important to saving all user info across all pages)
 - start_datetime DATETIME - (This field holds the time of the beginning of a workout)
 - end_datetime DATETIME - (This field hold the end time of a workout)
