@@ -25,12 +25,28 @@ Test add_user to ensure we are able to add users to the database without overwri
 Test edit_user to ensure we are able to edit data without overwriting a different user, to include keeping a unique username.  
 Test delete_user to assist administrators in deleting old accounts. Will verify that a user can be deleted without compromising the database.  
                 
-                
-## workouts table
 
-__Table Name:__ workouts
+## workout_categories
 
-__Table Description:__ This table stores data related to specific workouts for the user to keep track of.
+The category to which a workout belongs, such as "Strength Training" or "Cardio".
+
+| Field | Type | Description |
+| :-- | :-- | :-- |
+| id | INT | The primary key identifying the category |
+| name | VARCHAR | The name of the category |
+| description | VARCHAR | A description of the category |
+
+The categories will not be a mutable part of the database. It will be pre-populated. The only SQL needed will be to create, populate, and tear down the table.
+
+`void create_workout_categories()`
+
+`void populate_workout_categories()`
+
+`void drop_workout_categories()`
+
+## workouts
+
+This table stores data related to specific workouts.
 
 __Fields:__   
 - user_id INT [ref: > users.id] - (this field holds user information pulled from login page. ID is important to saving all user info across all pages)
@@ -65,6 +81,24 @@ __List of tests for verifying each access method:__
 - test_append to ensure data is added to db without any overwriting.
 - test_remove to ensure specific data is removed from db.
 
+## exercise_categories
+
+A table listing the categories to which exercises belong.
+
+| Field | Type | Description |
+| :-- | :-- | :-- |
+| id | INT | The primary key representing the exercise category |
+| name | VARCHAR | The name of the exercise category |
+| description | VARCHAR | A description detailing what the exercise category is |
+
+This table will be pre-populated and not modified as part of the application since the scope of the project is limited to only one category which is strength training. The only SQL needed will be to create, populate, and tear down the table.
+
+`void create_exercise_categories()`
+
+`void populate_exercise_categories()`
+
+`void drop_exercise_categories()`
+
 ## exercises
 
 This table consists of the exercises that can be added to workouts, such as "Bench Press" or "Squat".
@@ -75,14 +109,13 @@ This table consists of the exercises that can be added to workouts, such as "Ben
 | name | VARCHAR | The human readable identifying string for the exercise |
 | category_id | INT | The foreign key referencing the category to which the exercise belongs |
 
-List of tests for verifying each table:
+The exercises table will not be a mutable part of the database and will be pre-populated. The only SQL needed will be to create, populate, and tear down the table.
 
-__Method of Access:__ 
-__Name:__ 
-__Description:__
-__Parameters:__
-__Return values:__
-__List of tests for verifying each access method:__
+`void create_exercises()`
+
+`void populate_exercises()`
+
+`void drop_exercises()`
 
 ## sets table
 
@@ -105,28 +138,17 @@ __Parameters:__
 __Return values:__
 __List of tests for verifying each access method:__
 
-## exercise_categories
 
-A table listing the categories to which exercises belong.
+
+## exercise_groups
+
+Each workout consists of multiple exercises — tho
 
 | Field | Type | Description |
 | :-- | :-- | :-- |
-| id | INT | The primary key representing the exercise category |
-| name | VARCHAR | The name of the exercise category |
-| description | VARCHAR | A description detailing what the exercise category is |
-
-This table will be pre-populated and not modified as part of the application since the scope of the project is limited to only one category which is strength training.
-
-## exercise_groups table
-
-__Table Name:__ exercise_groups
-
-__Table Description:__ This table hold the reference data for a workout and exercises performed within a workout. 
-
-__Fields:__  
-workout_id INT [ref: > workouts.id], \
-exercise_id INT [ref: > exercise.id], \
-notes VARCHAR 
+| workout_id | INT | The foreign key identifying the group to which this group belongs |
+| exercise_id | INT | The foreign key identifying the exercise of the group |
+| notes | VARCHAR | An optional field for notes (may not be used in project) |
 
 List of tests for verifying each table:
 
@@ -136,27 +158,6 @@ __Description:__
 __Parameters:__
 __Return values:__
 __List of tests for verifying each access method:__
-
-## workout_categories table
-
-__Table Name:__ workout_categories
-
-__Table Description:__
-
-__Fields:__  
-  name VARCHAR, \
-  description VARCHAR 
-
-List of tests for verifying each table:
-
-__Method of Access:__ 
-__Name:__ 
-__Description:__
-__Parameters:__
-__Return values:__
-__List of tests for verifying each access method:__
-
-
 
 ## Food table
 
