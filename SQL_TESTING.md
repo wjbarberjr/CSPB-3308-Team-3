@@ -213,7 +213,7 @@ __Fields:__
 - user_id INT [ref: > users.id] - (this field holds information about user pulled from login page. User info is needed to track history)
 - input_date DATETIME - (This field stores the input time so histor is tracked accuratelly in time)
 - food_amount INT - (This field holds the amount of food to be used in conjuction with food_id unit weights to get meal nutrient info)
-- food_id INT [ref: > nutrient.id] - (This field holds info that refers to each input the user logs. This will be the actual data to track for food history)
+- food_id INT [ref: > food.id] - (This field holds info that refers to each input the user logs. This will be the actual data to track for food history)
 
 List of tests for verifying each table:
 
