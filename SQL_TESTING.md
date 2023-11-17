@@ -38,11 +38,17 @@ The category to which a workout belongs, such as "Strength Training" or "Cardio"
 
 The categories will not be a mutable part of the database. It will be pre-populated. The only SQL needed will be to create, populate, and tear down the table.
 
-`void create_workout_categories()`
+#### `void create_workout_categories()`
 
-`void populate_workout_categories()`
+Create the workout_categories table.
 
-`void drop_workout_categories()`
+#### `void populate_workout_categories()`
+
+Populate the workout_categories table with dummy data.
+
+#### `void drop_workout_categories()`
+
+Drop the workout_categories table.
 
 ## workouts
 
@@ -93,11 +99,17 @@ A table listing the categories to which exercises belong.
 
 This table will be pre-populated and not modified as part of the application since the scope of the project is limited to only one category which is strength training. The only SQL needed will be to create, populate, and tear down the table.
 
-`void create_exercise_categories()`
+#### `void create_exercise_categories()`
 
-`void populate_exercise_categories()`
+Create the exercise_categories table.
 
-`void drop_exercise_categories()`
+#### `void populate_exercise_categories()`
+
+Populate the exercise_categories table with dummy data.
+
+#### `void drop_exercise_categories()`
+
+Drop the exercise_categories table.
 
 ## exercises
 
@@ -111,11 +123,17 @@ This table consists of the exercises that can be added to workouts, such as "Ben
 
 The exercises table will not be a mutable part of the database and will be pre-populated. The only SQL needed will be to create, populate, and tear down the table.
 
-`void create_exercises()`
+#### `void create_exercises()`
 
-`void populate_exercises()`
+Create the exercises table.
 
-`void drop_exercises()`
+#### `void populate_exercises()`
+
+Populate the exercises table with dummy data.
+
+#### `void drop_exercises()`
+
+Drop the exercises table.
 
 ## sets
 
@@ -151,7 +169,7 @@ Create a new set with the required information.
 
 ## exercise_groups
 
-Each workout consists of multiple exercises — tho
+Each workout consists of multiple exercises — each exercises is saved as an exercise group which links to multiple sets and one workout.
 
 | Field | Type | Description |
 | :-- | :-- | :-- |
@@ -159,14 +177,17 @@ Each workout consists of multiple exercises — tho
 | exercise_id | INT | The foreign key identifying the exercise of the group |
 | notes | VARCHAR | An optional field for notes (may not be used in project) |
 
-List of tests for verifying each table:
+#### `void create_exercise_groups()`
 
-__Method of Access:__ 
-__Name:__ 
-__Description:__
-__Parameters:__
-__Return values:__
-__List of tests for verifying each access method:__
+Create the exercise_groups table.
+
+#### `void add_exercise_group(workout_id, notes = "")`
+
+Add an exercise group with optional group.
+
+#### `json get_exercise_groups(workout_id)`
+
+Get all exercise_groups for a workout.
 
 ## Food table
 
