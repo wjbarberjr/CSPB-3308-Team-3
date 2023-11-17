@@ -65,16 +65,15 @@ __List of tests for verifying each access method:__
 - test_append to ensure data is added to db without any overwriting.
 - test_remove to ensure specific data is removed from db.
 
-## exercise table
+## exercises
 
-__Table Name:__ exercise
-
-__Table Description:__ This table stores specific individual exercises. 
+This table consists of the exercises that can be added to workouts, such as "Bench Press" or "Squat".
   
-__Fields:__  
-name VARCHAR, \
-category_id INT [ref: > exercise_categories.id], \
-notes VARCHAR 
+| Field | Type | Description |
+| :-- | :-- | :-- |
+| id | INT | The primary key for each exercise |
+| name | VARCHAR | The human readable identifying string for the exercise |
+| category_id | INT | The foreign key referencing the category to which the exercise belongs |
 
 List of tests for verifying each table:
 
