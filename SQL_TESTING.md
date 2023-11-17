@@ -105,24 +105,17 @@ __Parameters:__
 __Return values:__
 __List of tests for verifying each access method:__
 
-## exercise_categories table
+## exercise_categories
 
-__Table Name:__ exercise_categories
+A table listing the categories to which exercises belong.
 
-__Table Description:__ This table simply stores the data about the type of exercise(cardio, strength)
+| Field | Type | Description |
+| :-- | :-- | :-- |
+| id | INT | The primary key representing the exercise category |
+| name | VARCHAR | The name of the exercise category |
+| description | VARCHAR | A description detailing what the exercise category is |
 
-__Fields:__  
-name VARCHAR, \
-description VARCHAR 
-
-List of tests for verifying each table:
-
-__Method of Access:__ 
-__Name:__ 
-__Description:__
-__Parameters:__
-__Return values:__
-__List of tests for verifying each access method:__
+This table will be pre-populated and not modified as part of the application since the scope of the project is limited to only one category which is strength training.
 
 ## exercise_groups table
 
