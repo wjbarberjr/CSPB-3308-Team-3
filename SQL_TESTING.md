@@ -117,27 +117,36 @@ The exercises table will not be a mutable part of the database and will be pre-p
 
 `void drop_exercises()`
 
-## sets table
+## sets
 
-__Table Name:__ sets
+This table stores set data corresponding to specific 
 
-__Table Description:__ This table stores the sets and weights data and relates it back to the table of a specific exercise and an individual workout session.
+| Field | Type | Description |
+| :-- | :-- | :-- |
+| id | INT | The id of the set |
+| exercise_group_id | INT | The foreign key linking the set to an exercise from a workout |
+| reps | INT | The number of repetitions lifted |
+| weight | FLOAT | The weight in pounds lifted |
 
-__Fields:__  
-exercise_group_id INT [ref: > exercise_groups.id], \
-rep INT, \
-weight FLOAT, \
-order INT 
+#### `void create_sets()`
 
-List of tests for verifying each table:
+Create the sets table.
 
-__Method of Access:__ 
-__Name:__ 
-__Description:__
-__Parameters:__
-__Return values:__
-__List of tests for verifying each access method:__
+#### `void populate_sets()`
 
+Populate the sets table with dummy data.
+
+#### `void drop_set()`
+
+Drop the sets table.
+
+#### `json get_sets(exercise_group_id)`
+
+Get all the sets for an exercise group.
+
+#### `void create_set(exercise_group_id, reps, weight)`
+
+Create a new set with the required information.
 
 
 ## exercise_groups
