@@ -166,35 +166,82 @@ __Table Name:__ food
 __Table Description:__ This table will store name and nutrient info for different foods. 
 
 __Fields:__   
-- food_name VARCHAR - (name that can be identified with user input to access db)
-- unit_calories INT  - (cals / gram for this food)
-- unit_proteins INT - (proteins / gram for this food) 
-- unit_fats INT - (fats / gram for this food)
-- unit_carbs INT - (carbs / gram for this food)
+- food_id (INTEGER PRIMARY KEY): Unique identifier for each food item.
+- name (TEXT NOT NULL UNIQUE): Name of the food item.
+- portion_size (REAL): Portion size, typically in grams (g).
+- calories (REAL): Caloric content, typically in kcal.
+- total_fat (REAL): Total fat content in grams (g).
+- saturated_fat (REAL): Saturated fat content in grams (g).
+- trans_fat (REAL): Trans fat content in grams (g).
+- cholesterol (REAL): Cholesterol content, typically in milligrams (mg).
+- sodium (REAL): Sodium content, typically in milligrams (mg).
+- total_carbohydrates (REAL): Total carbohydrates in grams (g).
+- dietary_fiber (REAL): Dietary fiber in grams (g).
+- sugars (REAL): Sugar content in grams (g).
+- protein (REAL): Protein content in grams (g).
+- vitamin_d (REAL): Vitamin D content, typically in micrograms (µg) or IU.
+- calcium (REAL): Calcium content, typically in milligrams (mg).
+- iron (REAL): Iron content, typically in milligrams (mg).
+- potassium (REAL): Potassium content, typically in milligrams (mg).
 
-List of tests for verifying each table:
+__Constraints:__
 
-__Method of Access:__ Each time a user inputs a new food to the tracker, this database will be accessed so input can be stored for user or, if this food isn't in db yet, it can be added to the database for future access. search option can also be used with this so nutrient info doesn't have to be entered in each time.
+- food_id must be unique for each entry.
+- name must be unique and not null.
 
-__Name:__ create_db, insert_input, access_foods
+__Relationships:__
 
-__Description:__ Nutreint input page will either add a food to this table or it will access this table for user food search.
+- This table will be referenced by other tables, such as user food history, to get information about foods that have been consumed. 
 
-__Pre-conditions:__ Initiate with certain number of foods. 
+__Tests for Verification:__
 
-__Test Steps:__ 
-  1. test initialized foods are correct by seaching foods
-  2. test food input adds new item to table correctly
-  
+1. Adding a New Food Item:
+- - Insert a new row with all fields filled.
+- - Expected: The row is added without errors.
+2. Duplicate Food Name:
+- - Try inserting a food item with a name that already exists.
+- - Expected: An error is thrown due to the uniqueness constraint on name.
+3. Omitting Required Field:
+- - Try adding a food item without one of the required fields.
+- - Expected: An error is thrown due to missing required data.
 
-__Expected Result:__ db will be filled out as users input more food
+__Data Access Methods__
 
-__Actual Result:__ More foods will show up in search bar as more users input food
+- Method: 'getFoodbyName'
+- - Description: Retrieves food item details by 'name' field
+  - Parameters: 'name' (text not null)
+  - Return Values: A row with all the fields of the food item.
+  - Tests:
+    - Pass text into the input field that is known to have corresponding data in the database and expect to receive the corresponding food item details.
+    - Pass text into the input field that does not have corresponding data and expect to receive no data. 
+ - Method: 'insert_Food'
+ - - Description: Adds a food into the database that is not already contained in the database
+   - Parameters: input text (not null)
+   - Return values: returns a string telling whether insertion was successful, or an error message if unsuccessful
+   - Tests:
+     - Insert a valid new food item and verify that the new food item was inserted correctly
+     - Try to insert an invalid new food item and verify that the new food item was not inserted and that the correct error message displays. 
 
-__List of tests for verifying each access method:__ 
-- test_create to ensure initialized foods are correct
-- test_input to verify that user inputs are added correctly 
+__Page Accesses__
 
+Food Lookup Page:
+
+- Accesses the foods table to display food item details.
+- Input area to add new foods into the database
+- - Tests:
+- - - Search Functionality:
+      - Search for a specific food item by name.
+      - Expected: The correct food item is displayed in the search results.
+    - Insert Functionality:
+      - Add a new food by name and other possible nutritional input value
+      - Expected: New food is added correctly and can be found by search, or invalid food is not added and error message is displayed
+
+Calorie Input Page: 
+- Accesses the foods table to get foods and their nutritional information for users to place in their food/calorie consumption history
+- - Tests:
+    - Input Functionality:
+      - Lookup a food in the database and choose it to input its nutritional value into user food history
+      - Expected: Input food is found, selected food is placed in user food history table along with nutritional values, or nothing is found and error message is displayed if food does not exist
 
 
 ## User Food History table
