@@ -361,10 +361,16 @@ Created a more formalized SQL database structure for the exercise lo.
 
 ### Will
 
-<!-- 
-## Sprint 9: 2023-11-27 to 2023-12-01
 
-### Billy
+## Sprint 9: 2023-11-18 to 2023-11-30
+
+### Billy - 
+
+* Tried to get database and routes to work on Render but failed
+
+* Explored options for application hosting
+
+* Formulated ideas for project documentation to be implemented near the end of the project
 
 ### Dylan
 
@@ -373,10 +379,10 @@ Created a more formalized SQL database structure for the exercise lo.
 ### Jordon
 
 ### Will
--->
+
 
 <!-- 
-## Sprint X: 2023-MM-DD to 2023-MM-DD
+## Sprint 10: 2023-12-01 to 2023-12-07
 
 ### Billy
 
