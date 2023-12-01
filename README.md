@@ -2,13 +2,13 @@
 
 Team repository for our CSPB 3308 project.
 
-| Team Member | Github Username | School Email |
-| :---: | :---: | :---: |
-| **William Barber** | wjbarberjr | wiba6472@colorado.edu |
-| **Eric Hernandez** | EWHernandez | erhe3221@colorado.edu |
-| **William Hinkley** | WiHi1131 |  wihi1131@colorado.edu |
-| **Dylan Smith** | dylan33smith | dysm3436@colorado.edu |
-| **Jordon Young** | jordon-young | joyo8856@colorado.edu |
+| Team Member | Github Username |
+| :---: | :---: |
+| **William Barber** | wjbarberjr | 
+| **Eric Hernandez** | EWHernandez |
+| **William Hinkley** | WiHi1131 |  
+| **Dylan Smith** | dylan33smith |
+| **Jordon Young** | jordon-young |
         
 Weekly meetings Thursdays 5:30 MST via Discord.
 
