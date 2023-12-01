@@ -339,9 +339,8 @@ Created a more formalized SQL database structure for the exercise lo.
 - Team collaboration and scheduling
 - Resolving logistical issues and timing
 - Possible use of cloud service besides Render
-<!-- 
 
-## Sprint X: 2023-10-19 to 2023-10-26
+## Sprint 7: 2023-11-10 to 2023-11-17 
 
 ### Billy - 
 * Created routes and rendered pages using flask on port 3308. 
@@ -361,9 +360,20 @@ Created a more formalized SQL database structure for the exercise lo.
 ### Jordon
 
 ### Will
+
+<!-- 
+## Sprint 9: 2023-11-27 to 2023-12-01
+
+### Billy
+
+### Dylan
+
+### Eric
+
+### Jordon
+
+### Will
 -->
-
-
 
 <!-- 
 ## Sprint X: 2023-MM-DD to 2023-MM-DD
