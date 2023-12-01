@@ -356,7 +356,10 @@ Created a more formalized SQL database structure for the exercise lo.
 ### Dylan
 
 ### Eric
-
+* Worked on testing for DB table and individual data input. 
+* Completed wireframe for Milestone 4 with wireframe on figma
+* Next week working on page design. Aim to complete.
+  
 ### Jordon
 
 ### Will
@@ -375,7 +378,11 @@ Created a more formalized SQL database structure for the exercise lo.
 ### Dylan
 
 ### Eric
-
+* Did not complete page design/organization.
+* Realization that I have many unfinsihed sections. Narrowing down for the next week.
+* Next week will have completed design, working functions on page.
+* Next planning step will be how to tie in team DB to page.
+  
 ### Jordon
 
 - created test directory
