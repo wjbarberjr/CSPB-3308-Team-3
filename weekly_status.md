@@ -345,7 +345,7 @@ Created a more formalized SQL database structure for the exercise lo.
 ### Billy - 
 * Created routes and rendered pages using flask on port 3308. 
 
-* Verified data input and rendered three pages Login/Creat_Account/Reset_Password.
+* Verified data input and rendered three pages Login/Create_Account/Reset_Password.
 
 * Completed Milestone 4 and updated the wireframe with actual screenshots.
 
@@ -377,6 +377,12 @@ Created a more formalized SQL database structure for the exercise lo.
 ### Eric
 
 ### Jordon
+
+- created test directory
+- created database directory
+- began creating files for holing the functionality for each table and its corresponding tests
+- added a test script to run all unit tests in the tests directory
+- populated exercise database and test files with function names from the SQL_TESTING.md folder
 
 ### Will
 
