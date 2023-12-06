@@ -1,0 +1,49 @@
+/*----NAV BAR----*/
+#Navbar {
+    width: 100%;
+    background-color: lightcyan;
+    text-align: center;
+    border: 1px solid black;
+    border-radius: 10px;
+}
+
+#Navbar li{
+    display:inline;
+    border:hsl(from color h s l);
+    padding-top: 3px;
+    padding-bottom: 3px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+#Navbar a {
+    display:inline-block; 
+}
+
+#datefield {
+    text-align: center;
+    font-size: x-large
+}
+
+#inputhead {
+    text-align: center;
+}
+
+#imagefield {
+    margin: auto;
+    width: 75%;
+}
+
+#inputform {
+    width: 50%;
+    background-color: aqua;
+    padding-top: 10px;
+    border: 1px solid black;    
+    align-content: center;
+    text-align: center;
+    margin: auto;
+}
+
+#inputform li{
+    display:block;
+}

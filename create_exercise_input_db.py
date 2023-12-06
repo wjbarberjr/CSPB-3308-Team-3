@@ -11,8 +11,6 @@ cursor.execute('''
         user_id INT,
         exercise_name VARCHAR,
         date DATETIME,
-        start_datetime DATETIME,
-        end_datetime DATETIME,
         duration TIME,
         workout_type INT,
         notes VARCHAR

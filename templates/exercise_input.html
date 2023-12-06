@@ -3,28 +3,30 @@
 <head>
     <title>Exercise Tracker</title>
 
-    <link rel="stylesheet" href="static/exercise_input.css" />
+    <link rel="stylesheet" href="/static/exercise_input.css" />
 
-    <script type="text/javascript" src="static/exercise_input.js" defer></script>
-    
-    <!--Just temporary for myself for now-->
-    <style>
-        table, th, td {
-            border: 1px solid black;
-            border-collapse: collapse;
-        }
-    </style>
-    
+    <script type="text/javascript" src="/static/exercise_input.js" defer></script>
 </head>
     
 <body>
-    
+    <!--Navigation menu-->
     <div id="Navbar">
+        <ul>
+            <li><a href="/templates/login.html">Login Page</a></li>
+            <li><a href="/templates/create_account.html">Create Account</a></li>
+            <li><a href="/templates/index.html">Calorie Input</a></li>
+            <li><a href="/templates/foodlookup.html">Food Lookup</a></li>
+            <li><a href="/templates/exercise_log.html">Log Exercises</a></li>
+        </ul>
     </div>
-    
+    <!--END MENU-->
+    <br>
+
     <div id="imagefield">
+        <img src="/images/exercise_input_image/exercise1.jpg" alt="girl exercising" class="center">
     </div>
     
+    <br>
     <div id="datefield">
         <form>
             <label for="date">Your exercise tracker for:
@@ -32,7 +34,6 @@
         </form>
     </div> 
     
------------------------------------------------------------------------------------------------------
 <!--All data inputs are gathered within this section-->
     
     <div id="inputhead">
@@ -41,53 +42,39 @@
     
     <div id="inputform">
         <form action ="exercise_info_input.php" method="POST">
-        
-        <!--Change input type to vertical button selectors-->
-        <div id="ex_name">    
-            <label for="exercise_name">Exercise</label>
-            <input type="text" id="exercise_name" name="exercise_name">
-            
-        </div>
+        <ul>
+        <!--Using entry form. would like vertical button selectors in future-->
+            <li>    
+                <label for="exercise_name">Exercise</label>
+                <input type="text" id="exercise_name" name="exercise_name">
+            </li>
         
         <!--exercise entry box. start rudimentry support string input. down the road(maybe) auto-complete exercise name-->
-        <div id="ex_type">
-            <label for="exercise_type">Type of Exercise</label>
-            <input type="text" id="exercise_type" name="exercise_type">
-            
-        </div>
+            <li>
+                <label for="exercise_type">Type of Exercise</label>
+                <input type="text" id="exercise_type" name="exercise_type">
+            </li>
         
-        <!-- 2 stacked input, one for cardio(only support int) and one for 2 drop down menus with integers. will be in "set format" {sets x reps} -->
-        <div id="cardiotime">
-            <label for="exercise_minute">Exercise Duration?</label>
-            <input type="number" id="exercise_minute" name="exercise_minute">
-        </div>
+        <!-- exercise duration entry box. Supports integer input  -->
+            <li>
+                <label for="exercise_minute">Exercise Duration?</label>
+                <input type="number" id="exercise_minute" name="exercise_minute">
+            </li>
         
-        <!--2 sections to create drop down tabs for integer section. uses JS to fill the drop downs with numbers.-->
-        <div id="weight_sets">
-            <label for="weightSets">Working sets: </label>
-            
-            <div id="setSelect">
-                <select name="sets" id="sets"></select>
-            </div>
-            
-            <div id="repSelect">
-                <select name="reps" id="reps"></select>
-            </div>
-        </div>
         
         <!--Section for notes for workout.-->
-        <div id="notesinput">
-            <p><label for="exercise_notes">Today's Exercise Notes...</label></p>
+            <li id="notes">
+                <p><label for="exercise_notes">Notes about workout</label></p>
                 <textarea id="exercise_notes" name="exercise_notes" rows="5" cols="50"></textarea>
-            </div>
-        
+            </li>
+        </ul>
         <!--Form submit button for all data entered above-->
         <div id="dataSubmit">
             <input type="submit" value="Submit!">
             </div>
         </form>
     </div>
---------------------------------------------------------------------------------------------------------------
+
 <!--Create a table that will fill with the data collected above. The table should fill rows in at every submit click of the entire data entry area.-->
             
 
