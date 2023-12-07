@@ -1,0 +1,7 @@
+{
+  "name": "food_test_render",
+  "scripts": {
+    "build": "babel src -d lib",
+    "test": "jest" 
+  }
+}
