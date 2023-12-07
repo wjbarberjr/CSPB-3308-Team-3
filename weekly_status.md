@@ -355,6 +355,12 @@ Created a more formalized SQL database structure for the exercise lo.
 
 ### Dylan
 
+* built out database section for input page. 
+
+* Finished visualization of team database that includes all initial tables
+
+* Next steps are to test this db to ensure that the implementation functionality is working
+
 ### Eric
 * Worked on testing for DB table and individual data input. 
 * Completed wireframe for Milestone 4 with wireframe on figma
@@ -376,6 +382,10 @@ Created a more formalized SQL database structure for the exercise lo.
 * Formulated ideas for project documentation to be implemented near the end of the project
 
 ### Dylan
+
+* Create testing files for db functionality
+
+* link all parts of index for final project portion to ensure that everything works correctly
 
 ### Eric
 * Did not complete page design/organization.
@@ -400,6 +410,10 @@ Created a more formalized SQL database structure for the exercise lo.
 ### Billy
 
 ### Dylan
+
+* convert sqlite3 secctions to postgre for easier integration
+
+* link sections of the product so that the webpage draws from the database
 
 ### Eric
 
