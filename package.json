@@ -1,7 +1,7 @@
 {
   "name": "food_test_render",
   "scripts": {
-    "start": "node app.py",
+    "start": "python app.py",
     "build": "babel src -d lib",
     "test": "jest" 
   }
