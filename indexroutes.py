@@ -10,7 +10,7 @@
 ## The prefix code will have no effect when running Flask on your local machine
 ## as it looks to make sure you are running on **csel.io** virtual machine.
 ##
-## Author: Knox - Sept 2022
+## Author: Dylan Smith - Sept 2022
 ## Contributor: Fall 2023 Team 3 Members
 ##
 ###############################################################################
