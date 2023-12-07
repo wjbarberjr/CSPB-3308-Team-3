@@ -89,3 +89,33 @@ function clear_table() {
     total_carbs = 0;
     set_totals();
 }
+
+function populate_table(){
+    console.log("heyo1");
+
+    let xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = function(){
+        console.log("heyo");
+        if(xmlhttp.readyState == XMLHttpRequest.DONE){
+            if(xmlhttp.status == 200){
+                //if returned fine
+                console.log("hurray");
+                let rows = JSON.parse(xmlhttp.responseText);
+                for (row of rows){
+                    console.log(row);
+                    add_row(row[0],row[1],row[2],row[3],row[4]);
+                }
+            }
+            else if(xmlhttp.status == 400){
+                // if bad wrong
+                console.log('boo! (╯°□°）╯︵ ┻━┻');
+            }
+            else{
+                console.log("return status: ", xmlhttp.status);
+            }
+        }
+    }
+
+    xmlhttp.open("GET", "/populate_table");
+    xmlhttp.send();
+}

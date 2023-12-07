@@ -1,0 +1,10 @@
+# will have to add user_id INTEGER,...., FOREIGN KEY (user_id) REFERENCES users(id),
+            # if connecting with wills table
+            '''
+                food_id INTEGER,
+                food_amount INT,
+                FOREIGN KEY (food_id) REFERENCES food(id)
+            '''
+
+
+            

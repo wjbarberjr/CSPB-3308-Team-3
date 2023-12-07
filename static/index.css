@@ -6,6 +6,10 @@ body {
     
 }
 
+#Navbar {
+    text-align: left;
+}
+
 /* space out lines */
 body > * {
     margin-inline: auto;

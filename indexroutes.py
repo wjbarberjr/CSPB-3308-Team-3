@@ -21,7 +21,8 @@
 ## Flask either in the csel.io virtual machine or running on your local machine.
 ## The module will create an app for you to use
 
-from flask import Flask, render_template, url_for
+from flask import Flask, render_template, url_for, request, jsonify, redirect
+import indexDB 
 
 # create app to use in this Flask application
 app = Flask(__name__, static_folder='static')
@@ -29,13 +30,27 @@ app = Flask(__name__, static_folder='static')
 
 ###############################################################################
 
-@app.route('/')
-def index():
-    return "basepage"
-
 @app.route('/foodtracking')
-def login():
+def index():
+
+    
+
     return render_template('/index.html')
+
+@app.route('/histinput', methods=['POST'])
+def histinput():
+
+    # get input information
+    date = request.form.get('dateinput')
+    cals = request.form.get('calories')
+    fat = request.form.get('fat')
+    protein = request.form.get('protein')
+    carbs = request.form.get('carbs')
+
+    # will have to include user_id functionality when db is connected
+    indexDB.add_to_history(date, cals, fat, protein, carbs)
+
+    return redirect('/foodtracking', code=302)
 
 ###############################################################################
 # main driver function
