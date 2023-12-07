@@ -21,39 +21,51 @@
 ## Flask either in the csel.io virtual machine or running on your local machine.
 ## The module will create an app for you to use
 
-from flask import Flask, render_template, url_for
+from flask import Flask, render_template, url_for, request, jsonify, redirect
+import create_exercise_input_db as ceid
 
 # create app to use in this Flask application
-app = Flask(__name__, static_folder='static')
+app = Flask(__name__, static_folder='static', template_folder='templates')
 
 
 ###############################################################################
 ##
 ## Begin Routes for Team 3 Exercise Food Application
 
-@app.route('/')
+@app.route('/index')
 def index():
-    return
+    return "HERE"
 
-@app.route('/login')
-def login():
-    return render_template('login.html')
-
-@app.route('/create_account')
-def create_account():
-    return render_template('create_account.html')
-
-@app.route('/forgot_password')
-def forgot_password():
-    return render_template('forgot_password.html')
-
-@app.route('/exercise_input')
+@app.route('/')
 def exercise():
     return render_template('exercise_input.html')
 
-@app.route('/foodtracking')
-def login():
-    return render_template('/index.html')
+@app.route('/testinput', methods=['POST'])
+def testinput():
+
+    #Get user iD follow syntax
+    name = request.form.get('exercise_name')
+    etype = request.form.get('exercise_type')
+    minute = request.form.get('exercise_minute')
+    note = request.form.get('exercise_notes')
+    date = request.form.get('dateinput')
+
+    #modify to include userID
+    ceid.add_workout(date, name, minute, etype, note)
+    
+    print("made it here")
+    return redirect('/', code=302)
+
+@app.route('/populate_table', methods=['GET'])
+def populate_table():
+    return jsonify(ceid.get_workouts())
+
+@app.route('/empty_table', methods=['GET'])
+def recreate_table():
+    ceid.recreateTable()
+    print("Table emptied")
+    return redirect('/', code=302)
+
 
 ###############################################################################
 # main driver function

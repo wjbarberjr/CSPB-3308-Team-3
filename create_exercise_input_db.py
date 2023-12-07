@@ -8,12 +8,12 @@ cursor = conn.cursor()
 cursor.execute('''
     CREATE TABLE IF NOT EXISTS users (
         id INTEGER PRIMARY KEY,
-        user_id INT,
         exercise_name VARCHAR,
         date DATETIME,
         duration TIME,
         workout_type INT,
-        notes VARCHAR
+        notes VARCHAR,
+        FOREIGN KEY (user_id) REFERENCES user(id)
     )
 ''')
 
@@ -32,11 +32,11 @@ def add_workout(exercise_name, date, duration, workout_type, notes):
     conn.commit()
     conn.close()
 
-# Function to delete a user entry by id
+# Function to delete a user entry by exercise name
 def delete_entry(exercise_name):
     conn = sqlite3.connect('workouts.db')
     cursor = conn.cursor()
-    cursor.execute('DELETE FROM workouts WHERE id=?', (exercise_name, date, duration, workout_type, notes))
+    cursor.execute('DELETE FROM workouts WHERE id=?', (exercise_name)
     conn.commit()
     conn.close()
 
