@@ -9,7 +9,7 @@ def create_sets(db, db_filename):
 
     cursor.execute(
     """
-    CREATE TABLE sets IF NOT EXISTS (
+    CREATE TABLE IF NOT EXISTS sets (
         id INT PRIMARY KEY,
         exercise_group_id INT,
         rep INT,

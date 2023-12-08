@@ -7,7 +7,7 @@ def create_workouts(db, db_filename):
 
     cursor.execute(
     """
-    CREATE TABLE workouts IF NOT EXISTS (
+    CREATE TABLE IF NOT EXISTS workouts (
         id INT PRIMARY KEY,
         -- user_id INT,
         start_datetime DATETIME,
