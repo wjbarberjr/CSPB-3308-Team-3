@@ -36,16 +36,20 @@ class Test_Exercises(unittest.TestCase):
             self.assertEqual(actual[col_name], data_type)
 
     def test_create_exercise(self):
+        create_exercise
         pass
 
     def test_populate_exercises(self):
+        populate_exercises
         pass
 
     def test_get_exercise(self):
+        exercise = exercises.get_exercise(db, db_args, id)
         pass
 
     def test_get_exercises(self):
         pass
+        all_exercises = exercises.get_exercises(db, db_args)
 
     def test_drop_exercises(self):
         exercises.create_exercises(db, db_args)

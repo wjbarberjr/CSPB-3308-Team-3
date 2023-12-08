@@ -1,7 +1,7 @@
 # Exercise Groups Functionality
 
 def create_foods(db, db_args):
-    connection = db.connect(*db_args)
+    connection = db.connect(**db_args)
     cursor = connection.cursor()
 
     cursor.execute(
