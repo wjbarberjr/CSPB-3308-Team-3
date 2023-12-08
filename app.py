@@ -1,5 +1,5 @@
 import psycopg2 as pg
-import database as db
+import database.database as db # Module.File
 
 from flask import Flask
 from flask import render_template
