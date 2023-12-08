@@ -13,10 +13,10 @@ from . import workouts
 # have foreign key relationships. Those tables need to be
 # created first.
 #
-def create_database(db, db_filename):
-    # users.create_users(db, db_filename)
-    foods.create_foods(db, db_filename)
-    exercises.create_exercises(db, db_filename) 
-    workouts.create_workouts(db, db_filename) # Requires Users
-    exercise_groups.create_exercise_groups(db, db_filename) # Requires Exercises and Workouts
-    sets.create_sets(db, db_filename) # Requires Exercise Groups
+def create_database(db, db_args):
+    # users.create_users(db, db_args)
+    foods.create_foods(db, db_args)
+    exercises.create_exercises(db, db_args) 
+    workouts.create_workouts(db, db_args) # Requires Users
+    exercise_groups.create_exercise_groups(db, db_args) # Requires Exercises and Workouts
+    sets.create_sets(db, db_args) # Requires Exercise Groups
