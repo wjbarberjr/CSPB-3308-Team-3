@@ -1,7 +1,7 @@
 # Exercise Groups Functionality
 
-def create_foods(db, db_filename):
-    connection = db.connect(db_filename)
+def create_foods(db, db_args):
+    connection = db.connect(*db_args)
     cursor = connection.cursor()
 
     cursor.execute(
@@ -32,13 +32,13 @@ def create_foods(db, db_filename):
     connection.close()
 
 # Creates an exercise group
-def create_food(db, db_filename):
+def create_food(db, db_args):
     pass
 
 # Populate exercises table with dummy data
-def populate_foods(db, db_filename):
+def populate_foods(db, db_args):
     pass
 
 # Drop exercise table
-def drop_foods(db, db_filename):
+def drop_foods(db, db_args):
     pass

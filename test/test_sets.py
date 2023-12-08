@@ -1,5 +1,5 @@
 import unittest
-from config import db, db_filename
+from config import db, db_args
 
 import database.sets as sets
 

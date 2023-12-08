@@ -1,32 +1,39 @@
 import unittest
-from config import db, db_filename
+from config import db, db_args
 
 import database.exercises as exercises
 
 class Test_Exercises(unittest.TestCase):
     def setUp(self):
-        pass
+        self.connection = db.connect(**db_args)
+        self.cursor = self.connection.cursor()
 
     def tearDown(self):
-        pass
+        self.cursor.close()
+        self.connection.close()
 
     def test_create_exercises(self):
-        connection = db.connect(db_filename)
-        cursor = connection.cursor()
+        exercises.create_exercises(db, db_args)
 
-        exercises.create_exercises(db, db_filename)
+        self.cursor.execute("""
+            SELECT column_name, data_type
+            FROM information_schema.columns 
+            WHERE table_name = 'exercises'
+        """)
+        columns = self.cursor.fetchall()
 
-        cursor.execute(
-        """
-        SELECT typeof(id), typeof(name), typeof(description) FROM exercises
-        LIMIT 1;
-        """
-        )
+        expected = {
+            'id': 'integer',
+            'name': 'character varying',
+            'description': 'text'
+        }
 
-        # Add assertions for column types
+        actual = {column[0]: column[1] for column in columns}
 
-        connection = db.connect(db_filename)
-        cursor = connection.cursor()
+        # Check if the actual columns and their data types match the expected ones
+        for col_name, data_type in expected.items():
+            self.assertIn(col_name, actual)
+            self.assertEqual(actual[col_name], data_type)
 
     def test_create_exercise(self):
         pass
@@ -41,7 +48,21 @@ class Test_Exercises(unittest.TestCase):
         pass
 
     def test_drop_exercises(self):
-        pass
+        exercises.create_exercises(db, db_args)
+        exercises.drop_exercises(db, db_args)
+
+        # Check if the 'exercises' table was dropped
+        self.cursor.execute("""
+            SELECT EXISTS (
+                SELECT 1 
+                FROM information_schema.tables 
+                WHERE table_name = 'exercises'
+            )
+        """)
+        table_exists = self.cursor.fetchone()[0]
+
+        self.assertFalse(table_exists, "The 'exercises' table should have been dropped")
+
 
 if __name__ == "__main__":
     unittest.main()
