@@ -9,12 +9,12 @@ def create_workouts(db, db_filename):
     """
     CREATE TABLE workouts IF NOT EXISTS (
         id INT PRIMARY KEY,
-        user_id INT,
+        -- user_id INT,
         start_datetime DATETIME,
         end_datetime DATETIME,
         duration TIME,
         workout_type INT,
-        FOREIGN KEY (user_id) REFERENCES users(id),
+        -- FOREIGN KEY (user_id) REFERENCES users(id),
         notes VARCHAR
     );
     """
