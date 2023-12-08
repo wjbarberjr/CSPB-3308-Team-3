@@ -20,5 +20,3 @@ def create_database(db, db_filename):
     workouts.create_workouts(db, db_filename) # Requires Users
     exercise_groups.create_exercise_groups(db, db_filename) # Requires Exercises and Workouts
     sets.create_sets(db, db_filename) # Requires Exercise Groups
-
-hello="world"

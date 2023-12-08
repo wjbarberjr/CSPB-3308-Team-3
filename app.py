@@ -172,7 +172,7 @@ def addfood():
 
 @app.route('/db_create') 
 def create():
-    db.create_database(pg, **db_args)
+    db.create_database(pg, db_args)
 
 @app.route('/db_insert') 
 def inserting():
