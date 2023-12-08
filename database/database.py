@@ -1,10 +1,10 @@
 # Import Table Files
 
-import exercises
-import exercise_groups
-import foods
-import sets
-import workouts
+from . import exercises
+from . import exercise_groups
+from . import foods
+from . import sets
+from . import workouts
 
 # Create Tables
 #
@@ -19,3 +19,5 @@ def create_database(db, db_filename):
     workouts.create_workouts(db, db_filename) # Requires Users
     exercise_groups.create_exercise_groups(db, db_filename) # Requires Exercises and Workouts
     sets.create_sets(db, db_filename) # Requires Exercise Groups
+
+hello="world"

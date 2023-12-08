@@ -2,6 +2,8 @@
 
 import sqlite3
 
+hello_group="heyyy"
+
 # Creates the exercise groups table
 def create_exercise_groups(db_filename):
     connection = sqlite3.connect(db_filename)
