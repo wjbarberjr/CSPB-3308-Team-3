@@ -1,8 +1,8 @@
-import sqlite3
-
 # Import Table Files
+
 from database import exercises
 from database import exercise_groups
+from database import foods
 from database import sets
 from database import workouts
 
@@ -12,9 +12,10 @@ from database import workouts
 # have foreign key relationships. Those tables need to be
 # created first.
 #
-def create_database(db):
-    # users.create_users(db)
-    exercises.create_exercises(db) 
-    workouts.create_workouts(db) # Requires Users
-    exercise_groups.create_exercise_groups(db) # Requires Exercises and Workouts
-    sets.create_sets(db) # Requires Exercise Groups
+def create_database(db, db_filename):
+    # users.create_users(db, db_filename)
+    foods.create_database(db, db_filename)
+    exercises.create_exercises(db, db_filename) 
+    workouts.create_workouts(db, db_filename) # Requires Users
+    exercise_groups.create_exercise_groups(db, db_filename) # Requires Exercises and Workouts
+    sets.create_sets(db, db_filename) # Requires Exercise Groups
