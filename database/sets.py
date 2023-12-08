@@ -3,8 +3,8 @@
 import sqlite3
 
 # Creates the sets table
-def create_sets(db_filename):
-    connection = sqlite3.connect(db_filename)
+def create_sets(db, db_filename):
+    connection = db.connect(db_filename)
     cursor = connection.cursor()
 
     cursor.execute(
@@ -27,13 +27,13 @@ def create_sets(db_filename):
 
 # Creates a set
 # Needs parameter for creating category
-def create_set():
+def create_set(db, db_filename):
     pass
 
 # Populate sets table with dummy data
-def populate_sets():
+def populate_sets(db, db_filename):
     pass
 
 # Drop sets table
-def drop_sets():
+def drop_sets(db, db_filename):
     pass

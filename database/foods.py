@@ -32,13 +32,13 @@ def create_foods(db, db_filename):
     connection.close()
 
 # Creates an exercise group
-def create_food():
+def create_food(db, db_filename):
     pass
 
 # Populate exercises table with dummy data
-def populate_foods():
+def populate_foods(db, db_filename):
     pass
 
 # Drop exercise table
-def drop_foods():
+def drop_foods(db, db_filename):
     pass

@@ -1,12 +1,8 @@
 # Exercise Groups Functionality
 
-import sqlite3
-
-hello_group="heyyy"
-
 # Creates the exercise groups table
-def create_exercise_groups(db_filename):
-    connection = sqlite3.connect(db_filename)
+def create_exercise_groups(db, db_filename):
+    connection = db.connect(db_filename)
     cursor = connection.cursor()
 
     cursor.execute(
@@ -25,13 +21,13 @@ def create_exercise_groups(db_filename):
     connection.close()
 
 # Creates an exercise group
-def create_exercise_group():
+def create_exercise_group(db, db_filename):
     pass
 
 # Populate exercises table with dummy data
-def populate_exercise_groups():
+def populate_exercise_groups(db, db_filename):
     pass
 
 # Drop exercise table
-def drop_exercises_groups():
+def drop_exercises_groups(db, db_filename):
     pass

@@ -1,10 +1,8 @@
 # Exercises Functionality
 
-import sqlite3
-
 # Creates the exercises table
-def create_exercises(db_filename):
-    connection = sqlite3.connect(db_filename)
+def create_exercises(db, db_filename):
+    connection = db.connect(db_filename)
     cursor = connection.cursor()
 
     cursor.execute(
@@ -18,13 +16,13 @@ def create_exercises(db_filename):
     )
 
 # Creates an exercise
-def create_exercise():
+def create_exercise(db, db_filename):
     pass
 
 # Populate exercises table with dummy data
-def populate_exercises():
+def populate_exercises(db, db_filename):
     pass
 
 # Drop exercise table
-def drop_exercises():
+def drop_exercises(db, db_filename):
     pass

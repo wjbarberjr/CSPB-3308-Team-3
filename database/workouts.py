@@ -1,8 +1,8 @@
 # Workouts Functionality
 
 # Create workouts table
-def create_workouts():
-    connection = sqlite3.connect(db_filename)
+def create_workouts(db, db_filename):
+    connection = db.connect(db_filename)
     cursor = connection.cursor()
 
     cursor.execute(
@@ -24,13 +24,13 @@ def create_workouts():
     connection.close()
 
 # Create workout
-def create_workout():
+def create_workout(db, db_filename):
     pass
 
 # Populate workouts table with dummy data
-def populate_workouts():
+def populate_workouts(db, db_filename):
     pass
 
 # Drop workouts table
-def drop_workouts():
+def drop_workouts(db, db_filename):
     pass

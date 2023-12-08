@@ -1,7 +1,7 @@
-import unittest, sys
+import unittest, sys, sqlite3
 sys.path.append('./database')
 
-import exercise_groups
+import database.exercise_groups as exercise_groups
 
 class Test_Exercise_Groups(unittest.TestCase):
     def setUp(self):
