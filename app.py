@@ -4,8 +4,11 @@ import os
 from flask import Flask
 from flask import render_template
 from flask import request, redirect, url_for, flash, jsonify
+
 app = Flask(__name__)
-app.secret_key = os.getenv('food_lookup_key') #CHANGE SECRET KEY HERE
+app.secret_key = os.getenv('team_3_rules') #CHANGE SECRET KEY HERE
+
+database = "postgres://db_9qqw_user:2tbtxTaC7kNmpa9kxmjrIpfmCy15fShj@dpg-clp6jr9oh6hc73bttpg0-a/db_9qqw"
 
 @app.route('/') #DEFAULT
 def foodlookup():
@@ -14,7 +17,7 @@ def foodlookup():
 @app.route('/get_food_suggestions') #NO PAGE
 def get_food_suggestions():
     search_term = request.args.get('term', '')  # Get the search term from the query parameter
-    conn = psycopg2.connect("postgres://food_db_msqq_user:96WkFN4LYyA6g0p8n9ykbw7GT0KQudsM@dpg-clok7g1oh6hc73bia110-a/food_db_msqq") 
+    conn = psycopg2.connect(database) 
     cur = conn.cursor()
     query = "SELECT name FROM Foods WHERE name ILIKE %s LIMIT 10"
     cur.execute(query, (f'%{search_term}%',))
@@ -26,7 +29,7 @@ def get_food_suggestions():
 @app.route('/get_food_info') #NO PAGE
 def get_food_info():
     food_name = request.args.get('name', '')
-    conn = psycopg2.connect("postgres://food_db_msqq_user:96WkFN4LYyA6g0p8n9ykbw7GT0KQudsM@dpg-clok7g1oh6hc73bia110-a/food_db_msqq")
+    conn = psycopg2.connect(database)
     cur = conn.cursor()
     query = "SELECT * FROM Foods WHERE name = %s"
     cur.execute(query, (food_name,))
@@ -146,7 +149,7 @@ def addfood():
                 raise ValueError("Potassium must be a positive real number or empty")
             
             # Insert into database
-            conn = psycopg2.connect("postgres://food_db_msqq_user:96WkFN4LYyA6g0p8n9ykbw7GT0KQudsM@dpg-clok7g1oh6hc73bia110-a/food_db_msqq")
+            conn = psycopg2.connect(database)
             cur = conn.cursor()
             query = """
                 INSERT INTO Foods (name, portion_size, calories, total_fat, saturated_fat, trans_fat, cholesterol, sodium, total_carbohydrates, dietary_fiber, sugars, protein, vitamin_d, calcium, iron, potassium) 
@@ -167,7 +170,7 @@ def addfood():
 
 @app.route('/db_create') 
 def create():
-    conn = psycopg2.connect("postgres://food_db_msqq_user:96WkFN4LYyA6g0p8n9ykbw7GT0KQudsM@dpg-clok7g1oh6hc73bia110-a/food_db_msqq")
+    conn = psycopg2.connect(database)
     cur = conn.cursor()
     cur.execute('''
         CREATE TABLE IF NOT EXISTS Foods (
@@ -197,7 +200,7 @@ def create():
 
 @app.route('/db_insert') 
 def inserting():
-    conn = psycopg2.connect("postgres://food_db_msqq_user:96WkFN4LYyA6g0p8n9ykbw7GT0KQudsM@dpg-clok7g1oh6hc73bia110-a/food_db_msqq")
+    conn = psycopg2.connect(database)
     cur = conn.cursor()
     food_items = [('Avocado', 230, 384, 35, 4.9, None, None, 18, 20, 16, 0.7, 4.5, 0, 30, 1.4, 1166),
                   ('Onion, raw', 160, 64, 0.2, 0.1, None, None, 6.4, 15, 2.7, 6.8, 1.8, 0, 37, 0.3, 234),
@@ -209,7 +212,7 @@ def inserting():
 
 @app.route('/db_select') #GOOD FOR DEBUGGING
 def selecting():
-    conn = psycopg2.connect("postgres://food_db_msqq_user:96WkFN4LYyA6g0p8n9ykbw7GT0KQudsM@dpg-clok7g1oh6hc73bia110-a/food_db_msqq")
+    conn = psycopg2.connect(database)
     cur = conn.cursor()
     cur.execute('''
         SELECT * FROM Foods;
@@ -228,7 +231,7 @@ def selecting():
     
 @app.route('/db_drop') 
 def dropping():
-    conn = psycopg2.connect("postgres://food_db_msqq_user:96WkFN4LYyA6g0p8n9ykbw7GT0KQudsM@dpg-clok7g1oh6hc73bia110-a/food_db_msqq")
+    conn = psycopg2.connect(database)
     cur = conn.cursor()
     cur.execute('''
         DROP TABLE Foods;
