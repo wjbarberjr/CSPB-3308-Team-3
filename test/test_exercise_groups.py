@@ -1,4 +1,7 @@
-import unittest
+import unittest, sys
+sys.path.append('./database')
+
+import exercise_groups
 
 class Test_Exercise_Groups(unittest.TestCase):
     def setUp(self):

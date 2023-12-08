@@ -1,4 +1,7 @@
-import unittest
+import unittest, sqlite3, sys
+sys.path.append('./database')
+
+import exercises
 
 class Test_Exercises(unittest.TestCase):
     def setUp(self):
@@ -8,7 +11,15 @@ class Test_Exercises(unittest.TestCase):
         pass
 
     def test_create_exercises(self):
-        pass
+        connection = sqlite3.connect("temp_database.db")
+        cursor = connection.cursor()
+
+        cursor.execute(
+        """
+        SELECT typeof(id), typeof(name), typeof(description) FROM exercises
+        LIMIT 1;
+        """
+        )
 
     def test_create_exercise(self):
         pass

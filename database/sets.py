@@ -1,21 +1,39 @@
 # Sets Functionality
 
-# Missing get functionality
-# Needs ID field
+import sqlite3
 
 # Creates the sets table
-def create_exercise_categories():
-    pass
+def create_sets(db_filename):
+    connection = sqlite3.connect(db_filename)
+    cursor = connection.cursor()
+
+    cursor.execute(
+    """
+    CREATE TABLE sets IF NOT EXISTS (
+        id INT PRIMARY KEY,
+        exercise_group_id INT,
+        rep INT,
+        weight FLOAT,
+        order INT,
+        FOREIGN KEY (exercise_group_id) REFERENCES exercise_groups(id)
+    );
+    """
+    )
+
+    connection.commit()
+    connection.close()
+
+    
 
 # Creates a set
 # Needs parameter for creating category
-def create_exercise_category():
+def create_set():
     pass
 
 # Populate sets table with dummy data
-def populate_exercise_categories():
+def populate_sets():
     pass
 
 # Drop sets table
-def drop_exercise_categories():
+def drop_sets():
     pass

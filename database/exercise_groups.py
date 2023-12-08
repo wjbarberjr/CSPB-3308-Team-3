@@ -1,8 +1,26 @@
 # Exercise Groups Functionality
 
+import sqlite3
+
 # Creates the exercise groups table
-def create_exercise_groups():
-    pass
+def create_exercise_groups(db_filename):
+    connection = sqlite3.connect(db_filename)
+    cursor = connection.cursor()
+
+    cursor.execute(
+    """
+    CREATE TABLE IF NOT EXISTS exercise_groups (
+        id INT PRIMARY KEY,
+        workout_id INT,
+        exercise_id INT,
+        FOREIGN KEY (workout_id) REFERENCES workouts(id),
+        FOREIGN KEY (exercise_id) REFERENCES exercises(id)
+        );
+    """
+    )
+
+    connection.commit()
+    connection.close()
 
 # Creates an exercise group
 def create_exercise_group():
