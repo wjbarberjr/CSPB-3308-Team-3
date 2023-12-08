@@ -15,6 +15,9 @@ def create_exercises(db, db_filename):
     """
     )
 
+    connection.commit()
+    connection.close()
+
 # Creates an exercise
 def create_exercise(db, db_filename):
     pass

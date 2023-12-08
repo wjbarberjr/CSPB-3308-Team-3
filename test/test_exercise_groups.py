@@ -1,5 +1,5 @@
-import unittest, sys, sqlite3
-sys.path.append('./database')
+import unittest, sys
+from config import db, db_filename
 
 import database.exercise_groups as exercise_groups
 
