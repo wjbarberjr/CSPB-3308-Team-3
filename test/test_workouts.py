@@ -1,4 +1,4 @@
-import unittest, sys
+import unittest
 from config import db, db_filename
 
 import database.workouts as workouts

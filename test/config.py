@@ -1,6 +1,6 @@
-import sqlite3, sys
+import psycopg2 as pg, sys
 
-db = sqlite3
+db = pg
 db_filename = "test.db"
 
-sys.path.append('./database')
+sys.path.append('./database') # Not sure this is needed anymore

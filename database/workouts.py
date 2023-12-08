@@ -10,8 +10,8 @@ def create_workouts(db, db_filename):
     CREATE TABLE IF NOT EXISTS workouts (
         id INT PRIMARY KEY,
         -- user_id INT,
-        start_datetime DATETIME,
-        end_datetime DATETIME,
+        start_datetime TIMESTAMP,
+        end_datetime TIMESTAMP,
         duration TIME,
         workout_type INT,
         -- FOREIGN KEY (user_id) REFERENCES users(id),

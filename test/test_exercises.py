@@ -23,6 +23,8 @@ class Test_Exercises(unittest.TestCase):
         """
         )
 
+        # Add assertions for column types
+
         connection = db.connect(db_filename)
         cursor = connection.cursor()
 
@@ -35,7 +37,7 @@ class Test_Exercises(unittest.TestCase):
     def test_get_exercise(self):
         pass
 
-    def test_get_exercies(self):
+    def test_get_exercises(self):
         pass
 
     def test_drop_exercises(self):
