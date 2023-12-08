@@ -1,4 +1,5 @@
-import psycopg2 as db
+import psycopg2 as pg
+import database as db
 
 from flask import Flask
 from flask import render_template
@@ -16,7 +17,7 @@ def foodlookup():
 @app.route('/get_food_suggestions') #NO PAGE
 def get_food_suggestions():
     search_term = request.args.get('term', '')  # Get the search term from the query parameter
-    conn = db.connect(db_filename) 
+    conn = pg.connect(db_filename) 
     cur = conn.cursor()
     query = "SELECT name FROM Foods WHERE name ILIKE %s LIMIT 10"
     cur.execute(query, (f'%{search_term}%',))
@@ -28,7 +29,7 @@ def get_food_suggestions():
 @app.route('/get_food_info') #NO PAGE
 def get_food_info():
     food_name = request.args.get('name', '')
-    conn = db.connect(db_filename)
+    conn = pg.connect(db_filename)
     cur = conn.cursor()
     query = "SELECT * FROM Foods WHERE name = %s"
     cur.execute(query, (food_name,))
@@ -148,7 +149,7 @@ def addfood():
                 raise ValueError("Potassium must be a positive real number or empty")
             
             # Insert into database
-            conn = db.connect(db_filename)
+            conn = pg.connect(db_filename)
             cur = conn.cursor()
             query = """
                 INSERT INTO Foods (name, portion_size, calories, total_fat, saturated_fat, trans_fat, cholesterol, sodium, total_carbohydrates, dietary_fiber, sugars, protein, vitamin_d, calcium, iron, potassium) 
@@ -169,12 +170,11 @@ def addfood():
 
 @app.route('/db_create') 
 def create():
-    
-    return "Foods Table Successfully Created!"
+    db.create_database(pg, db_filename)
 
 @app.route('/db_insert') 
 def inserting():
-    conn = db.connect(db_filename)
+    conn = pg.connect(db_filename)
     cur = conn.cursor()
     food_items = [('Avocado', 230, 384, 35, 4.9, None, None, 18, 20, 16, 0.7, 4.5, 0, 30, 1.4, 1166),
                   ('Onion, raw', 160, 64, 0.2, 0.1, None, None, 6.4, 15, 2.7, 6.8, 1.8, 0, 37, 0.3, 234),
@@ -186,7 +186,7 @@ def inserting():
 
 @app.route('/db_select') #GOOD FOR DEBUGGING
 def selecting():
-    conn = db.connect(db_filename)
+    conn = pg.connect(db_filename)
     cur = conn.cursor()
     cur.execute('''
         SELECT * FROM Foods;
@@ -205,7 +205,7 @@ def selecting():
     
 @app.route('/db_drop') 
 def dropping():
-    conn = db.connect(db_filename)
+    conn = pg.connect(db_filename)
     cur = conn.cursor()
     cur.execute('''
         DROP TABLE Foods;
