@@ -1,4 +1,7 @@
-import unittest
+import unittest, sys
+sys.path.append('./database')
+
+import sets
 
 class Test_Sets(unittest.TestCase):
     def setUp(self):
