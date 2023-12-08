@@ -29,26 +29,31 @@ app = Flask(__name__, static_folder='static')
 
 
 ###############################################################################
+@app.route('/')
+def create_db_for_now():
+    indexDB.create_database('testing.db')
+    return redirect('/foodtracking', code=302)
+
 
 @app.route('/foodtracking')
 def index():
-
-    
-
     return render_template('/index.html')
 
 @app.route('/histinput', methods=['POST'])
 def histinput():
 
     # get input information
-    date = request.form.get('dateinput')
+    date = request.form.get('date_input')
     cals = request.form.get('calories')
     fat = request.form.get('fat')
     protein = request.form.get('protein')
     carbs = request.form.get('carbs')
 
     # will have to include user_id functionality when db is connected
-    indexDB.add_to_history(date, cals, fat, protein, carbs)
+    # how do I add file_name to this function so it goes to the right db????????
+    indexDB.add_to_history(date, cals, fat, protein, carbs, 'testing.db')
+    indexDB.print_all_data_from_table('testing.db', 'user_history')
+    
 
     return redirect('/foodtracking', code=302)
 

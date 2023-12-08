@@ -22,9 +22,9 @@ function add_to_table() {
     const carbs = Number(document.getElementById("carbs").value);
     total_carbs += carbs;
 
-    const food = document.getElementById("food_input").value;
+    const date = document.getElementById("date_input").value;
 
-    add_row(food, calories, fats, proteins, carbs);
+    add_row(date, calories, fats, proteins, carbs);
 
     set_totals();
 
@@ -33,16 +33,16 @@ function add_to_table() {
 
 
 
-function add_row(food, calories, fats, proteins, carbs) {
+function add_row(date, calories, fats, proteins, carbs) {
     const full_table = document.getElementById('output_table');
 
     /* create a new row of curr inputs that will be added to the output_table */
     const curr_row = document.createElement('tr');
 
     /** create column for food input */
-    const food_input = document.createElement('td')
-    food_input.innerText = food
-    curr_row.appendChild(food_input)
+    const date_input = document.createElement('td')
+    date_input.innerText = date
+    curr_row.appendChild(date_input)
 
     /* create column values for cals and macros */
     /* curr calories  */

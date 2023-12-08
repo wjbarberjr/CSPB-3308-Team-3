@@ -35,12 +35,43 @@
       better understanding of the nutrients that fuel your workouts!
     </p>
 
-    <!-- table for cal and macros input -->
-    <form id="inputForm">
+      
+    <!-- list form for cal and macros input 
+    <div id="inputForm" >
+      <form action="/histinput", method="POST">
+        <ul>
+          <li>
+            <label for="input">Enter date: </label>
+            <input type="date" id="date_input" name="date_input" />
+          </li>
+          <li>
+            <label for="calories">Enter Calories Consumed: </label>
+            <input type="number" id="calories" name="calories" />
+          </li>
+          <li>
+            <label for="fat">Enter grams of Fat Consumed: </label>
+            <input type="number" id="fat" name="fat" />            
+          </li>
+          <li>
+            <label for="protein">Enter grams of Protein Consumed: </label>
+            <input type="number" id="protein" name="protein" />
+          </li>
+          <li>
+            <label for="carbs">Enter grams of Carbohydrates Consumed: </label>
+            <input type="number" id="carbs" name="carbs" />
+          </li>
+        </ul>
+
+      </form>
+    </div> -->
+
+
+
+    <form id="inputForm" action="/histinput", method="POST">
       <table id="input_table">
         <tr>
-          <td><label for="input">Enter Food: </label></td>
-          <td><input type="text" id="food_input" name="food_input" /></td>
+          <td><label for="input">Enter date: </label></td>
+          <td><input type="date" id="date_input" name="date_input" /></td>
         </tr>
         <tr>
           <td><label for="calories">Enter Calories Consumed: </label></td>
@@ -59,10 +90,15 @@
           <td><input type="number" id="carbs" name="carbs" /></td>
         </tr>
       </table>
+      <br>
+
+      <div id="dataSubmit">
+        <input type="submit" value="Submit to history">
+      </div>
     </form>
 
     <!-- type="button" overrides submit behavior-->
-    <button type="button" onclick="add_to_table()">Submit</button>
+    <button type="button" onclick="add_to_table()">Save</button>
     <button type="button" onclick="clear_table()">Reset</button>
 
     <table id="output_table">

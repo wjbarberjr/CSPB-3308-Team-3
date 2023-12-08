@@ -6,6 +6,11 @@ body {
     
 }
 
+#dataSubmit {
+    text-align: center;
+    margin-top: 10px;
+}
+
 #Navbar {
     text-align: left;
 }
@@ -25,12 +30,12 @@ th{
     width: 20%;
 }
 
-#inputForm {
-    display: flex;
+
+
+#input_table {
+    display:flex;
     justify-content: center;
 }
-
-
 
 #input_table,
 th,

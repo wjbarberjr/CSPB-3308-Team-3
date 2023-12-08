@@ -48,14 +48,14 @@ class TestIndexDB(unittest.TestCase):
     def test_add_to_history(self):
         print('running test_add_to_history')
         self.test_db = 'user_history_db.db'
-        indexDB.add_to_history('testdate', 1, 2, 3, 4, self.test_db)
+        indexDB.add_to_history('0000-00-00', 1, 2, 3, 4, self.test_db)
         conn = sqlite3.connect(self.test_db)
         cursor = conn.cursor()
-        cursor.execute('SELECT * FROM user_history WHERE input_date=?', ('testdate',))
+        cursor.execute('SELECT * FROM user_history WHERE input_date=?', ('0000-00-00',))
         food_input = cursor.fetchone()
         conn.close()
         self.assertIsNotNone(food_input)
-        expected_input = ('testdate', 1, 2, 3, 4)
+        expected_input = ('0000-00-00', 1, 2, 3, 4)
         # food_input starting at index 1 to avoid primary key
         self.assertEqual(food_input[1:], expected_input)
         

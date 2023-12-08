@@ -27,7 +27,7 @@ def create_database(filename):
         cursor.execute('''
             CREATE TABLE IF NOT EXISTS user_history (
                     id INTEGER PRIMARY KEY,
-                    input_date TEXT,
+                    input_date DATE,
                     calories INT,
                     fats INT,
                     proteins INT,
@@ -50,9 +50,9 @@ def fill(db_filename):
         c = conn.cursor()
 
         entries = [
-            ('testdate1', 1, 2, 3, 4),
-            ('testdate2', 5, 6, 7, 8),
-            ('testdate3', 9, 10, 11, 12)
+            ('2023-01-01', 1, 2, 3, 4),
+            ('2023-02-02', 5, 6, 7, 8),
+            ('2023-03-03', 9, 10, 11, 12)
         ]
 
         c.executemany('INSERT INTO user_history (input_date, calories, fats, proteins, carbs) VALUES (?, ?, ?, ?, ?);', entries)
