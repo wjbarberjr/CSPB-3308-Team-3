@@ -1,10 +1,10 @@
 # Import Table Files
 
-from database import exercises
-from database import exercise_groups
-from database import foods
-from database import sets
-from database import workouts
+import exercises
+import exercise_groups
+import foods
+import sets
+import workouts
 
 # Create Tables
 #
