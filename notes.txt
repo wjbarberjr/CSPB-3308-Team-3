@@ -1,10 +1,6 @@
-# will have to add user_id INTEGER,...., FOREIGN KEY (user_id) REFERENCES users(id),
-            # if connecting with wills table
-            '''
-                food_id INTEGER,
-                food_amount INT,
-                FOREIGN KEY (food_id) REFERENCES food(id)
-            '''
-
-
-            
+Important Files
+1. static/index.class
+2. static/index.jsonify
+3. templates/index.html
+4. indexDB.py
+5. indexDBtesting.py
