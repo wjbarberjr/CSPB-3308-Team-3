@@ -38,6 +38,7 @@ def index():
 
 @app.route('/')
 def exercise():
+    ceid.create_workouts()
     return render_template('exercise_input.html')
 
 @app.route('/testinput', methods=['POST'])
