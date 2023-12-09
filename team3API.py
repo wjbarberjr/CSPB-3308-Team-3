@@ -54,7 +54,15 @@ def add_user(first_name, last_name, dob, gender, login_name, email, password, fi
         cursor.execute("INSERT INTO users (first_name, last_name, dob, gender, login_name, email, password) VALUES (?, ?, ?, ?, ?, ?, ?)",
                        (first_name, last_name, dob, gender, login_name, email, password))
         conn.commit()
-        print(f"User '{login_name}' added successfully.")
+
+        # Fetch and print the inserted user ID
+        cursor.execute("SELECT last_insert_rowid()")
+        user_id = cursor.fetchone()[0]
+        print(f"User '{login_name}' added successfully with ID: {user_id}")
+
+        # Return the user ID
+        return user_id
+
     except sqlite3.Error as e:
         print(f"Error adding user: {e}")
     finally:
@@ -62,16 +70,26 @@ def add_user(first_name, last_name, dob, gender, login_name, email, password, fi
     
     
 
-def edit_user(user_id, first_name, last_name, dob, gender, login_name, email, password, filename):  #Function to edit a user entry by id
-    conn = sqlite3.connect(filename)                                     #Connect to database
-    cursor = conn.cursor()                                               #Connect to cursor and execute update
-    cursor.execute('''
-        UPDATE users
-        SET first_name=?, last_name=?, dob=?, gender=?, login_name=?, email=?, password=?
-        WHERE id=?
-    ''', (first_name, last_name, dob, gender, login_name, email, password, user_id))
-    conn.commit()                                                        #Commit and close connection
-    conn.close()
+def edit_user(user_id, first_name, last_name, dob, gender, login_name, email, password, filename):
+    conn = sqlite3.connect(filename)
+    cursor = conn.cursor()
+
+    try:
+        # Call the edit_user function to edit the user
+        cursor.execute('''
+            UPDATE users
+            SET first_name=?, last_name=?, dob=?, gender=?, login_name=?, email=?, password=?
+            WHERE id=?
+        ''', (first_name, last_name, dob, gender, login_name, email, password, user_id))
+        conn.commit()
+
+        return user_id
+
+    except sqlite3.Error as e:
+        print(f"Error editing user: {e}")
+        return None
+    finally:
+        conn.close()
 
     
 
