@@ -1,3 +1,12 @@
+function add_to_table() {
+    const exercise_name = document.getElementById("exercise_name").value;
+    const exercise_type = document.getElementById("exercise_type").value;
+    const duration = document.getElementById("exercise_minute").value;
+    const exercise_notes = document.getElementById("exercise_notes").value;
+    
+    add_row(exercise_name, exercise_type, duration, exercise_notes);
+    
+}
 /*function to add table items*/
 function add_row(date, exercise, duration, type, notes) {
     const full_table = document.getElementById("output_table")
