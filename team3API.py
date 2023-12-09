@@ -20,41 +20,45 @@ def create_database(filename):
 
     try:
         with sqlite3.connect(filename) as conn:
-            cursor = conn.cursor()
-            cursor.execute('''
-                CREATE TABLE IF NOT EXISTS users (
-                    id INTEGER PRIMARY KEY,
-                    first_name TEXT,
-                    last_name TEXT,
-                    dob TEXT,
-                    gender TEXT,
-                    login_name TEXT,
-                    email TEXT,
-                    password TEXT
-                )
-            ''')
+            create_table(conn, 'users', [
+                ('id', 'INTEGER', 'PRIMARY KEY'),
+                ('first_name', 'TEXT'),
+                ('last_name', 'TEXT'),
+                ('dob', 'TEXT'),
+                ('gender', 'TEXT'),
+                ('login_name', 'TEXT'),
+                ('email', 'TEXT'),
+                ('password', 'TEXT')
+            ])
 
     except sqlite3.Error as e:
         print(f"Error creating database: {e}")
+
         
 
+def create_table(conn, table_name, columns):
+    try:
+        cursor = conn.cursor()
+        columns_str = ', '.join([f'{col[0]} {col[1]}' for col in columns])
+        cursor.execute(f'CREATE TABLE IF NOT EXISTS {table_name} ({columns_str})')
+    except sqlite3.Error as e:
+        print(f"Error creating {table_name} table: {e}")
 
-def add_user(first_name, last_name, dob, gender, login_name, email, password, filename):  #Function to add a user entry
-    conn = sqlite3.connect(filename)                                     #Connect to database
-    cursor = conn.cursor()                                               #Connect to cursor and execute entry
-    
-    cursor.execute("SELECT COUNT(*) FROM users WHERE login_name=?", (login_name,)) #Check if a user with the same login name already exists
-    existing_user_count = cursor.fetchone()[0]
+        
 
-    if existing_user_count > 0:
-        print(f"User with login name '{login_name}' already exists. User not added.")
-    else:                                                                #Insert the new user if no user with the same login name exists
-        cursor.execute('''
-            INSERT INTO users (first_name, last_name, dob, gender, login_name, email, password)
-            VALUES (?, ?, ?, ?, ?, ?, ?)
-        ''', (first_name, last_name, dob, gender, login_name, email, password))
+def add_user(first_name, last_name, dob, gender, login_name, email, password, filename):
+    conn = sqlite3.connect(filename)
+    cursor = conn.cursor()
+
+    try:
+        cursor.execute("INSERT INTO users (first_name, last_name, dob, gender, login_name, email, password) VALUES (?, ?, ?, ?, ?, ?, ?)",
+                       (first_name, last_name, dob, gender, login_name, email, password))
         conn.commit()
-    conn.close()
+        print(f"User '{login_name}' added successfully.")
+    except sqlite3.Error as e:
+        print(f"Error adding user: {e}")
+    finally:
+        conn.close()
     
     
 
@@ -77,5 +81,3 @@ def delete_user(user_id, filename):                                      #Functi
     cursor.execute('DELETE FROM users WHERE id=?', (user_id,))           #Delete a specific user id
     conn.commit()                                                        #Commit and closeo connection
     conn.close()
-
-    
