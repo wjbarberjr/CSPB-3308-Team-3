@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html>
 <head>
     <title>Exercise Tracker</title>
@@ -8,8 +7,9 @@
 
     <script type="text/javascript" src="/static/exercise_input.js" defer></script>
 
+
 </head>
-    
+
 <body onload="Javascript:populate_table()">
     <!--Navigation menu-->
     <div id="Navbar">
@@ -25,16 +25,10 @@
     <br>
 
     <div id="imagefield">
-        <img src="/static/exercise_input_image/exercise1.jpg" alt="girl exercising" class="center">
+        <img src="/static/exercise1.jpg" alt="girl exercising" class="center">
     </div>
     
     <br>
-    <!-- <div id="datefield">
-        <form>
-            <label for="date">Your exercise tracker for:
-            <input type="date" name="dateinput" id="dateinput"></label>
-        </form>
-    </div>  -->
     
     <div id="inputhead">
         <h2>Enter your exercise stats here</h2>
@@ -47,25 +41,21 @@
             <li>    
                 <label for="dateinput">Date of Workout</label>
                 <input type="date" name="dateinput" id="dateinput"  required>
-
             </li>
             <li>    
                 <label for="exercise_name">Exercise</label>
                 <input type="text" id="exercise_name" name="exercise_name" required>
             </li>
-        
         <!--exercise entry box. start rudimentry support string input. down the road(maybe) auto-complete exercise name-->
             <li>
                 <label for="exercise_type">Type of Exercise</label>
                 <input type="text" id="exercise_type" name="exercise_type" required>
             </li>
-        
         <!-- exercise duration entry box. Supports integer input  -->
             <li>
                 <label for="exercise_minute">Exercise Duration</label>
                 <input type="number" id="exercise_minute" name="exercise_minute" required>
             </li>
-        
         <!--Section for notes for workout.-->
             <li id="notes">
                 <p><label for="exercise_notes">Notes about workout</label></p>
@@ -79,6 +69,7 @@
         </form>
     </div>
     <br>
+    
 <!--Create a table that will fill with the data collected above. The table should fill rows in at every submit click of the entire data entry area.-->
     <div id="output_tb">   
         <table id="output_table">
