@@ -9,8 +9,6 @@
 import sqlite3
 import os
 
-
-
 def create_database(filename):
     if not filename.endswith('.db'):
         filename += '.db'
@@ -35,7 +33,7 @@ def create_database(filename):
         print(f"Error creating database: {e}")
 
         
-
+        
 def create_table(conn, table_name, columns):
     try:
         cursor = conn.cursor()
@@ -45,31 +43,42 @@ def create_table(conn, table_name, columns):
         print(f"Error creating {table_name} table: {e}")
 
         
-
+        
 def add_user(first_name, last_name, dob, gender, login_name, email, password, filename):
     conn = sqlite3.connect(filename)
     cursor = conn.cursor()
 
     try:
-        cursor.execute("INSERT INTO users (first_name, last_name, dob, gender, login_name, email, password) VALUES (?, ?, ?, ?, ?, ?, ?)",
-                       (first_name, last_name, dob, gender, login_name, email, password))
-        conn.commit()
+        # Check if login_name already exists
+        cursor.execute("SELECT COUNT(*) FROM users WHERE login_name = ?", (login_name,))
+        count = cursor.fetchone()[0]
 
-        # Fetch and print the inserted user ID
-        cursor.execute("SELECT last_insert_rowid()")
-        user_id = cursor.fetchone()[0]
-        print(f"User '{login_name}' added successfully with ID: {user_id}")
+        if count > 0:
+            # Username already taken, warn the user
+            print(f"Error adding user: Username '{login_name}' is already taken.")
+            return None
+        else:
+            # Username is unique, proceed with insertion
+            cursor.execute("INSERT INTO users (first_name, last_name, dob, gender, login_name, email, password) VALUES (?, ?, ?, ?, ?, ?, ?)",
+                           (first_name, last_name, dob, gender, login_name, email, password))
+            conn.commit()
 
-        # Return the user ID
-        return user_id
+            # Fetch and print the inserted user ID
+            cursor.execute("SELECT last_insert_rowid()")
+            user_id = cursor.fetchone()[0]
+            print(f"User '{login_name}' added successfully with ID: {user_id}")
+
+            # Return the user ID
+            return user_id
 
     except sqlite3.Error as e:
         print(f"Error adding user: {e}")
+        return None
     finally:
         conn.close()
-    
-    
 
+        
+        
 def edit_user(user_id, first_name, last_name, dob, gender, login_name, email, password, filename):
     conn = sqlite3.connect(filename)
     cursor = conn.cursor()
@@ -90,12 +99,65 @@ def edit_user(user_id, first_name, last_name, dob, gender, login_name, email, pa
         return None
     finally:
         conn.close()
+        
+        
 
+def delete_user(user_id, filename):
+    conn = sqlite3.connect(filename)
+    cursor = conn.cursor()
+    cursor.execute('DELETE FROM users WHERE id=?', (user_id,))
+    conn.commit()
+    conn.close()
+    
     
 
-def delete_user(user_id, filename):                                      #Function to delete a user entry by id
-    conn = sqlite3.connect(filename)                                     #Connect to database
-    cursor = conn.cursor()                                               #Connect to cursor and execute entry
-    cursor.execute('DELETE FROM users WHERE id=?', (user_id,))           #Delete a specific user id
-    conn.commit()                                                        #Commit and closeo connection
-    conn.close()
+def get_user_by_id(user_id, filename):
+    conn = sqlite3.connect(filename)
+    cursor = conn.cursor()
+
+    try:
+        cursor.execute("SELECT * FROM users WHERE id=?", (user_id,))
+        user = cursor.fetchone()
+        return user
+
+    except sqlite3.Error as e:
+        print(f"Error fetching user by ID: {e}")
+        return None
+    finally:
+        conn.close()
+        
+        
+        
+def get_user_by_credentials(username, password, filename):
+    conn = sqlite3.connect(filename)
+    cursor = conn.cursor()
+
+    try:
+        cursor.execute("SELECT * FROM users WHERE login_name=? AND password=?", (username, password))
+        user = cursor.fetchone()
+        return user
+
+    except sqlite3.Error as e:
+        print(f"Error fetching user by credentials: {e}")
+        return None
+    finally:
+        conn.close()
+        
+        
+
+def authenticate_user(username, password, filename='team3_fitness_app.db'):
+    conn = sqlite3.connect(filename)
+    cursor = conn.cursor()
+
+    try:
+        # Fetch the user ID based on the provided username and password
+        cursor.execute("SELECT id FROM users WHERE login_name = ? AND password = ?", (username, password))
+        user_id = cursor.fetchone()
+
+        return user_id[0] if user_id else None
+
+    except sqlite3.Error as e:
+        print(f"Error authenticating user: {e}")
+        return None
+    finally:
+        conn.close()

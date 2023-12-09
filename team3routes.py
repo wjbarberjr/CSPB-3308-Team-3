@@ -21,9 +21,8 @@
 ## Flask either in the csel.io virtual machine or running on your local machine.
 ## The module will create an app for you to use
 
-from flask import Flask, render_template, url_for, redirect, request
-import team3API
-import pymysql
+from flask import Flask, render_template, request, redirect, url_for
+from team3API import create_database, create_table, add_user, edit_user, delete_user, get_user_by_id, get_user_by_credentials, authenticate_user
 
 # create app to use in this Flask application
 app = Flask(__name__, static_folder='static')
@@ -33,26 +32,54 @@ app = Flask(__name__, static_folder='static')
 ##
 ## Begin Routes for Team 3 Exercise Food Application
 
+
+# Database configuration
+DATABASE_FILE = 'team3_fitness_app.db'
+    
+
 @app.route('/')
 def index():
     return
 
+###############################################################################
 
-@app.route('/login')
+def create_users_table():
+    # Create the users table if it doesn't exist
+    create_database(DATABASE_FILE)
+    # Add two pre-populated users
+    add_user('John', 'Doe', '1990-01-01', 'Male', 'john_doe', 'john.doe@example.com', 'password123', DATABASE_FILE)
+    add_user('Jane', 'Smith', '1985-05-15', 'Female', 'jane_smith', 'jane.smith@example.com', 'securepass', DATABASE_FILE)
+
+    
+    
+# Add the create_users_table call at the beginning of the /login route
+@app.route('/login', methods=['GET', 'POST'])
 def login():
+    create_users_table()
+
+    if request.method == 'POST':
+        username = request.form['username']
+        password = request.form['password']
+
+        user_id = authenticate_user(username, password)
+
+        if user_id:
+            # Authentication successful, redirect to the about page with user ID
+            return redirect(url_for('about', user_id=user_id))
+        else:
+            # Authentication failed, display an error message
+            error = "Username and password do not match."
+            return render_template('login.html', error=error)
+
+    # For GET request, render the login page
     return render_template('login.html')
 
+
+###############################################################################
 
 @app.route('/create_account', methods=['GET', 'POST'])
 def create_account():
     if request.method == 'POST':
-        # Connect to the database
-        conn = pymysql.connect(host='your_database_host',
-                               user='your_database_username',
-                               password='your_database_password',
-                               database='your_database_name',
-                               cursorclass=pymysql.cursors.DictCursor)
-
         # Process form data
         first_name = request.form['firstName']
         last_name = request.form['lastName']
@@ -63,19 +90,14 @@ def create_account():
 
         try:
             # Create the database if it doesn't exist
-            team3API.create_database('team3_fitness_app.db')
+            create_database(DATABASE_FILE)
 
             # Add test entries (you can adjust these values as needed)
-            team3API.add_user('John', 'Doe', '1990-01-01', 'M', 'john_doe', 'john.doe@example.com', 'password123', 'team3_fitness_app.db')
-            team3API.add_user('Jane', 'Smith', '1985-05-15', 'F', 'jane_smith', 'jane.smith@example.com', 'securepass', 'team3_fitness_app.db')
+            add_user('John', 'Doe', '1990-01-01', 'M', 'john_doe', 'john.doe@example.com', 'password123', DATABASE_FILE)
+            add_user('Jane', 'Smith', '1985-05-15', 'F', 'jane_smith', 'jane.smith@example.com', 'securepass', DATABASE_FILE)
 
-            with conn.cursor() as cursor:
-                # SQL query to insert data into the users table
-                sql = "INSERT INTO users (first_name, last_name, dob, gender, login_name, email) VALUES (%s, %s, %s, %s, %s, %s)"
-                cursor.execute(sql, (first_name, last_name, dob, gender, username, email))
-
-            # Commit changes and close the connection
-            conn.commit()
+            # Process the new user data
+            user_id = add_user(first_name, last_name, dob, gender, username, email, 'password123', DATABASE_FILE)
 
             # Redirect to the login page after successful account creation
             return redirect(url_for('login'))
@@ -83,15 +105,25 @@ def create_account():
         except Exception as e:
             return f"Error: {e}"
 
-        finally:
-            conn.close()
-
     return render_template('create_account.html')
 
+###############################################################################
 
 @app.route('/forgot_password')
 def forgot_password():
     return render_template('forgot_password.html')
+
+###############################################################################
+
+@app.route('/about/<int:user_id>')
+def about(user_id):
+    # Fetch the user's details by ID
+    user = get_user_by_id(user_id, DATABASE_FILE)
+
+    # If the user exists, get the first name; otherwise, use a default value
+    user_first_name = user['first_name'] if user else "Guest"
+
+    return render_template('about.html', user_first_name=user_first_name)
 
 
 ###############################################################################
@@ -100,5 +132,4 @@ if __name__ == '__main__':
     # run() method of Flask class runs the application 
     # on the local development server using port 3308 instead of port 5000.
     app.run(host='0.0.0.0', port=3308)
-
-
+###############################################################################
