@@ -36,7 +36,7 @@ def add_workout(exercise_name, date, duration, workout_type, notes):
 def delete_entry(exercise_name):
     conn = sqlite3.connect('workouts.db')
     cursor = conn.cursor()
-    cursor.execute('DELETE FROM workouts WHERE id=?', (exercise_name)
+    cursor.execute('DELETE FROM workouts WHERE id=?', (exercise_name))
     conn.commit()
     conn.close()
 
