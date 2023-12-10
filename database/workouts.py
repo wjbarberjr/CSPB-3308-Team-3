@@ -24,14 +24,14 @@ def create_workouts(db, db_args):
     connection.close()
 
 # Create workout
-def create_workout(db, db_args, date, exercise_name, duration, workout_type, notes):
+def create_workout(db, db_args, date, name, duration, type, notes):
     connection = db.connect(**db_args)
     cursor = connection.cursor()
 
     cursor.execute('''
-        INSERT INTO workouts (date, exercise_name, duration, workout_type, notes)
-        VALUES (%s, %s, %s, %s, %s)
-    ''', (date, exercise_name, duration, workout_type, notes))
+        INSERT INTO workouts (date, name, duration, type, notes)
+        VALUES (%s, %s, %s, %s, %s);
+    ''', (date, name, duration, type, notes))
 
     connection.commit()
     connection.close()
@@ -41,10 +41,7 @@ def get_workouts(db, db_args):
     cursor = conn.cursor()
 
     # Retrieve data from the "workouts" table
-    cursor.execute('''
-        SELECT date, name, type, duration, notes
-        FROM workouts;
-    ''')
+    cursor.execute('SELECT * FROM workouts;')
     rows = cursor.fetchall()
 
     # Commit changes and close the connection

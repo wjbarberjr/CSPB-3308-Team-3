@@ -35,9 +35,9 @@ def drop_database():
 
 # @app.route('/db/workouts/create_workouts')
 # @app.route('/db/workouts/create_workout')
+# @app.route('/db/workouts/get_workouts')
 # @app.route('/db/workouts/populate_workouts')
 # @app.route('/db/workouts/drop_workouts')
-
 
 ##########################################
 #
