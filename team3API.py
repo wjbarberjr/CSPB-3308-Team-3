@@ -18,16 +18,8 @@ def create_database(filename):
 
     try:
         with sqlite3.connect(filename) as conn:
-            create_table(conn, 'users', [
-                ('id', 'INTEGER', 'PRIMARY KEY'),
-                ('first_name', 'TEXT'),
-                ('last_name', 'TEXT'),
-                ('dob', 'TEXT'),
-                ('gender', 'TEXT'),
-                ('login_name', 'TEXT'),
-                ('email', 'TEXT'),
-                ('password', 'TEXT')
-            ])
+            # No need to create any table here; this is just for initializing the database file
+            pass
 
     except sqlite3.Error as e:
         print(f"Error creating database: {e}")
@@ -38,6 +30,11 @@ def create_table(conn, table_name, columns):
     try:
         cursor = conn.cursor()
         columns_str = ', '.join([f'{col[0]} {col[1]}' for col in columns])
+        
+        # Ensure the 'id' column is an auto-incrementing primary key
+        if 'id INTEGER PRIMARY KEY' not in columns_str:
+            columns_str = 'id INTEGER PRIMARY KEY, ' + columns_str
+        
         cursor.execute(f'CREATE TABLE IF NOT EXISTS {table_name} ({columns_str})')
     except sqlite3.Error as e:
         print(f"Error creating {table_name} table: {e}")
@@ -133,9 +130,13 @@ def get_user_by_credentials(username, password, filename):
     cursor = conn.cursor()
 
     try:
-        cursor.execute("SELECT * FROM users WHERE login_name=? AND password=?", (username, password))
+        cursor.execute("SELECT * FROM users WHERE login_name=?", (username,))
         user = cursor.fetchone()
-        return user
+
+        if user and user[6] == password:  # Check if the password matches
+            return user
+        else:
+            return None
 
     except sqlite3.Error as e:
         print(f"Error fetching user by credentials: {e}")
@@ -177,5 +178,33 @@ def get_user_by_email(email, filename):
     except sqlite3.Error as e:
         print(f"Error fetching user by email: {e}")
         return None
+    finally:
+        conn.close()
+
+
+
+def create_users_table():
+    conn = sqlite3.connect('team3_fitness_app.db')
+    cursor = conn.cursor()
+
+    try:
+        # Define your table creation logic here
+        cursor.execute('''
+            CREATE TABLE IF NOT EXISTS users (
+                id INTEGER PRIMARY KEY,
+                first_name TEXT,
+                last_name TEXT,
+                dob TEXT,
+                gender TEXT,
+                login_name TEXT UNIQUE,
+                email TEXT UNIQUE,
+                password TEXT
+            )
+        ''')
+        conn.commit()
+
+    except sqlite3.Error as e:
+        print(f"Error creating users table: {e}")
+
     finally:
         conn.close()

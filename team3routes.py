@@ -22,7 +22,8 @@
 ## The module will create an app for you to use
 
 from flask import Flask, render_template, session, request, redirect, url_for, flash
-from team3API import create_database, create_table, add_user, edit_user, delete_user, get_user_by_id, get_user_by_credentials, authenticate_user, get_user_by_email
+from team3API import create_database, create_users_table, add_user, edit_user, delete_user, get_user_by_id, get_user_by_credentials, authenticate_user, get_user_by_email
+import sqlite3
 
 # create app to use in this Flask application
 app = Flask(__name__, static_folder='static')
@@ -35,6 +36,17 @@ app.secret_key = 'team3'  # Set a secret key for flashing messages
 
 # Database configuration
 DATABASE_FILE = 'team3_fitness_app.db'
+
+# Call create_database() to ensure the database file exists
+create_database(DATABASE_FILE)
+
+# Call create_users_table() to ensure the 'users' table is created
+create_users_table()
+
+# Add two users (modify this based on your needs)
+add_user('John', 'Doe', '1990-01-01', 'Male', 'john_doe', 'john@example.com', 'password123', DATABASE_FILE)
+add_user('Jane', 'Smith', '1985-05-15', 'Female', 'jane_smith', 'jane@example.com', 'pass456', DATABASE_FILE)
+
     
 
 @app.route('/')
@@ -42,22 +54,6 @@ def index():
     return
 
 ###############################################################################
-
-def create_users_table():
-    # Create the users table if it doesn't exist
-    create_database(DATABASE_FILE)
-
-    # Check if users already exist before adding them
-    if not get_user_by_credentials('john_doe', 'password123', DATABASE_FILE):
-        add_user('John', 'Doe', '1990-01-01', 'Male', 'john_doe', 'john.doe@example.com', 'password123', DATABASE_FILE)
-    if not get_user_by_credentials('jane_smith', 'securepass', DATABASE_FILE):
-        add_user('Jane', 'Smith', '1985-05-15', 'Female', 'jane_smith', 'jane.smith@example.com', 'securepass', DATABASE_FILE)
-
-
-        
-# Call create_users_table() outside of any route to ensure it's executed only once
-create_users_table()
-
 
 
 @app.route('/login', methods=['GET', 'POST'])
@@ -73,6 +69,9 @@ def login():
         # Assuming the tuple structure is (user_id, first_name, last_name, ...)
         if user_tuple and len(user_tuple) >= 2:
             user_id, first_name = user_tuple[0], user_tuple[1]
+
+            # Print the user_id for debugging
+            print(f"User ID: {user_id}")
 
             # Authentication successful, redirect to the 'about' page with user ID
             return redirect(url_for('about', user_id=user_id, user_first_name=first_name))
@@ -154,7 +153,16 @@ def forgot_password():
 def about():
     user_id = request.args.get('user_id')
     user_first_name = request.args.get('user_first_name', 'Guest')
-    return render_template('about.html', user_first_name=user_first_name)
+
+    if user_id:
+        # If user ID is provided, fetch user details from the database
+        user_details = get_user_by_id(user_id, DATABASE_FILE)
+
+        if user_details:
+            # Extract first name from user details
+            user_first_name = user_details[1]
+
+    return render_template('about.html', user_id=user_id, user_first_name=user_first_name)
 
 ###############################################################################
 
