@@ -24,6 +24,7 @@
 from flask import Flask, render_template, session, request, redirect, url_for, flash
 from team3API import create_database, create_users_table, add_user, edit_user, delete_user, get_user_by_id, get_user_by_credentials, authenticate_user, get_user_by_email
 import sqlite3
+import psycopg2
 
 # create app to use in this Flask application
 app = Flask(__name__, static_folder='static')
@@ -174,6 +175,14 @@ def logout():
 
     # Redirect to the login page
     return redirect(url_for('login'))
+
+###############################################################################
+
+@app.route('/db_test')
+def testing():
+    conn = psycopg2.connect("postgres://team_3_database_31yh_user:ShjFLQWUZ8kWe7PXZryejQ805E0I5XBU@dpg-clqv1g3h3k0c73af71u0-a/team_3_database_31yh")
+    conn.close()
+    return "Database Connection Successful"
 
 ###############################################################################
 # main driver function
