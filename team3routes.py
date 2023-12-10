@@ -74,7 +74,7 @@ def login():
             print(f"User ID: {user_id}")
 
             # Authentication successful, redirect to the 'about' page with user ID
-            return redirect(url_for('about', user_id=user_id, user_first_name=first_name))
+            return redirect(url_for('about', user_id=user_id))
 
         else:
             # Authentication failed, show an error message
@@ -152,7 +152,6 @@ def forgot_password():
 @app.route('/about')
 def about():
     user_id = request.args.get('user_id')
-    user_first_name = request.args.get('user_first_name', 'Guest')
 
     if user_id:
         # If user ID is provided, fetch user details from the database
@@ -161,8 +160,9 @@ def about():
         if user_details:
             # Extract first name from user details
             user_first_name = user_details[1]
+            return render_template('about.html', user_id=user_id, user_first_name=user_first_name)
 
-    return render_template('about.html', user_id=user_id, user_first_name=user_first_name)
+    return render_template('about.html', user_id=user_id)
 
 ###############################################################################
 

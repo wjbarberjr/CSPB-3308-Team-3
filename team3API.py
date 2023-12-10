@@ -133,9 +133,11 @@ def get_user_by_credentials(username, password, filename):
         cursor.execute("SELECT * FROM users WHERE login_name=?", (username,))
         user = cursor.fetchone()
 
-        if user and user[6] == password:  # Check if the password matches
+        if user and user[7] == password:  # Check if the password matches
+            print(f"Password comparison: {user[7]} == {password}")
             return user
         else:
+            print(f"Password comparison failed: {user[7]} != {password}")
             return None
 
     except sqlite3.Error as e:
