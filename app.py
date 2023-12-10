@@ -29,24 +29,9 @@ def drop_database():
     db.drop_database(pg, db_args)
     return "Database dropped!"
 
-# @app.route('/db/exercises/create_exercises')
-# @app.route('/db/exercises/create_exercise')
-# @app.route('/db/exercises/populate_exercises')
-# @app.route('/db/exercises/drop_exercises')
-
-# @app.route('/db/exercise_groups/create_exercise_groups')
-# @app.route('/db/exercise_groups/create_exercise_group')
-# @app.route('/db/exercise_groups/populate_exercise_groups')
-# @app.route('/db/exercise_groups/drop_exercise_groups')
-
 # @app.route('/db/foods/create_foods')
 # @app.route('/db/foods/...')
 # @app.route('/db/foods/drop_foods')
-
-# @app.route('/db/sets/create_sets')
-# @app.route('/db/sets/create_set')
-# @app.route('/db/sets/get_set')
-# @app.route('/db/sets/get_sets')
 
 # @app.route('/db/workouts/create_workouts')
 # @app.route('/db/workouts/create_workout')
@@ -63,6 +48,11 @@ def drop_database():
 #       /exercise_input    
 #       /exercise_log        
 #       /food_lookup
+
+#####################
+#                                         
+#   Root, Login, and User Routes
+#
 
 #####################
 #                                         
@@ -262,3 +252,11 @@ def selecting():
 #                                         
 #   Exercise Input / Output
 #
+
+@app.route('/exercise_input')
+def render_exercise_input():
+    return render_template('exercise_input.html')
+
+@app.route('/exercise_log')
+def render_exercise_log():
+    return render_template('exercise_log.html')
