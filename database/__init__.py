@@ -5,8 +5,10 @@ from .database import *
 from . import foods
 from . import food_tracking
 from . import workouts
+from . import users
 
 # Export database functions under database namespace; include table files
 __all__ = ['foods', 
            'food_tracking', 
-           'workouts']
+           'workouts',
+           'users']

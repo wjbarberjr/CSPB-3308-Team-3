@@ -2,9 +2,9 @@ import psycopg2 as pg, sys
 
 db = pg
 db_args = {
-    'dbname': 'postgres',         # Replace with your database name
+    'dbname': 'postgres',     # Replace with your database name
     'user': 'postgres',       # Replace with your username
-    'password': 'admin',  # Replace with your password
+    'password': 'admin',      # Replace with your password
     'host': 'localhost',      # Replace with your host
     'port': '5432'            # Replace with your port
 }
