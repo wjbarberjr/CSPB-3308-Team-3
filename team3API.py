@@ -146,6 +146,7 @@ def get_user_by_credentials(username, password, filename):
         
 
 def authenticate_user(username, password, filename='team3_fitness_app.db'):
+    print(f"Attempting authentication with username: {username}, password: {password}")
     conn = sqlite3.connect(filename)
     cursor = conn.cursor()
 

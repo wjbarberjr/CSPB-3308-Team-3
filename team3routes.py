@@ -59,27 +59,16 @@ def create_users_table():
 create_users_table()
 
 
-    
+
 @app.route('/login', methods=['GET', 'POST'])
 def login():
-
-
     if request.method == 'POST':
-        # Handle POST requests
-        username = request.form['username']
-        password = request.form['password']
+        # Perform login logic (validate credentials, etc.)
+        
+        # Assuming the login is successful, redirect to the 'about' page
+        return redirect(url_for('about'))
 
-        user_id = authenticate_user(username, password)
-
-        if user_id:
-            # Authentication successful, redirect to the about page with user ID
-            return redirect(url_for('about', user_id=user_id))
-        else:
-            # Authentication failed, display an error message
-            error = "Username and password do not match."
-            return render_template('login.html', error=error)
-
-    # For GET request, render the login page
+    # If the request method is GET, render the login page
     return render_template('login.html')
 
 
@@ -123,16 +112,9 @@ def forgot_password():
 
 ###############################################################################
 
-@app.route('/about/<int:user_id>')
-def about(user_id):
-    # Fetch the user's details by ID
-    user = get_user_by_id(user_id, DATABASE_FILE)
-
-    # If the user exists, get the first name; otherwise, use a default value
-    user_first_name = user['first_name'] if user else "Guest"
-
-    return render_template('about.html', user_first_name=user_first_name)
-
+@app.route('/about')
+def about():
+    return render_template('about.html', user_first_name="Guest")
 
 ###############################################################################
 # main driver function
