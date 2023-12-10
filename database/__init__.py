@@ -9,8 +9,7 @@ from . import sets
 from . import workouts
 
 # Export database functions under database namespace; include table files
-__all__ = ['create_database', 
-           hello,
+__all__ = ['create_database',
            # Table Files
            'exercises', 
            'exercise_groups', 
