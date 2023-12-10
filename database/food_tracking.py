@@ -20,7 +20,7 @@ def create_database(filename):
         print(f"Database {filename} already exists.")
         return f"Database {filename} already exists."
 
-def create_table(dbname):
+def create_food_history(dbname):
     try:
         # Connect to an existing database
         conn = psycopg2.connect(dbname=dbname)
