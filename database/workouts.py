@@ -8,11 +8,11 @@ def create_workouts(db, db_args):
     cursor.execute(
     """
     CREATE TABLE IF NOT EXISTS workouts (
-        id INT PRIMARY KEY,
+        id SERIAL PRIMARY KEY,
         -- user_id INT,
         start_datetime TIMESTAMP,
         end_datetime TIMESTAMP,
-        duration TIME,
+        duration INTERVAL, -- Using INTERVAL for duration
         workout_type INT,
         -- FOREIGN KEY (user_id) REFERENCES users(id),
         notes VARCHAR

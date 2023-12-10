@@ -10,11 +10,11 @@ def create_sets(db, db_args):
     cursor.execute(
     """
     CREATE TABLE IF NOT EXISTS sets (
-        id INT PRIMARY KEY,
+        id SERIAL PRIMARY KEY,
         exercise_group_id INT,
         rep INT,
         weight FLOAT,
-        order INT,
+        "order" INT,
         FOREIGN KEY (exercise_group_id) REFERENCES exercise_groups(id)
     );
     """

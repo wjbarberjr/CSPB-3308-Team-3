@@ -8,12 +8,12 @@ def create_exercise_groups(db, db_args):
     cursor.execute(
     """
     CREATE TABLE IF NOT EXISTS exercise_groups (
-        id INT PRIMARY KEY,
+        id SERIAL PRIMARY KEY, 
         workout_id INT,
         exercise_id INT,
         FOREIGN KEY (workout_id) REFERENCES workouts(id),
         FOREIGN KEY (exercise_id) REFERENCES exercises(id)
-        );
+    );
     """
     )
 
