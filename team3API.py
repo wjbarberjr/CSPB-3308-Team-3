@@ -162,3 +162,20 @@ def authenticate_user(username, password, filename='team3_fitness_app.db'):
         return None
     finally:
         conn.close()
+
+
+
+def get_user_by_email(email, filename):
+    conn = sqlite3.connect(filename)
+    cursor = conn.cursor()
+
+    try:
+        cursor.execute("SELECT * FROM users WHERE email=?", (email,))
+        user = cursor.fetchone()
+        return user
+
+    except sqlite3.Error as e:
+        print(f"Error fetching user by email: {e}")
+        return None
+    finally:
+        conn.close()

@@ -22,7 +22,7 @@
 ## The module will create an app for you to use
 
 from flask import Flask, render_template, session, request, redirect, url_for, flash
-from team3API import create_database, create_table, add_user, edit_user, delete_user, get_user_by_id, get_user_by_credentials, authenticate_user
+from team3API import create_database, create_table, add_user, edit_user, delete_user, get_user_by_id, get_user_by_credentials, authenticate_user, get_user_by_email
 
 # create app to use in this Flask application
 app = Flask(__name__, static_folder='static')
@@ -96,30 +96,56 @@ def create_account():
         gender = request.form['gender']
         username = request.form['username']
         email = request.form['email']
+        password = request.form['password']
 
-        try:
-            # Create the database if it doesn't exist
-            create_database(DATABASE_FILE)
+        # Input validation
+        if not (first_name.isalpha() and last_name.isalpha()):
+            flash('First and last names should contain only alphabetical characters.', 'error')
+        elif not username.isalnum():
+            flash('Username should contain only alphanumeric characters.', 'error')
+        elif not is_valid_email(email):
+            flash('Please enter a valid email address.', 'error')
+        else:
+            try:
+                # Create the database if it doesn't exist
+                create_database(DATABASE_FILE)
 
-            # Add test entries (you can adjust these values as needed)
-            add_user('John', 'Doe', '1990-01-01', 'M', 'john_doe', 'john.doe@example.com', 'password123', DATABASE_FILE)
-            add_user('Jane', 'Smith', '1985-05-15', 'F', 'jane_smith', 'jane.smith@example.com', 'securepass', DATABASE_FILE)
+                # Add the user to the database
+                user_id = add_user(first_name, last_name, dob, gender, username, email, password, DATABASE_FILE)
 
-            # Process the new user data
-            user_id = add_user(first_name, last_name, dob, gender, username, email, 'password123', DATABASE_FILE)
+                # Redirect to the login page after successful account creation
+                flash('Account created successfully. Please log in.', 'success')
+                return redirect(url_for('login'))
 
-            # Redirect to the login page after successful account creation
-            return redirect(url_for('login'))
-
-        except Exception as e:
-            return f"Error: {e}"
+            except Exception as e:
+                flash(f"Error: {e}", 'error')
 
     return render_template('create_account.html')
 
+# Helper function to validate email format
+def is_valid_email(email):
+    import re
+    email_regex = re.compile(r"[^@]+@[^@]+\.[^@]+")
+    return bool(re.match(email_regex, email))
+
 ###############################################################################
 
-@app.route('/forgot_password')
+@app.route('/forgot_password', methods=['GET', 'POST'])
 def forgot_password():
+    if request.method == 'POST':
+        email = request.form['email']
+
+        # Check if the email exists in the database
+        user = get_user_by_email(email, DATABASE_FILE)
+
+        if user:
+            # Email found, redirect to login page or perform further actions
+            flash('A link will be sent to your registered email with additional instructions.', 'success')
+            return redirect(url_for('login'))
+        else:
+            # Email not found, inform the user and recommend creating an account
+            flash('Email does not exist in the database. Consider creating an account.', 'error')
+
     return render_template('forgot_password.html')
 
 ###############################################################################
