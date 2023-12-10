@@ -11,19 +11,11 @@ import psycopg2
 import os
 
 
-def create_database(filename):
-    if not filename.endswith('.db'):
-        filename += '.db'
 
-    # Only run create database code if the database hasn't already been created
-    if os.path.exists(filename):
-        print(f"Database {filename} already exists.")
-        return f"Database {filename} already exists."
-
-def create_food_history(dbname):
+def create_food_history(db_args):
     try:
         # Connect to an existing database
-        conn = psycopg2.connect(dbname=dbname)
+        conn = psycopg2.connect(**db_args)
         cursor = conn.cursor()
 
         # Create table
@@ -39,16 +31,16 @@ def create_food_history(dbname):
 
         conn.commit()
         cursor.close()
-        print(f"Database {dbname} created successfully.")
+        print(f"Database {db_args} created successfully.")
         conn.close()
 
     except psycopg2.Error as e:
         print(f"Error creating database: {e}")
 
 
-def fill(dbname):
+def fill(db_args):
     try:
-        conn = psycopg2.connect(dbname=dbname)
+        conn = psycopg2.connect(**db_args)
         cursor = conn.cursor()
 
         entries = [
@@ -68,8 +60,8 @@ def fill(dbname):
 
     
 
-def print_tables(dbname):
-    conn = psycopg2.connect(dbname=dbname)
+def print_tables(db_args):
+    conn = psycopg2.connect(**db_args)
     cursor = conn.cursor()
 
     cursor.execute("SELECT table_name FROM information_schema.tables WHERE table_schema = 'public';")
@@ -86,10 +78,10 @@ def print_tables(dbname):
     cursor.close()
     conn.close()
 
-def add_to_history(input_date, calories, fats, proteins, carbs, dbname):
+def add_to_history(input_date, calories, fats, proteins, carbs, db_args):
     
     try:
-        conn = psycopg2.connect(dbname=dbname)
+        conn = psycopg2.connect(**db_args)
         cursor = conn.cursor()
 
         cursor.execute('''
@@ -105,8 +97,8 @@ def add_to_history(input_date, calories, fats, proteins, carbs, dbname):
         print(f"Error adding food record to user_history table: {e}")
     
 
-def print_all_data_from_table(dbname, table_name):
-    conn = psycopg2.connect(dbname=dbname)
+def print_all_data_from_table(db_args, table_name):
+    conn = psycopg2.connect(**db_args)
     cursor = conn.cursor()
 
     cursor.execute(f"SELECT * FROM {table_name}")

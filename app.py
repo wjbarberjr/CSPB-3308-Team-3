@@ -306,3 +306,23 @@ def selecting():
 @app.route('/db/food_tracking')
 def render_food_tracking():
     return render_template('food_tracking.html')
+
+@app.route('/db/histinput', methods=['POST'])
+def histinput():
+
+    # get input information
+    date = request.form.get('date_input')
+    cals = request.form.get('calories')
+    fat = request.form.get('fat')
+    protein = request.form.get('protein')
+    carbs = request.form.get('carbs')
+
+    # will have to include user_id functionality when db is connected
+    # how do I add file_name to this function so it goes to the right db????????
+    db.food_tracking.add_to_history(date, cals, fat, protein, carbs, db_name)
+    db.food_tracking.print_all_data_from_table(db_name, 'user_history')
+    
+
+    return redirect('/foodtracking', code=302)
+
+
