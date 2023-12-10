@@ -21,12 +21,12 @@
 ## Flask either in the csel.io virtual machine or running on your local machine.
 ## The module will create an app for you to use
 
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, render_template, request, redirect, url_for, flash
 from team3API import create_database, create_table, add_user, edit_user, delete_user, get_user_by_id, get_user_by_credentials, authenticate_user
 
 # create app to use in this Flask application
 app = Flask(__name__, static_folder='static')
-
+app.secret_key = 'team3'  # Set a secret key for flashing messages
 
 ###############################################################################
 ##
@@ -74,8 +74,9 @@ def login():
         if user_tuple and len(user_tuple) >= 2:
             user_id, first_name = user_tuple[0], user_tuple[1]
 
-            # Authentication successful, redirect to the 'about' page
-            return redirect(url_for('about', user_first_name=first_name))
+            # Authentication successful, redirect to the 'about' page with user ID
+            return redirect(url_for('about', user_id=user_id))
+
         else:
             # Authentication failed, show an error message
             flash('Invalid username or password. Please try again.', 'error')
@@ -125,7 +126,20 @@ def forgot_password():
 
 @app.route('/about')
 def about():
-    return render_template('about.html', user_first_name="Guest")
+    user_id = request.args.get('user_id')
+    
+    if user_id:
+        # Look up user details by ID
+        user_details = get_user_by_id(user_id, DATABASE_FILE)
+        
+        if user_details:
+            user_first_name = user_details[1]
+        else:
+            user_first_name = "Guest"
+    else:
+        user_first_name = "Guest"
+
+    return render_template('about.html', user_first_name=user_first_name)
 
 ###############################################################################
 # main driver function
