@@ -84,7 +84,7 @@ def drop_workouts():
 #       /exercise_input    
 #       /exercise_log        
 #       /food_lookup
-#       /food_history
+#       /food_tracking
 
 #####################
 #                                         
@@ -300,9 +300,9 @@ def selecting():
 
 #####################
 #                                         
-#   Food History
+#   Food Tracking
 #
 
-@app.route('/db/food_history/foodtracking')
+@app.route('/db/food_tracking')
 def render_food_tracking():
-    return render_template('/index.html')
+    return render_template('food_tracking.html')
