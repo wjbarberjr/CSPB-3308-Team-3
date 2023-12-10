@@ -1,0 +1,48 @@
+/* the css rules for login.html, create_account.html, and forgot_password.html */
+
+/*
+Author: William Barber (wiba6472)
+Purpose: The purpose of the CSS below set up and control the view for the Login/Create Account/Reset Password pages.
+Date: 24 October 2023
+*/
+
+
+/* Login Page */
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #A9A9A9;}
+
+.header {
+    background-color: #f1f1f1;
+    padding: 20px;
+    text-align: center;
+}
+
+.navigation {
+    overflow: hidden;
+    background-color: #87CEEB; /* Light blue background color */
+}
+
+.navigation a {
+    float: left;
+    display: block;
+    color: #000; /* Black text color */
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    border: 1px solid #ddd; /* Border color */
+}
+
+.navigation a:hover {
+    background-color: #ddd; /* Darker background color on hover */
+    color: #000; /* Change text color on hover */
+}
+
+.logout-btn {
+    float: right;
+}
+
+.content {
+    padding: 20px;
+}
