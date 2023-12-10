@@ -303,6 +303,6 @@ def selecting():
 #   Food History
 #
 
-@app.route('/food_history')
-def render_food_history():
-    return render_template('food_history.html')
+@app.route('/db/food_history/foodtracking')
+def render_food_tracking():
+    return render_template('/index.html')
