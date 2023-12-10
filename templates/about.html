@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Team 3 Fitness App</title>
+    <link rel="stylesheet" href="static/css/about.css">
+</head>
+<body>
+
+<div class="header">
+    <h1>Welcome, {{ user_first_name }}!</h1>
+    <div class="navigation">
+        <a href="{{ url_for('about') }}">About</a>
+        <a href="">Exercise Lookup</a> <!-- Placeholder for exercise lookup -->
+        <a href="">Exercise Log</a> <!-- Placeholder for exercise log -->
+        <a href="">Food Lookup</a> <!-- Placeholder for food lookup -->
+        <a href="">Food Log</a> <!-- Placeholder for food log -->
+
+        <form method="post" action="{{ url_for('logout') }}" class="logout-form">
+            <button type="submit">Logout</button>
+        </form>
+
+    </div>
+</div>
+<div class="content">
+    <h2>Team 3 Fitness Application</h2>
+    <p>
+        The Team 3 Fitness Application helps you track your diet and exercise activities.
+        It provides features for looking up food and exercise details, logging your diet and exercise routines,
+        and more to support your fitness journey.
+    </p>
+</div>
+
+</body>
+</html>

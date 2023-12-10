@@ -1,13 +1,23 @@
 <!DOCTYPE html>
-<html>   
+<html>
 <head>
     <link rel="stylesheet" href="static/css/login.css">
     <title>Login Page</title>
 </head>
+
 <body>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        <ul class="flashes">
+          {% for category, message in messages %}
+            <li class="{{ category }}">{{ message }}</li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+    {% endwith %}
     <div class="login-container">
         <h2><center>Login</center></h2>
-        <form action="login_process.php" method="POST">
+        <form method="POST" action="{{ url_for('login') }}">
             <div class="form-group">
                 <label for="username">Username:</label>
                 <input type="text" id="username" name="username" required>
@@ -19,11 +29,13 @@
             <button type="submit">Login</button>
         </form>
         <div class="forgot-password">
-            <a href="forgot_password.html"><center>Forgot Password?</center></a>
+            <!-- Update the href attribute for the Forgot Password link -->
+            <a href="{{ url_for('forgot_password') }}"><center>Forgot Password?</center></a>
         </div>
         <div class="create-account">
-            <p>Don't have an account? <a href="create_account.html">Create a new account</a></p>
+            <p>Don't have an account? <a href="{{ url_for('create_account') }}">Create a new account</a></p>
         </div>
     </div>
 </body>
+
 </html>
