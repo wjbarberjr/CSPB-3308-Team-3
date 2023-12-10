@@ -63,14 +63,22 @@ create_users_table()
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
-        # Perform login logic (validate credentials, etc.)
-        
-        # Assuming the login is successful, redirect to the 'about' page
-        return redirect(url_for('about'))
+        # Get the username and password from the form
+        username = request.form['username']
+        password = request.form['password']
+
+        # Check if the user credentials are valid
+        user = get_user_by_credentials(username, password, DATABASE_FILE)
+
+        if user:
+            # Authentication successful, redirect to the 'about' page
+            return redirect(url_for('about', user_first_name=user['first_name']))
+        else:
+            # Authentication failed, show an error message or redirect to the login page
+            return render_template('login.html', error='Invalid credentials. Please try again.')
 
     # If the request method is GET, render the login page
     return render_template('login.html')
-
 
 ###############################################################################
 
