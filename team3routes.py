@@ -21,7 +21,7 @@
 ## Flask either in the csel.io virtual machine or running on your local machine.
 ## The module will create an app for you to use
 
-from flask import Flask, render_template, request, redirect, url_for, flash
+from flask import Flask, render_template, session, request, redirect, url_for, flash
 from team3API import create_database, create_table, add_user, edit_user, delete_user, get_user_by_id, get_user_by_credentials, authenticate_user
 
 # create app to use in this Flask application
@@ -75,7 +75,7 @@ def login():
             user_id, first_name = user_tuple[0], user_tuple[1]
 
             # Authentication successful, redirect to the 'about' page with user ID
-            return redirect(url_for('about', user_id=user_id))
+            return redirect(url_for('about', user_id=user_id, user_first_name=first_name))
 
         else:
             # Authentication failed, show an error message
@@ -127,19 +127,19 @@ def forgot_password():
 @app.route('/about')
 def about():
     user_id = request.args.get('user_id')
-    
-    if user_id:
-        # Look up user details by ID
-        user_details = get_user_by_id(user_id, DATABASE_FILE)
-        
-        if user_details:
-            user_first_name = user_details[1]
-        else:
-            user_first_name = "Guest"
-    else:
-        user_first_name = "Guest"
-
+    user_first_name = request.args.get('user_first_name', 'Guest')
     return render_template('about.html', user_first_name=user_first_name)
+
+###############################################################################
+
+@app.route('/logout', methods=['POST'])
+def logout():
+    # You can clear the session or perform any other necessary logout logic here
+    # For simplicity, let's clear the user ID from the session
+    session.pop('user_id', None)
+
+    # Redirect to the login page
+    return redirect(url_for('login'))
 
 ###############################################################################
 # main driver function

@@ -46,3 +46,25 @@ body {
 .content {
     padding: 20px;
 }
+
+.logout-form {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    padding: 10px;
+    background-color: #3498db; /* Light blue background color */
+    border-radius: 50%; /* Make it a circle */
+    text-align: center;
+}
+
+.logout-form button {
+    background: none;
+    border: none;
+    color: #fff; /* White text color */
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.logout-form button:hover {
+    text-decoration: underline; /* Underline on hover */
+}
