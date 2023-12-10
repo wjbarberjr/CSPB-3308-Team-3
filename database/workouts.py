@@ -1,8 +1,8 @@
 # Workouts Functionality
 
 # Create workouts table
-def create_workouts(db, db_filename):
-    connection = db.connect(db_filename)
+def create_workouts(db, db_args):
+    connection = db.connect(**db_args)
     cursor = connection.cursor()
 
     cursor.execute(
@@ -24,13 +24,19 @@ def create_workouts(db, db_filename):
     connection.close()
 
 # Create workout
-def create_workout(db, db_filename):
+def create_workout(db, db_args):
     pass
 
 # Populate workouts table with dummy data
-def populate_workouts(db, db_filename):
+def populate_workouts(db, db_args):
     pass
 
 # Drop workouts table
-def drop_workouts(db, db_filename):
-    pass
+def drop_workouts(db, db_args):
+    connection = db.connect(**db_args)
+    cursor = connection.cursor()
+
+    cursor.execute("DROP TABLE IF EXISTS workouts;")
+
+    connection.commit()
+    connection.close()

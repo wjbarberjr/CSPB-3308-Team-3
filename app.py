@@ -21,7 +21,7 @@ def get_food_suggestions():
     search_term = request.args.get('term', '')  # Get the search term from the query parameter
     conn = pg.connect(**db_args) 
     cur = conn.cursor()
-    query = "SELECT name FROM Foods WHERE name ILIKE %s LIMIT 10"
+    query = "SELECT name FROM foods WHERE name ILIKE %s LIMIT 10"
     cur.execute(query, (f'%{search_term}%',))
     suggestions = [row[0] for row in cur.fetchall()]
     cur.close()
@@ -33,7 +33,7 @@ def get_food_info():
     food_name = request.args.get('name', '')
     conn = pg.connect(**db_args)
     cur = conn.cursor()
-    query = "SELECT * FROM Foods WHERE name = %s"
+    query = "SELECT * FROM foods WHERE name = %s"
     cur.execute(query, (food_name,))
     food_info = cur.fetchone()
     cur.close()
@@ -154,7 +154,7 @@ def addfood():
             conn = pg.connect(**db_args)
             cur = conn.cursor()
             query = """
-                INSERT INTO Foods (name, portion_size, calories, total_fat, saturated_fat, trans_fat, cholesterol, sodium, total_carbohydrates, dietary_fiber, sugars, protein, vitamin_d, calcium, iron, potassium) 
+                INSERT INTO foods (name, portion_size, calories, total_fat, saturated_fat, trans_fat, cholesterol, sodium, total_carbohydrates, dietary_fiber, sugars, protein, vitamin_d, calcium, iron, potassium) 
                 VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
             """
             cur.execute(query, (food_name, portion_size, calories, total_fat, saturated_fat, trans_fat, cholesterol, sodium, total_carbohydrates, dietary_fiber, sugars, protein, vitamin_d, calcium, iron, potassium))
@@ -181,7 +181,7 @@ def inserting():
     food_items = [('Avocado', 230, 384, 35, 4.9, None, None, 18, 20, 16, 0.7, 4.5, 0, 30, 1.4, 1166),
                   ('Onion, raw', 160, 64, 0.2, 0.1, None, None, 6.4, 15, 2.7, 6.8, 1.8, 0, 37, 0.3, 234),
                   ('Salami', 28, 119, 10, 3.7, None, 22, 529, 0.3, 0, 0.3, 6.1, None, 2.8, 0.4, 95)]
-    cur.executemany('INSERT INTO Foods (name, portion_size, calories, total_fat, saturated_fat, trans_fat, cholesterol, sodium, total_carbohydrates, dietary_fiber, sugars, protein, vitamin_d, calcium, iron, potassium) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)', food_items)
+    cur.executemany('INSERT INTO foods (name, portion_size, calories, total_fat, saturated_fat, trans_fat, cholesterol, sodium, total_carbohydrates, dietary_fiber, sugars, protein, vitamin_d, calcium, iron, potassium) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)', food_items)
     conn.commit()
     conn.close()
     return "Foods Table Successfully Populated!"
@@ -191,7 +191,7 @@ def selecting():
     conn = pg.connect(**db_args)
     cur = conn.cursor()
     cur.execute('''
-        SELECT * FROM Foods;
+        SELECT * FROM foods;
         ''')
     records = cur.fetchall()
     conn.close()
@@ -207,11 +207,5 @@ def selecting():
     
 @app.route('/db_drop') 
 def dropping():
-    conn = pg.connect(**db_args)
-    cur = conn.cursor()
-    cur.execute('''
-        DROP TABLE Foods;
-    ''')
-    conn.commit()
-    conn.close()
+    db.drop_database(pg, db_args)
     return "Foods Table Successfully Dropped"

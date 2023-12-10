@@ -20,3 +20,11 @@ def create_database(db, db_args):
     workouts.create_workouts(db, db_args) # Requires Users
     exercise_groups.create_exercise_groups(db, db_args) # Requires Exercises and Workouts
     sets.create_sets(db, db_args) # Requires Exercise Groups
+
+def drop_database(db, db_args):
+    # users.create_users(db, db_args)
+    foods.drop_foods(db, db_args)
+    exercises.drop_exercises(db, db_args) 
+    workouts.drop_workouts(db, db_args) # Requires Users
+    exercise_groups.drop_exercise_groups(db, db_args) # Requires Exercises and Workouts
+    sets.drop_sets(db, db_args) # Requires Exercise Groups

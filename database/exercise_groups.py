@@ -1,8 +1,8 @@
 # Exercise Groups Functionality
 
 # Creates the exercise groups table
-def create_exercise_groups(db, db_filename):
-    connection = db.connect(db_filename)
+def create_exercise_groups(db, db_args):
+    connection = db.connect(**db_args)
     cursor = connection.cursor()
 
     cursor.execute(
@@ -21,13 +21,19 @@ def create_exercise_groups(db, db_filename):
     connection.close()
 
 # Creates an exercise group
-def create_exercise_group(db, db_filename):
+def create_exercise_group(db, db_args):
     pass
 
-# Populate exercises table with dummy data
-def populate_exercise_groups(db, db_filename):
+# Populate exercise groups table with dummy data
+def populate_exercise_groups(db, db_args):
     pass
 
-# Drop exercise table
-def drop_exercises_groups(db, db_filename):
-    pass
+# Drop exercise groups table
+def drop_exercise_groups(db, db_args):
+    connection = db.connect(**db_args)
+    cursor = connection.cursor()
+
+    cursor.execute("DROP TABLE IF EXISTS exercise_groups;")
+
+    connection.commit()
+    connection.close()

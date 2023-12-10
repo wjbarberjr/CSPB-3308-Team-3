@@ -36,4 +36,10 @@ def populate_sets(db, db_args):
 
 # Drop sets table
 def drop_sets(db, db_args):
-    pass
+    connection = db.connect(**db_args)
+    cursor = connection.cursor()
+
+    cursor.execute("DROP TABLE IF EXISTS sets;")
+
+    connection.commit()
+    connection.close()

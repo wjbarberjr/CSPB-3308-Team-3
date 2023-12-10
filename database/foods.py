@@ -1,4 +1,4 @@
-# Exercise Groups Functionality
+# Foods Functionality
 
 def create_foods(db, db_args):
     connection = db.connect(**db_args)
@@ -6,7 +6,7 @@ def create_foods(db, db_args):
 
     cursor.execute(
     """
-    CREATE TABLE IF NOT EXISTS Foods (
+    CREATE TABLE IF NOT EXISTS foods (
         food_id SERIAL PRIMARY KEY,
         name TEXT NOT NULL UNIQUE,
         
@@ -31,14 +31,17 @@ def create_foods(db, db_args):
     connection.commit()
     connection.close()
 
-# Creates an exercise group
 def create_food(db, db_args):
     pass
 
-# Populate exercises table with dummy data
 def populate_foods(db, db_args):
     pass
 
-# Drop exercise table
 def drop_foods(db, db_args):
-    pass
+    connection = db.connect(**db_args)
+    cursor = connection.cursor()
+
+    cursor.execute("DROP TABLE IF EXISTS foods;")
+
+    connection.commit()
+    connection.close()
