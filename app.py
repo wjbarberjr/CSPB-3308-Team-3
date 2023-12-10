@@ -84,11 +84,25 @@ def drop_workouts():
 #       /exercise_input    
 #       /exercise_log        
 #       /food_lookup
+#       /food_history
 
 #####################
 #                                         
 #   Root, Login, and User Routes
 #
+
+#####################
+#                                         
+#   Exercise Input / Output
+#
+
+@app.route('/exercise_input')
+def render_exercise_input():
+    return render_template('exercise_input.html')
+
+@app.route('/exercise_log')
+def render_exercise_log():
+    return render_template('exercise_log.html')
 
 #####################
 #                                         
@@ -283,16 +297,12 @@ def selecting():
         response_string+="</tr>"
     response_string+="</table>"
     return response_string
-    
+
 #####################
 #                                         
-#   Exercise Input / Output
+#   Food History
 #
 
-@app.route('/exercise_input')
-def render_exercise_input():
-    return render_template('exercise_input.html')
-
-@app.route('/exercise_log')
-def render_exercise_log():
-    return render_template('exercise_log.html')
+@app.route('/food_history')
+def render_food_history():
+    return render_template('food_history.html')
