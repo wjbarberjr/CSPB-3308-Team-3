@@ -46,18 +46,26 @@ def index():
 def create_users_table():
     # Create the users table if it doesn't exist
     create_database(DATABASE_FILE)
-    # Add two pre-populated users
-    add_user('John', 'Doe', '1990-01-01', 'Male', 'john_doe', 'john.doe@example.com', 'password123', DATABASE_FILE)
-    add_user('Jane', 'Smith', '1985-05-15', 'Female', 'jane_smith', 'jane.smith@example.com', 'securepass', DATABASE_FILE)
+
+    # Check if users already exist before adding them
+    if not get_user_by_credentials('john_doe', 'password123', DATABASE_FILE):
+        add_user('John', 'Doe', '1990-01-01', 'Male', 'john_doe', 'john.doe@example.com', 'password123', DATABASE_FILE)
+    if not get_user_by_credentials('jane_smith', 'securepass', DATABASE_FILE):
+        add_user('Jane', 'Smith', '1985-05-15', 'Female', 'jane_smith', 'jane.smith@example.com', 'securepass', DATABASE_FILE)
+
+
+        
+# Call create_users_table() outside of any route to ensure it's executed only once
+create_users_table()
+
 
     
-    
-# Add the create_users_table call at the beginning of the /login route
 @app.route('/login', methods=['GET', 'POST'])
 def login():
-    create_users_table()
+
 
     if request.method == 'POST':
+        # Handle POST requests
         username = request.form['username']
         password = request.form['password']
 

@@ -7,7 +7,7 @@
 <body>
     <div class="login-container">
         <h2><center>Login</center></h2>
-        <form action="{{ url_for('login') }}" method="POST">
+        <form action="{{ url_for('login') }}" method="POST" id="loginForm">
             <div class="form-group">
                 <label for="username">Username:</label>
                 <input type="text" id="username" name="username" required>
@@ -25,5 +25,6 @@
             <p>Don't have an account? <a href="create_account.html">Create a new account</a></p>
         </div>
     </div>
+<script src="static/js/login.js"></script>
 </body>
 </html>
