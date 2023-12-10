@@ -29,15 +29,51 @@ def drop_database():
     db.drop_database(pg, db_args)
     return "Database dropped!"
 
+#
+# Foods
+#
+
 # @app.route('/db/foods/create_foods')
 # @app.route('/db/foods/...')
 # @app.route('/db/foods/drop_foods')
 
-# @app.route('/db/workouts/create_workouts')
-# @app.route('/db/workouts/create_workout')
-# @app.route('/db/workouts/get_workouts')
-# @app.route('/db/workouts/populate_workouts')
-# @app.route('/db/workouts/drop_workouts')
+#
+# Workouts
+#
+
+@app.route('/db/workouts/create_workouts')
+def create_workouts():
+    db.workouts.create_workouts(pg, db_args)
+
+@app.route('/db/workouts/create_workout')
+def create_workout():
+    # /db/workouts/create_workout?date=2023-12-31&name=Jogging&duration=30&type=Cardio&notes=Morning+run
+
+    date = request.args.get('date')
+    name = request.args.get('name')
+    duration = request.args.get('duration')
+    type = request.args.get('type')
+    notes = request.args.get('notes')
+
+    db.workouts.create_workouts(pg, db_args, date, name, duration, type, notes)
+
+@app.route('/db/workouts/get_workouts')
+def get_workouts():
+    return jsonify(db.workouts.get_workouts(pg, db_args))
+
+# Populate table if empty and return all entries
+@app.route('/db/workouts/populate_workouts')
+def populate_workouts():
+    db.workouts.populate_workouts()
+    return get_workouts()
+
+@app.route('/db/workouts/drop_workouts')
+def drop_workouts():
+    db.workouts.drop_workouts(db, db_args) 
+
+#
+# Users
+#
 
 ##########################################
 #
