@@ -52,7 +52,16 @@ def get_workouts(db, db_args):
 
 # Populate workouts table with dummy data
 def populate_workouts(db, db_args):
-    pass
+    workouts = [
+        ["2023-12-16", "Weight Lifting", "45", "Strength Training", "Bench Press\nChest Press\nSquats"],
+        ["2023-12-15", "Run", "25", "Cardio", "I ran really fast"],
+        ["2023-12-21", "Weight Lifting", "30", "Strength Training", "Curls of every kind"],
+        ["2023-12-24", "Weight Lifting", "15", "Strength Training", "Pull ups and push ups"],
+        ["2023-12-25", "Jogging", "30", "Cardio", "Morning jog through the town"]
+    ]
+
+    for workout in workouts:
+        create_workout(db, **workout)
 
 # Drop workouts table
 def drop_workouts(db, db_args):
