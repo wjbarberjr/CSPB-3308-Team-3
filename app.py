@@ -12,7 +12,47 @@ db_args = {
     'dsn': "postgres://db_9qqw_user:2tbtxTaC7kNmpa9kxmjrIpfmCy15fShj@dpg-clp6jr9oh6hc73bttpg0-a/db_9qqw"
 }
 
-@app.route('/') #DEFAULT
+##########################################
+#
+#   Database API
+# 
+#   /db/{database function || table}/{table function}
+#
+#   /db/create
+#   /db/drop
+#
+#   /db/sets/create_sets
+#   /db/sets/create_set
+#   /db/sets/get_set
+#   /db/sets/get_sets
+#
+
+@app.route('/db/create') 
+def create_database():
+    db.create_database(pg, db_args)
+    return "Database created!"
+
+@app.route('/db/drop') 
+def drop_database():
+    db.drop_database(pg, db_args)
+    return "Database dropped!"
+
+##########################################
+#
+#   URL Paths
+#
+#   Routes for Navigation
+#       /                       Login Page / Home
+#       /exercise_input    
+#       /exercise_log        
+#       /food_lookup
+
+#####################
+#                                         
+#   Food 
+#
+
+@app.route('/food_lookup')
 def foodlookup():
     return render_template('foodlookup.html')
 
@@ -170,10 +210,6 @@ def addfood():
 
     return render_template('addfood.html')
 
-@app.route('/db_create') 
-def create():
-    db.create_database(pg, db_args)
-
 @app.route('/db_insert') 
 def inserting():
     conn = pg.connect(**db_args)
@@ -205,7 +241,7 @@ def selecting():
     response_string+="</table>"
     return response_string
     
-@app.route('/db_drop') 
-def dropping():
-    db.drop_database(pg, db_args)
-    return "Foods Table Successfully Dropped"
+#####################
+#                                         
+#   Exercise Input / Output
+#
