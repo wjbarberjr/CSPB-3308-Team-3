@@ -61,7 +61,7 @@ def populate_workouts(db, db_args):
     ]
 
     for workout in workouts:
-        create_workout(db, **workout)
+        create_workout(db, db_args, **workout)
 
 # Drop workouts table
 def drop_workouts(db, db_args):

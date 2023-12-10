@@ -64,7 +64,7 @@ def get_workouts():
 # Populate table if empty and return all entries
 @app.route('/db/workouts/populate_workouts')
 def populate_workouts():
-    db.workouts.populate_workouts()
+    db.workouts.populate_workouts(pg, db_args)
     return get_workouts()
 
 @app.route('/db/workouts/drop_workouts')
