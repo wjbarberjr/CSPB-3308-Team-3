@@ -9,15 +9,15 @@
 import sqlite3
 import os
 
-def create_database(filename):
-    if not filename.endswith('.db'):
-        filename += '.db'
+def create_database(db, db_args):
+    if not db.endswith('.db'):
+        db += '.db'
 
-    if os.path.exists(filename):
+    if os.path.exists(db, db_args):
         return
 
     try:
-        with sqlite3.connect(filename) as conn:
+        with db.connect(**db_args) as conn:
             # No need to create any table here; this is just for initializing the database file
             pass
 
@@ -41,8 +41,8 @@ def create_table(conn, table_name, columns):
 
         
         
-def add_user(first_name, last_name, dob, gender, login_name, email, password, filename):
-    conn = sqlite3.connect(filename)
+def add_user(first_name, last_name, dob, gender, login_name, email, password, db, db_args):
+    conn = db.connect(**db_args)
     cursor = conn.cursor()
 
     try:
@@ -76,8 +76,8 @@ def add_user(first_name, last_name, dob, gender, login_name, email, password, fi
 
         
         
-def edit_user(user_id, first_name, last_name, dob, gender, login_name, email, password, filename):
-    conn = sqlite3.connect(filename)
+def edit_user(user_id, first_name, last_name, dob, gender, login_name, email, password, db, db_args):
+    conn = db.connect(**db_args)
     cursor = conn.cursor()
 
     try:
@@ -99,8 +99,8 @@ def edit_user(user_id, first_name, last_name, dob, gender, login_name, email, pa
         
         
 
-def delete_user(user_id, filename):
-    conn = sqlite3.connect(filename)
+def delete_user(user_id, db, db_args):
+    conn = db.connect(**db_args)
     cursor = conn.cursor()
     cursor.execute('DELETE FROM users WHERE id=?', (user_id,))
     conn.commit()
@@ -108,8 +108,8 @@ def delete_user(user_id, filename):
     
     
 
-def get_user_by_id(user_id, filename):
-    conn = sqlite3.connect(filename)
+def get_user_by_id(user_id, db, db_args):
+    conn = db.connect(**db_args)
     cursor = conn.cursor()
 
     try:
@@ -125,8 +125,8 @@ def get_user_by_id(user_id, filename):
         
         
         
-def get_user_by_credentials(username, password, filename):
-    conn = sqlite3.connect(filename)
+def get_user_by_credentials(username, password, db, db_args):
+    conn = db.connect(**db_args)
     cursor = conn.cursor()
 
     try:
@@ -148,9 +148,9 @@ def get_user_by_credentials(username, password, filename):
         
         
 
-def authenticate_user(username, password, filename='team3_fitness_app.db'):
+def authenticate_user(username, password, db, db_args='team3_fitness_app.db'):
     print(f"Attempting authentication with username: {username}, password: {password}")
-    conn = sqlite3.connect(filename)
+    conn = db.connect(**db_args)
     cursor = conn.cursor()
 
     try:
@@ -168,8 +168,8 @@ def authenticate_user(username, password, filename='team3_fitness_app.db'):
 
 
 
-def get_user_by_email(email, filename):
-    conn = sqlite3.connect(filename)
+def get_user_by_email(email, db, db_args):
+    conn = db.connect(**db_args)
     cursor = conn.cursor()
 
     try:
