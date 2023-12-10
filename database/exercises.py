@@ -26,12 +26,12 @@ def create_exercise(db, db_args):
 def populate_exercises(db, db_args):
     pass
 
-# Drop exercise table
+# Drop exercise and dependent tables
 def drop_exercises(db, db_args):
     connection = db.connect(**db_args)
     cursor = connection.cursor()
 
-    cursor.execute("DROP TABLE IF EXISTS exercises;")
+    cursor.execute("DROP TABLE IF EXISTS exercises CASCADE;")
 
     connection.commit()
     connection.close()

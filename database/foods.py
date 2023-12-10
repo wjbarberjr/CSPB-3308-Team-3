@@ -41,7 +41,7 @@ def drop_foods(db, db_args):
     connection = db.connect(**db_args)
     cursor = connection.cursor()
 
-    cursor.execute("DROP TABLE IF EXISTS foods;")
+    cursor.execute("DROP TABLE IF EXISTS foods CASCADE;")
 
     connection.commit()
     connection.close()

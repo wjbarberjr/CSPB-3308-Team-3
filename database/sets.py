@@ -39,7 +39,7 @@ def drop_sets(db, db_args):
     connection = db.connect(**db_args)
     cursor = connection.cursor()
 
-    cursor.execute("DROP TABLE IF EXISTS sets;")
+    cursor.execute("DROP TABLE IF EXISTS sets CASCADE;")
 
     connection.commit()
     connection.close()

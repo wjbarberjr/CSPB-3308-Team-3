@@ -36,7 +36,7 @@ def drop_workouts(db, db_args):
     connection = db.connect(**db_args)
     cursor = connection.cursor()
 
-    cursor.execute("DROP TABLE IF EXISTS workouts;")
+    cursor.execute("DROP TABLE IF EXISTS workouts CASCADE;")
 
     connection.commit()
     connection.close()
