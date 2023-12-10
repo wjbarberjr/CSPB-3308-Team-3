@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Calorie Tracker</title>
+
+    <!-- Link Style Sheet -->
+    <link rel="stylesheet" href="../static/index.css" />
+
+    <!-- Defer script execution to after window loads -->
+    <script type="text/javascript" src="../static/index.js" defer></script>
+  </head>
+
+
+
+  <body onload="Javascript:populate_table()">
+    <!--Navigation menu-->
+    <div id="Navbar">
+      <ul>
+          <li><a href="/templates/login.html">Login Page</a></li>
+          <li><a href="/templates/create_account.html">Create Account</a></li>
+          <li><a href="/templates/index.html">Calorie Input</a></li>
+          <li><a href="/templates/foodlookup.html">Food Lookup</a></li>
+          <li><a href="/templates/exercise_log.html">Log Exercises</a></li>
+      </ul>
+  </div>
+  <!--END MENU-->
+    
+    <h1>Hello and welcome to the calorie tracker!</h1>
+    <h3>
+      Please enter your calories and macros consumed to add to your daily
+      total
+    </h3>
+    <p>
+      Our goal is to help you keep track of your daily calories so you have a
+      better understanding of the nutrients that fuel your workouts!
+    </p>
+
+      
+    <!-- list form for cal and macros input 
+    <div id="inputForm" >
+      <form action="/histinput", method="POST">
+        <ul>
+          <li>
+            <label for="input">Enter date: </label>
+            <input type="date" id="date_input" name="date_input" />
+          </li>
+          <li>
+            <label for="calories">Enter Calories Consumed: </label>
+            <input type="number" id="calories" name="calories" />
+          </li>
+          <li>
+            <label for="fat">Enter grams of Fat Consumed: </label>
+            <input type="number" id="fat" name="fat" />            
+          </li>
+          <li>
+            <label for="protein">Enter grams of Protein Consumed: </label>
+            <input type="number" id="protein" name="protein" />
+          </li>
+          <li>
+            <label for="carbs">Enter grams of Carbohydrates Consumed: </label>
+            <input type="number" id="carbs" name="carbs" />
+          </li>
+        </ul>
+
+      </form>
+    </div> -->
+
+
+
+    <form id="inputForm" action="/histinput", method="POST">
+      <table id="input_table">
+        <tr>
+          <td><label for="input">Enter date: </label></td>
+          <td><input type="date" id="date_input" name="date_input" /></td>
+        </tr>
+        <tr>
+          <td><label for="calories">Enter Calories Consumed: </label></td>
+          <td><input type="number" id="calories" name="calories" /></td>
+        </tr>
+        <tr>
+          <td><label for="fat">Enter grams of Fat Consumed: </label></td>
+          <td><input type="number" id="fat" name="fat" /></td>
+        </tr>
+        <tr>
+          <td><label for="protein">Enter grams of Protein Consumed: </label></td>
+          <td><input type="number" id="protein" name="protein" /></td>
+        </tr>
+        <tr>
+          <td><label for="carbs">Enter grams of Carbohydrates Consumed: </label></td>
+          <td><input type="number" id="carbs" name="carbs" /></td>
+        </tr>
+      </table>
+      <br>
+
+      <div id="dataSubmit">
+        <input type="submit" value="Submit to history">
+      </div>
+    </form>
+
+    <!-- type="button" overrides submit behavior-->
+    <button type="button" onclick="add_to_table()">Save</button>
+    <button type="button" onclick="clear_table()">Reset</button>
+
+    <table id="output_table">
+      <tr>
+        <th>Input</th>
+        <th>Calories</th>
+        <th>Fats</th>
+        <th>Proteins</th>
+        <th>Carbohydrates</th>
+      </tr>
+      <tr id="total_row">
+        <th>Totals:</th>
+        <td>0</td>
+        <td>0</td>
+        <td>0</td>
+        <td>0</td>
+      </tr>
+    </table>
+
+  </body>
+
+</html>

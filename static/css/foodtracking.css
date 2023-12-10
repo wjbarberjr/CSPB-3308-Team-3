@@ -1,0 +1,46 @@
+body {
+    background-color: whitesmoke;
+    text-align: center;
+    margin-top: 100px;
+    align-items: center;
+    
+}
+
+#dataSubmit {
+    text-align: center;
+    margin-top: 10px;
+}
+
+#Navbar {
+    text-align: left;
+}
+
+/* space out lines */
+body > * {
+    margin-inline: auto;
+    margin-block: 20px;
+}
+
+#output_table {
+    width: 60%;
+}
+
+#output_table 
+th{
+    width: 20%;
+}
+
+
+
+#input_table {
+    display:flex;
+    justify-content: center;
+}
+
+#input_table,
+th,
+td {
+    text-align: center;
+    border: 1px solid black;
+    border-collapse: collapse;
+}
