@@ -18,14 +18,6 @@ db_args = {
 # 
 #   /db/{database function || table}/{table function}
 #
-#   /db/create
-#   /db/drop
-#
-#   /db/sets/create_sets
-#   /db/sets/create_set
-#   /db/sets/get_set
-#   /db/sets/get_sets
-#
 
 @app.route('/db/create') 
 def create_database():
@@ -36,6 +28,31 @@ def create_database():
 def drop_database():
     db.drop_database(pg, db_args)
     return "Database dropped!"
+
+# @app.route('/db/exercises/create_exercises')
+# @app.route('/db/exercises/create_exercise')
+# @app.route('/db/exercises/populate_exercises')
+# @app.route('/db/exercises/drop_exercises')
+
+# @app.route('/db/exercise_groups/create_exercise_groups')
+# @app.route('/db/exercise_groups/create_exercise_group')
+# @app.route('/db/exercise_groups/populate_exercise_groups')
+# @app.route('/db/exercise_groups/drop_exercise_groups')
+
+# @app.route('/db/foods/create_foods')
+# @app.route('/db/foods/...')
+# @app.route('/db/foods/drop_foods')
+
+# @app.route('/db/sets/create_sets')
+# @app.route('/db/sets/create_set')
+# @app.route('/db/sets/get_set')
+# @app.route('/db/sets/get_sets')
+
+# @app.route('/db/workouts/create_workouts')
+# @app.route('/db/workouts/create_workout')
+# @app.route('/db/workouts/populate_workouts')
+# @app.route('/db/workouts/drop_workouts')
+
 
 ##########################################
 #

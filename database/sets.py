@@ -23,8 +23,6 @@ def create_sets(db, db_args):
     connection.commit()
     connection.close()
 
-    
-
 # Creates a set
 # Needs parameter for creating category
 def create_set(db, db_args):
