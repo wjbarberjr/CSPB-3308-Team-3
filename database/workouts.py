@@ -24,14 +24,14 @@ def create_workouts(db, db_args):
     connection.close()
 
 # Create workout
-def create_workout(db, db_args, date, name, duration, type, notes):
+def create_workout(db, db_args, args):
     connection = db.connect(**db_args)
     cursor = connection.cursor()
 
     cursor.execute('''
         INSERT INTO workouts (date, name, duration, type, notes)
         VALUES (%s, %s, %s, %s, %s);
-    ''', (date, name, duration, type, notes))
+    ''', (args.date, args.name, args.duration, args.type, args.notes))
 
     connection.commit()
     connection.close()
@@ -91,7 +91,7 @@ def populate_workouts(db, db_args):
     ]
 
     for workout in workouts:
-        create_workout(db, db_args, **workout)
+        create_workout(db, db_args, workout)
 
 # Drop workouts table
 def drop_workouts(db, db_args):
