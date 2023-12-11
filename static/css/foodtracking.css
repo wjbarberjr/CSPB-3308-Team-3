@@ -3,6 +3,7 @@ body {
     text-align: center;
     margin-top: 100px;
     align-items: center;
+
     
 }
 
@@ -33,8 +34,7 @@ th{
 
 
 #input_table {
-    display:flex;
-    justify-content: center;
+    
 }
 
 #input_table,
