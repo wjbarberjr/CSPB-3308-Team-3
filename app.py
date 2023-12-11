@@ -94,14 +94,16 @@ def drop_workouts():
 ##########################################
 
 # Call create_users_table() to ensure the 'users' table is created
-db.users.create_users_table(db_args)
+# Call under database.py create_database user.create_users_table
+# db.users.create_users_table(db_args)
 
 # Add two users (modify this based on your needs)
-db.users.add_user('John', 'Doe', '1990-01-01', 'Male', 'john_doe', 'john@example.com', 'password123', db_args)
-db.users.add_user('Jane', 'Smith', '1985-05-15', 'Female', 'jane_smith', 'jane@example.com', 'pass456', db_args)
+# Move to users.py under create_users
+# db.users.add_user('John', 'Doe', '1990-01-01', 'Male', 'john_doe', 'john@example.com', 'password123', db_args)
+# db.users.add_user('Jane', 'Smith', '1985-05-15', 'Female', 'jane_smith', 'jane@example.com', 'pass456', db_args)
 
 ##########################################
-
+"""
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
@@ -130,7 +132,7 @@ def login():
     return render_template('login.html')
 
 ##########################################
-"""
+
 @app.route('/about')
 def about():
     user_id = request.args.get('user_id')
