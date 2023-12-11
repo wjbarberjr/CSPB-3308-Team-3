@@ -112,7 +112,7 @@ def login():
         password = request.form['password']
 
         # Check if the user exists and the password is correct
-        user_tuple = db.users.get_user_by_credentials(username, password, DATABASE_FILE)
+        user_tuple = db.users.get_user_by_credentials(username, password, db_args)
 
         # Assuming the tuple structure is (user_id, first_name, last_name, ...)
         if user_tuple and len(user_tuple) >= 2:
@@ -139,7 +139,7 @@ def about():
 
     if user_id:
         # If user ID is provided, fetch user details from the database
-        user_details = get_user_by_id(user_id, DATABASE_FILE)
+        user_details = get_user_by_id(user_id, db_args)
 
         if user_details:
             # Extract first name from user details
@@ -172,10 +172,10 @@ def create_account():
         else:
             try:
                 # Create the database if it doesn't exist
-                create_database(DATABASE_FILE)
+                create_database(db_args)
 
                 # Add the user to the database
-                user_id = add_user(first_name, last_name, dob, gender, username, email, password, DATABASE_FILE)
+                user_id = add_user(first_name, last_name, dob, gender, username, email, password, db_args)
 
                 # Redirect to the login page after successful account creation
                 flash('Account created successfully. Please log in.', 'success')
@@ -202,7 +202,7 @@ def forgot_password():
         email = request.form['email']
 
         # Check if the email exists in the database
-        user = get_user_by_email(email, DATABASE_FILE)
+        user = get_user_by_email(email, db_args)
 
         if user:
             # Email found, redirect to login page or perform further actions
