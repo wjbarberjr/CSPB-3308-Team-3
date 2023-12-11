@@ -1,10 +1,7 @@
 import psycopg2 as pg
 import database as db 
 
-from flask import Flask
-from flask import render_template
-from flask import request, redirect, url_for, flash, jsonify
-from flask import Flask, render_template, session, request, redirect, url_for, flash
+from flask import Flask, request, redirect, render_template, url_for, flash, jsonify
 
 app = Flask(__name__)
 app.secret_key = 'team_3_rules' 
@@ -66,7 +63,7 @@ def get_workouts():
 @app.route('/db/workouts/populate_workouts')
 def populate_workouts():
     db.workouts.populate_workouts(pg, db_args)
-    return get_workouts()
+    return "Table populated!"
 
 @app.route('/db/workouts/drop_workouts')
 def drop_workouts():
