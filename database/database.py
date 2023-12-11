@@ -19,7 +19,7 @@ def create_database(db, db_args):
     workouts.create_workouts(db, db_args) # Requires Users
 
 def drop_database(db, db_args):
-    users.delete_user(db, db_args)
+    # Not dropping users table because then the app wouldnt exist
     foods.drop_foods(db, db_args)
     # food_tracking.drop_food_tracking(db, db_args)
     workouts.drop_workouts(db, db_args) # Requires Users
