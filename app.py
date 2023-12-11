@@ -1,7 +1,7 @@
 import psycopg2 as pg
 import database as db 
 
-from flask import Flask, request, redirect, render_template, url_for, flash, jsonify, session
+from flask import Flask, request, redirect, render_template, url_for, flash, jsonify, session, current_app
 
 app = Flask(__name__)
 app.secret_key = 'team_3_rules' 
@@ -103,6 +103,11 @@ def drop_workouts():
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
+    # Initialize the users table and add initial users during the application initialization
+    with current_app.app_context():
+        db.users.create_users_table(db_args)
+        db.users.add_initial_users(db_args)
+
     if request.method == 'POST':
         # Retrieve username and password from the form
         username = request.form['username']

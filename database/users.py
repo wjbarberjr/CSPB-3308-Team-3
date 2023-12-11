@@ -56,21 +56,39 @@ def create_users_table(db_args):
 
 
 def add_initial_users(db_args):
+    # List of initial users to be added
+    initial_users = [
+        ('John', 'Doe', '1990-01-01', 'Male', 'john_doe', 'john@example.com', 'password123'),
+        ('Jane', 'Smith', '1985-05-15', 'Female', 'jane_smith', 'jane@example.com', 'pass456')
+    ]
+
     conn = psycopg2.connect(**db_args)
     cursor = conn.cursor()
 
     try:
-        # Add two users (modify this based on your needs)
-        cursor.execute('''
-            INSERT INTO users (first_name, last_name, dob, gender, login_name, email, password)
-            VALUES ('John', 'Doe', '1990-01-01', 'Male', 'john_doe', 'john@example.com', 'password123'),
-                   ('Jane', 'Smith', '1985-05-15', 'Female', 'jane_smith', 'jane@example.com', 'pass456')
-        ''')
-        conn.commit()
+        for user_data in initial_users:
+            first_name, last_name, dob, gender, login_name, email, password = user_data
+
+            # Check if login_name already exists
+            cursor.execute("SELECT COUNT(*) FROM users WHERE login_name = %s", (login_name,))
+            count = cursor.fetchone()[0]
+
+            if count > 0:
+                # Username already taken, print a message
+                print(f"User '{login_name}' already exists in the database.")
+            else:
+                # Username is unique, proceed with insertion
+                cursor.execute("INSERT INTO users (first_name, last_name, dob, gender, login_name, email, password) VALUES (%s, %s, %s, %s, %s, %s, %s)",
+                               (first_name, last_name, dob, gender, login_name, email, password))
+                conn.commit()
+
+                # Fetch and print the inserted user ID
+                cursor.execute("SELECT lastval()")
+                user_id = cursor.fetchone()[0]
+                print(f"User '{login_name}' added successfully with ID: {user_id}")
 
     except psycopg2.Error as e:
         print(f"Error adding initial users: {e}")
-
     finally:
         conn.close()
 
