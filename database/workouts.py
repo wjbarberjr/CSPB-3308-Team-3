@@ -24,14 +24,14 @@ def create_workouts(db, db_args):
     connection.close()
 
 # Create workout
-def create_workout(db, db_args, date, name, duration, type, notes):
+def create_workout(db, db_args, args):
     connection = db.connect(**db_args)
     cursor = connection.cursor()
 
     cursor.execute('''
         INSERT INTO workouts (date, name, duration, type, notes)
         VALUES (%s, %s, %s, %s, %s);
-    ''', (date, name, duration, type, notes))
+    ''', (args['date'], args['name'], args['duration'], args['type'], args['notes']))
 
     connection.commit()
     connection.close()
@@ -48,20 +48,64 @@ def get_workouts(db, db_args):
     conn.commit()
     conn.close()
 
-    return rows
+    # Convert rows into a list of dictionaries
+    workouts = []
+    for row in rows:
+        workout_dict = {
+            'id': row[0],
+            'date': str(row[1]),  # Convert datetime to string
+            'name': row[2],
+            'duration': str(row[3]),  # Convert duration to string if needed
+            'type': row[4],
+            'notes': row[5]
+        }
+        workouts.append(workout_dict)
+
+    return workouts
+
 
 # Populate workouts table with dummy data
 def populate_workouts(db, db_args):
     workouts = [
-        ["2023-12-16", "Weight Lifting", "45", "Strength Training", "Bench Press\nChest Press\nSquats"],
-        ["2023-12-15", "Run", "25", "Cardio", "I ran really fast"],
-        ["2023-12-21", "Weight Lifting", "30", "Strength Training", "Curls of every kind"],
-        ["2023-12-24", "Weight Lifting", "15", "Strength Training", "Pull ups and push ups"],
-        ["2023-12-25", "Jogging", "30", "Cardio", "Morning jog through the town"]
+        {
+            'date': "2023-12-16",
+            'name': "Weight Lifting",
+            'duration': "45",
+            'type': "Strength Training",
+            'notes': "Bench Press\nChest Press\nSquats"
+        },
+        {
+            'date': "2023-12-15",
+            'name': "Run",
+            'duration': "25",
+            'type': "Cardio",
+            'notes': "I ran really fast"
+        },
+        {
+            'date': "2023-12-21",
+            'name': "Weight Lifting",
+            'duration': "30",
+            'type': "Strength Training",
+            'notes': "Curls of every kind"
+        },
+        {
+            'date': "2023-12-24",
+            'name': "Weight Lifting",
+            'duration': "15",
+            'type': "Strength Training",
+            'notes': "Pull ups and push ups"
+        },
+        {
+            'date': "2023-12-25",
+            'name': "Jogging",
+            'duration': "30",
+            'type': "Cardio",
+            'notes': "Morning jog through the town"
+        }
     ]
 
     for workout in workouts:
-        create_workout(db, **workout)
+        create_workout(db, db_args, workout)
 
 # Drop workouts table
 def drop_workouts(db, db_args):
