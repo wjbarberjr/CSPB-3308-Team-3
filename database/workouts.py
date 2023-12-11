@@ -31,7 +31,7 @@ def create_workout(db, db_args, args):
     cursor.execute('''
         INSERT INTO workouts (date, name, duration, type, notes)
         VALUES (%s, %s, %s, %s, %s);
-    ''', (args.date, args.name, args.duration, args.type, args.notes))
+    ''', (args['date'], args['name'], args['duration'], args['type'], args['notes']))
 
     connection.commit()
     connection.close()
