@@ -12,7 +12,7 @@ import os
 
 
 
-def create_food_history(db_args):
+def create_food_tracking(db_args):
     try:
         # Connect to an existing database
         conn = psycopg2.connect(**db_args)
