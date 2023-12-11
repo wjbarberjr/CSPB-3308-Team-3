@@ -94,7 +94,7 @@ def drop_workouts():
 ##########################################
 
 # Call create_database() to ensure the database file exists
-db.users.create_database(DATABASE_FILE)
+db.users.create_database(pg, db_args)
 
 # Call create_users_table() to ensure the 'users' table is created
 db.users.create_users_table()

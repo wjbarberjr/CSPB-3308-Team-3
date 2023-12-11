@@ -186,7 +186,7 @@ def get_user_by_email(email, db, db_args):
 
 
 def create_users_table():
-    conn = sqlite3.connect('team3_fitness_app.db')
+    conn = sqlite3.connect(db, db_args)
     cursor = conn.cursor()
 
     try:
