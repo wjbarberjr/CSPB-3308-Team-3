@@ -1,7 +1,7 @@
 import psycopg2 as pg
 import database as db 
 
-from flask import Flask, request, redirect, render_template, url_for, flash, jsonify
+from flask import Flask, request, redirect, render_template, url_for, flash, jsonify, session
 
 app = Flask(__name__)
 app.secret_key = 'team_3_rules' 
@@ -136,7 +136,7 @@ def about():
 
     if user_id:
         # If user ID is provided, fetch user details from the database
-        user_details = get_user_by_id(user_id, db_args)
+        user_details = db.users.get_user_by_id(user_id, db_args)
 
         if user_details:
             # Extract first name from user details
@@ -169,10 +169,10 @@ def create_account():
         else:
             try:
                 # Create the database if it doesn't exist
-                create_database(db_args)
+                db.users.create_database(db_args)
 
                 # Add the user to the database
-                user_id = add_user(first_name, last_name, dob, gender, username, email, password, db_args)
+                user_id = db.users.add_user(first_name, last_name, dob, gender, username, email, password, db_args)
 
                 # Redirect to the login page after successful account creation
                 flash('Account created successfully. Please log in.', 'success')
@@ -199,7 +199,7 @@ def forgot_password():
         email = request.form['email']
 
         # Check if the email exists in the database
-        user = get_user_by_email(email, db_args)
+        user = db.users.get_user_by_email(email, db_args)
 
         if user:
             # Email found, redirect to login page or perform further actions
