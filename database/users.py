@@ -11,24 +11,23 @@ from psycopg2 import sql
 import os
 
 
-def create_database(db, db_args):
-    if not db.endswith('.db'):
-        db += '.db'
-
-    if os.path.exists(db, db_args):
-        return
+def create_database(db_args):
+    conn = psycopg2.connect(**db_args)
+    cursor = conn.cursor()
 
     try:
-        with db.connect(**db_args) as conn:
-            # No need to create any table here; this is just for initializing the database file
-            pass
+        # No need to create any table here; this is just for initializing the database
+        pass
 
-    except sqlite3.Error as e:
+    except psycopg2.Error as e:
         print(f"Error creating database: {e}")
 
+    finally:
+        conn.close()
+
         
         
-def create_users_table_and_add_users(db_args):
+def create_users_table(db_args):
     conn = psycopg2.connect(**db_args)
     cursor = conn.cursor()
 
@@ -48,6 +47,19 @@ def create_users_table_and_add_users(db_args):
         ''')
         conn.commit()
 
+    except psycopg2.Error as e:
+        print(f"Error creating users table: {e}")
+
+    finally:
+        conn.close()
+
+
+
+def add_initial_users(db_args):
+    conn = psycopg2.connect(**db_args)
+    cursor = conn.cursor()
+
+    try:
         # Add two users (modify this based on your needs)
         cursor.execute('''
             INSERT INTO users (first_name, last_name, dob, gender, login_name, email, password)
@@ -57,7 +69,7 @@ def create_users_table_and_add_users(db_args):
         conn.commit()
 
     except psycopg2.Error as e:
-        print(f"Error creating users table: {e}")
+        print(f"Error adding initial users: {e}")
 
     finally:
         conn.close()
@@ -172,13 +184,12 @@ def get_user_by_credentials(username, password, db_args):
         
 
 def authenticate_user(username, password, db_args):
-    print(f"Attempting authentication with username: {username}, password: {password}")
     conn = psycopg2.connect(**db_args)
     cursor = conn.cursor()
 
     try:
         # Fetch the user ID based on the provided username and password
-        cursor.execute("SELECT id FROM users WHERE login_name = %s AND password = %s", (username, password))
+        cursor.execute("SELECT id FROM users WHERE login_name = %s AND password = %s", (username, password,))
         user_id = cursor.fetchone()
 
         return user_id[0] if user_id else None
