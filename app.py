@@ -94,7 +94,7 @@ def drop_workouts():
 ##########################################
 
 # Call create_users_table() to ensure the 'users' table is created
-db.users.create_users_table()
+db.users.create_users_table(db_args)
 
 # Add two users (modify this based on your needs)
 db.users.add_user('John', 'Doe', '1990-01-01', 'Male', 'john_doe', 'john@example.com', 'password123', db_args)
