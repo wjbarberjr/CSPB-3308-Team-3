@@ -186,11 +186,13 @@ def get_user_by_credentials(username, password, db_args):
         cursor.execute("SELECT * FROM users WHERE login_name=%s", (username,))
         user = cursor.fetchone()
 
-        if user and user[6] == password:  # Check if the password matches
-            print(f"Password comparison: {user[7]} == {password}")
+        if user and user[7] == password:  # Check if the password matches
+            print(f"Stored Password: {user[7]}, Entered Password: {password}")
+            print("Password comparison successful.")
             return user
         else:
-            print(f"Password comparison failed: {user[7]} != {password}")
+            print(f"Stored Password: {user[7]}, Entered Password: {password}")
+            print("Password comparison failed.")
             return None
 
     except psycopg2.Error as e:
