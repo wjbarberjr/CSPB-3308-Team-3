@@ -248,14 +248,15 @@ def render_exercise_log():
 
 @app.route('/food_lookup')
 def foodlookup():
-        if user_id:
-            # If user ID is provided, fetch user details from the database
-            user_details = db.users.get_user_by_id(user_id, db_args)
+    if user_id:
+        # If user ID is provided, fetch user details from the database
+        user_details = db.users.get_user_by_id(user_id, db_args)
 
-            if user_details:
-                # Extract first name from user details
-                user_first_name = user_details[1]
-                return render_template('foodlookup.html', user_id=user_id, user_first_name=user_first_name)
+        if user_details:
+            # Extract first name from user details
+            user_first_name = user_details[1]
+            return render_template('foodlookup.html', user_id=user_id, user_first_name=user_first_name)
+
     return render_template('foodlookup.html')
 
 @app.route('/get_food_suggestions') #NO PAGE
