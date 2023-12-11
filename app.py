@@ -94,18 +94,17 @@ def drop_workouts():
 ##########################################
 
 # Call create_database() to ensure the database file exists
-# create_database(DATABASE_FILE)
+db.users.create_database(DATABASE_FILE)
 
 # Call create_users_table() to ensure the 'users' table is created
-# create_users_table()
+db.users.create_users_table()
 
 # Add two users (modify this based on your needs)
-# add_user('John', 'Doe', '1990-01-01', 'Male', 'john_doe', 'john@example.com', 'password123', DATABASE_FILE)
-# add_user('Jane', 'Smith', '1985-05-15', 'Female', 'jane_smith', 'jane@example.com', 'pass456', DATABASE_FILE)
+db.users.add_user('John', 'Doe', '1990-01-01', 'Male', 'john_doe', 'john@example.com', 'password123', DATABASE_FILE)
+db.users.add_user('Jane', 'Smith', '1985-05-15', 'Female', 'jane_smith', 'jane@example.com', 'pass456', DATABASE_FILE)
 
 ##########################################
 
-"""
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
@@ -114,7 +113,7 @@ def login():
         password = request.form['password']
 
         # Check if the user exists and the password is correct
-        user_tuple = get_user_by_credentials(username, password, DATABASE_FILE)
+        user_tuple = db.users.get_user_by_credentials(username, password, DATABASE_FILE)
 
         # Assuming the tuple structure is (user_id, first_name, last_name, ...)
         if user_tuple and len(user_tuple) >= 2:
@@ -134,7 +133,7 @@ def login():
     return render_template('login.html')
 
 ##########################################
-
+"""
 @app.route('/about')
 def about():
     user_id = request.args.get('user_id')
