@@ -3,7 +3,6 @@ body {
     text-align: center;
     margin-top: 100px;
     align-items: center;
-
     
 }
 
@@ -27,20 +26,24 @@ body > * {
 }
 
 #output_table 
-th{
+th,
+td{
     width: 20%;
+    border: 1px solid black;
+
 }
 
 
 
 #input_table {
-    
+    display:flex;
+    justify-content: center;
 }
 
 #input_table,
 th,
 td {
     text-align: center;
-    border: 1px solid black;
+    
     border-collapse: collapse;
 }
