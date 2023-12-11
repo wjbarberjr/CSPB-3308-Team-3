@@ -11,7 +11,7 @@ def create_workouts(db, db_args):
         id SERIAL PRIMARY KEY,
         -- user_id INT,
         name VARCHAR,
-        date VARCHAR,
+        date TIMESTAMP,
         duration INTERVAL,
         type VARCHAR,
         -- FOREIGN KEY (user_id) REFERENCES users(id),
@@ -31,7 +31,7 @@ def create_workout(db, db_args, args):
     cursor.execute('''
         INSERT INTO workouts (date, name, duration, type, notes)
         VALUES (%s, %s, %s, %s, %s);
-    ''', (args['date'], args['name'], args['duration'], args['type'], args['notes']))
+    ''', (args.date, args.name, args.duration, args.type, args.notes))
 
     connection.commit()
     connection.close()
@@ -48,7 +48,21 @@ def get_workouts(db, db_args):
     conn.commit()
     conn.close()
 
-    return rows
+    # Convert rows into a list of dictionaries
+    workouts = []
+    for row in rows:
+        workout_dict = {
+            'id': row[0],
+            'date': str(row[1]),  # Convert datetime to string
+            'name': row[2],
+            'duration': str(row[3]),  # Convert duration to string if needed
+            'type': row[4],
+            'notes': row[5]
+        }
+        workouts.append(workout_dict)
+
+    return workouts
+
 
 # Populate workouts table with dummy data
 def populate_workouts(db, db_args):
