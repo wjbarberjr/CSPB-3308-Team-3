@@ -63,7 +63,7 @@ def get_workouts():
 @app.route('/db/workouts/populate_workouts')
 def populate_workouts():
     db.workouts.populate_workouts(pg, db_args)
-    return get_workouts()
+    return "Table populated!"
 
 @app.route('/db/workouts/drop_workouts')
 def drop_workouts():
