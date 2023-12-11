@@ -11,7 +11,7 @@ def create_workouts(db, db_args):
         id SERIAL PRIMARY KEY,
         -- user_id INT,
         name VARCHAR,
-        date TIMESTAMP,
+        date VARCHAR,
         duration INTERVAL,
         type VARCHAR,
         -- FOREIGN KEY (user_id) REFERENCES users(id),
