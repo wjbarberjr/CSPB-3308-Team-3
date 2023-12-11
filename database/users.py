@@ -10,7 +10,7 @@ import psycopg2
 from psycopg2 import sql
 import os
 
-'''
+
 def create_database(db, db_args):
     if not db.endswith('.db'):
         db += '.db'
@@ -25,21 +25,42 @@ def create_database(db, db_args):
 
     except sqlite3.Error as e:
         print(f"Error creating database: {e}")
-'''
+
         
         
-def create_table(conn, table_name, columns):
+def create_users_table_and_add_users(db_args):
+    conn = psycopg2.connect(**db_args)
+    cursor = conn.cursor()
+
     try:
-        cursor = conn.cursor()
-        columns_str = ', '.join([f'{col[0]} {col[1]}' for col in columns])
+        # Define your table creation logic here
+        cursor.execute('''
+            CREATE TABLE IF NOT EXISTS users (
+                id SERIAL PRIMARY KEY,
+                first_name TEXT,
+                last_name TEXT,
+                dob TEXT,
+                gender TEXT,
+                login_name TEXT UNIQUE,
+                email TEXT UNIQUE,
+                password TEXT
+            )
+        ''')
+        conn.commit()
 
-        # Ensure the 'id' column is an auto-incrementing primary key
-        if 'id SERIAL PRIMARY KEY' not in columns_str:
-            columns_str = 'id SERIAL PRIMARY KEY, ' + columns_str
+        # Add two users (modify this based on your needs)
+        cursor.execute('''
+            INSERT INTO users (first_name, last_name, dob, gender, login_name, email, password)
+            VALUES ('John', 'Doe', '1990-01-01', 'Male', 'john_doe', 'john@example.com', 'password123'),
+                   ('Jane', 'Smith', '1985-05-15', 'Female', 'jane_smith', 'jane@example.com', 'pass456')
+        ''')
+        conn.commit()
 
-        cursor.execute(f'CREATE TABLE IF NOT EXISTS {table_name} ({columns_str})')
     except psycopg2.Error as e:
-        print(f"Error creating {table_name} table: {e}")
+        print(f"Error creating users table: {e}")
+
+    finally:
+        conn.close()
 
         
         
@@ -187,28 +208,4 @@ def get_user_by_email(email, db_args):
 
 
 
-def create_users_table(db_args):
-    conn = psycopg2.connect(**db_args)
-    cursor = conn.cursor()
 
-    try:
-        # Define your table creation logic here
-        cursor.execute('''
-            CREATE TABLE IF NOT EXISTS users (
-                id SERIAL PRIMARY KEY,
-                first_name TEXT,
-                last_name TEXT,
-                dob TEXT,
-                gender TEXT,
-                login_name TEXT UNIQUE,
-                email TEXT UNIQUE,
-                password TEXT
-            )
-        ''')
-        conn.commit()
-
-    except psycopg2.Error as e:
-        print(f"Error creating users table: {e}")
-
-    finally:
-        conn.close()
