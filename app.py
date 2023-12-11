@@ -7,7 +7,7 @@ app = Flask(__name__)
 app.secret_key = 'team_3_rules' 
 
 db_args = {
-    'dsn': "postgres://db_9qqw_user:2tbtxTaC7kNmpa9kxmjrIpfmCy15fShj@dpg-clp6jr9oh6hc73bttpg0-a/db_9qqw"
+    'dsn': "postgres://team_3_database_mmz9_user:1FONHnMsvzUjERbEhvX4I9h2HA9KKS3D@dpg-clrkm57qd2ns739d0tdg-a/team_3_database_mmz9"
 }
 
 ##########################################
