@@ -19,9 +19,9 @@
     <ul>
         <li><a href="{{ url_for('about', user_id=user_id) }}">About</a></li>
         <li><a href="{{ url_for('render_food_tracking', user_id=user_id) }}">Food Tracking</a></li>
-        <li><a href="{{ url_for('food_lookup', user_id=user_id) }}">Food Lookup</a></li>
-        <li><a href="{{ url_for('exercise_input', user_id=user_id) }}">Exercise Input</a></li>
-        <li><a href="{{ url_for('exercise_log', user_id=user_id) }}">Exercise Log</a></li>
+        <li><a href="{{ url_for('foodlookup', user_id=user_id) }}">Food Lookup</a></li>
+        <li><a href="{{ url_for('render_exercise_input', user_id=user_id) }}">Exercise Input</a></li>
+        <li><a href="{{ url_for('render_exercise_log', user_id=user_id) }}">Exercise Log</a></li>
     </ul>
 </nav>
 <div class="content">
