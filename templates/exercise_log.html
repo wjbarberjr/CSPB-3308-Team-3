@@ -7,9 +7,20 @@
   </head>
   <body>
     <main>
-      <h1>Exercise Log</h1>
+      <h1>Here is your Exercise Log {{ user_first_name }}</h1>
       <a href="/db/workouts/get_workouts">View Log Output</a>
     </main>
+
+<!-- Navigation Bar -->
+<nav class="navbar">
+  <ul>
+      <li><a href="{{ url_for('about', user_id=user_id) }}">About</a></li>
+      <li><a href="{{ url_for('render_food_tracking', user_id=user_id) }}">Food Tracking</a></li>
+      <li><a href="{{ url_for('foodlookup', user_id=user_id) }}">Food Lookup</a></li>
+      <li><a href="{{ url_for('render_exercise_input', user_id=user_id) }}">Exercise Input</a></li>
+      <li><a href="{{ url_for('render_exercise_log', user_id=user_id) }}">Exercise Log</a></li>
+  </ul>
+</nav>
 
     <!-- 
        Templates 

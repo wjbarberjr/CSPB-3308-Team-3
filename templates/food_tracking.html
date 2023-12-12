@@ -11,19 +11,19 @@
   </head>
 
 
-<!--
   <body onload="Javascript:populate_table()">
     
-    <div id="Navbar">
-      <ul>
-          <li><a href="/templates/login.html">Login Page</a></li>
-          <li><a href="/templates/create_account.html">Create Account</a></li>
-          <li><a href="/templates/index.html">Calorie Input</a></li>
-          <li><a href="/templates/foodlookup.html">Food Lookup</a></li>
-          <li><a href="/templates/exercise_log.html">Log Exercises</a></li>
-      </ul>
-  </div>
--->
+<!-- Navigation Bar -->
+<nav class="navbar">
+  <ul>
+      <li><a href="{{ url_for('about', user_id=user_id) }}">About</a></li>
+      <li><a href="{{ url_for('render_food_tracking', user_id=user_id) }}">Food Tracking</a></li>
+      <li><a href="{{ url_for('foodlookup', user_id=user_id) }}">Food Lookup</a></li>
+      <li><a href="{{ url_for('render_exercise_input', user_id=user_id) }}">Exercise Input</a></li>
+      <li><a href="{{ url_for('render_exercise_log', user_id=user_id) }}">Exercise Log</a></li>
+  </ul>
+</nav>
+
 
   <body>
     
