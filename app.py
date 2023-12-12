@@ -443,7 +443,7 @@ def selecting():
 
 @app.route('/food_tracking')
 def render_food_tracking():
-    return render_template('food_tracking.html')
+    return render_template('food_tracking.html', user_id=user_id, user_first_name=user_first_name)
 
 @app.route('/db/food_tracking/histinput', methods=['POST'])
 def histinput():
