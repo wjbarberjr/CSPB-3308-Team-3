@@ -249,6 +249,8 @@ def render_exercise_log():
 @app.route('/food_lookup')
 def foodlookup():
     if user_id:
+        user_id = request.args.get('user_id')
+        
         # If user ID is provided, fetch user details from the database
         user_details = db.users.get_user_by_id(user_id, db_args)
 
