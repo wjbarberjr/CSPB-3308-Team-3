@@ -11,9 +11,6 @@ body {
     margin-top: 10px;
 }
 
-#Navbar {
-    text-align: left;
-}
 
 /* space out lines */
 body > * {
@@ -46,4 +43,45 @@ td {
     text-align: center;
     
     border-collapse: collapse;
+}
+
+
+
+
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.header {
+    text-align: center;
+    background-color: #f2f2f2;
+    padding: 20px;
+}
+
+.navbar {
+    text-align: center;
+    background-color: #333;
+}
+
+.navbar ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.navbar li {
+    display: inline;
+    margin: 0 10px;
+}
+
+.navbar a {
+    text-decoration: none;
+    color: white;
+}
+
+.content {
+    text-align: center;
+    padding: 20px;
 }

@@ -1,23 +1,39 @@
 /*----NAV BAR----*/
-#Navbar {
-    width: 100%;
-    background-color: aqua;
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.header {
     text-align: center;
-    border: 1px solid black;
-    border-radius: 10px;
+    background-color: #f2f2f2;
+    padding: 20px;
 }
 
-#Navbar li{
-    display:inline;
-    border:rgb(from color r g b);
-    padding-top: 3px;
-    padding-bottom: 3px;
-    padding-left: 20px;
-    padding-right: 20px;
+.navbar {
+    text-align: center;
+    background-color: #333;
 }
 
-#Navbar a {
-    display:inline-block; 
+.navbar ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.navbar li {
+    display: inline;
+    margin: 0 10px;
+}
+
+.navbar a {
+    text-decoration: none;
+    color: white;
+}
+
+.content {
+    text-align: center;
+    padding: 20px;
 }
 
 #datefield {
