@@ -10,6 +10,12 @@
 
 <div class="header">
     <h1>Welcome, {{ user_first_name }}!</h1>
+    <!--<div class="navigation">
+        <a href="{{ url_for('about', user_id=user_id) }}">About</a>
+        <a href="{{ url_for('exercise_input', user_id=user_id) }}">Exercise Lookup</a>
+        <a href="{{ url_for('exercise_log', user_id=user_id) }}">Exercise Log</a>-->
+        <a href="{{ url_for('foodlookup', user_id=user_id) }}">Food Lookup</a>
+        <!--<a href="{{ url_for('food_tracking', user_id=user_id) }}">Food Tracking</a>-->
         <form method="post" action="{{ url_for('logout') }}" class="logout-form">
             <button type="submit">Logout</button>
         </form>
