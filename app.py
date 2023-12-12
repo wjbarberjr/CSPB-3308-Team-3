@@ -443,6 +443,17 @@ def selecting():
 
 @app.route('/food_tracking')
 def render_food_tracking():
+    user_id = request.args.get('user_id')
+
+    if user_id:
+        # If user ID is provided, fetch user details from the database
+        user_details = db.users.get_user_by_id(user_id, db_args)
+
+        if user_details:
+            # Extract first name from user details
+            user_first_name = user_details[1]
+            return render_template('food_tracking.html', user_id=user_id, user_first_name=user_first_name)
+
     return render_template('food_tracking.html')
 
 @app.route('/db/food_tracking/histinput', methods=['POST'])
