@@ -148,7 +148,7 @@ def about():
             user_first_name = user_details[1]
             return render_template('about.html', user_id=user_id, user_first_name=user_first_name)
 
-    return render_template('about.html', user_id=user_id)
+    return render_template('about.html', user_id=user_id, code=302)
 
 ##########################################
 
@@ -258,7 +258,7 @@ def foodlookup():
             return render_template('foodlookup.html', user_id=user_id, user_first_name=user_first_name)
 
     return render_template('foodlookup.html')
-    
+
 
 @app.route('/get_food_suggestions') #NO PAGE
 def get_food_suggestions():
